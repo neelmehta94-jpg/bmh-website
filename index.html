@@ -30,7 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
-    html, body { margin: 0; padding: 0; background: #f3efe6; }
+    html, body { margin: 0; padding: 0; background: #f3efe6; overflow-x: hidden; max-width: 100%; }
     *, *::before, *::after { box-sizing: border-box; }
     .bmh-hide-scroll::-webkit-scrollbar { height: 8px; }
     .bmh-hide-scroll::-webkit-scrollbar-thumb { background: rgba(189,154,99,0.5); border-radius: 8px; }
@@ -45,25 +45,25 @@
       .bmh-nav.bmh-open { display: flex !important; }
       .bmh-nav a { padding: 14px 22px !important; }
       section { padding-left: 20px !important; padding-right: 20px !important; }
-      [style*="padding:56px 52px 56px 40px"] { padding: 38px 22px !important; }
       h1 { font-size: 44px !important; }
-      [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:1.05fr 0.95fr"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:minmax(400px,0.95fr) 1.05fr"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:0.92fr 1.08fr"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:1.12fr 0.88fr"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:0.8fr 1.2fr"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:1.3fr 0.7fr"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr 1fr !important; }
-      [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
-      [style*="grid-template-columns:repeat(12,1fr)"] { grid-template-columns: 1fr 1fr !important; grid-auto-rows: auto !important; }
-      [style*="grid-template-columns:repeat(12,1fr)"] > * { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 4 / 3; }
-      img[alt="BMH branded essentials flatlay"] { height: 300px !important; }
+      [style*="padding: 88px 40px 96px"] { padding: 56px 22px 64px !important; }
+      [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+      [style*="grid-template-columns: 1.05fr 0.95fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: minmax(340px, 0.8fr) 1.2fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 0.92fr 1.08fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1.12fr 0.88fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 0.8fr 1.2fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1.3fr 0.7fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+      [style*="grid-template-columns: repeat(12, 1fr)"] { grid-template-columns: 1fr 1fr !important; grid-auto-rows: auto !important; }
+      [style*="grid-template-columns: repeat(12, 1fr)"] > * { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 4 / 3 !important; }
+      img[alt="BMH branded essentials flatlay"] { height: auto !important; aspect-ratio: 16 / 10 !important; width: 100% !important; object-fit: cover !important; }
     }
     @media (max-width: 520px) {
-      [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:repeat(12,1fr)"] { grid-template-columns: 1fr !important; }
-      [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+      [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(12, 1fr)"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
       h1 { font-size: 38px !important; }
     }
   </style>
@@ -737,9 +737,9 @@
               <span style="flex:none; width:42px; height:42px; border-radius:50%; background:rgba(189,154,99,0.15); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bd9a63" stroke-width="1.7"><path d="M5 4 H9 L11 9 L8.5 11 C9.5 13.5 11 15 13 16 L15 13.5 L20 15.5 V19 C20 20 19 21 18 21 C10 20.5 4 14 3.5 6 C3.5 5 4 4 5 4 Z" stroke-linejoin="round"/></svg></span>
               <div><div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(243,239,230,0.5); margin-bottom:4px;">Call / WhatsApp</div><div style="font-size:16px; color:#f3efe6; font-weight:500;">+91 89800 09697</div></div>
             </a>
-            <a href="mailto:info@brandmyhoreca.com" style="display:flex; gap:16px; align-items:flex-start; text-decoration:none;">
+            <a href="/cdn-cgi/l/email-protection#ea83848c85aa88988b848e87938285988f898bc4898587" style="display:flex; gap:16px; align-items:flex-start; text-decoration:none;">
               <span style="flex:none; width:42px; height:42px; border-radius:50%; background:rgba(189,154,99,0.15); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bd9a63" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7 L12 13 L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <div><div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(243,239,230,0.5); margin-bottom:4px;">Email</div><div style="font-size:16px; color:#f3efe6; font-weight:500;">info@brandmyhoreca.com</div></div>
+              <div><div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(243,239,230,0.5); margin-bottom:4px;">Email</div><div style="font-size:16px; color:#f3efe6; font-weight:500;"><span class="__cf_email__" data-cfemail="dcb5b2bab39cbeaebdb2b8b1a5b4b3aeb9bfbdf2bfb3b1">[email&#160;protected]</span></div></div>
             </a>
             <div style="display:flex; gap:16px; align-items:flex-start;">
               <span style="flex:none; width:42px; height:42px; border-radius:50%; background:rgba(189,154,99,0.15); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bd9a63" stroke-width="1.7"><path d="M12 21 C16 17 19 13.5 19 10 A7 7 0 0 0 5 10 C5 13.5 8 17 12 21 Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg></span>
@@ -776,7 +776,7 @@
             </div>
             <div style="margin-bottom:24px;"><label style="display:block; font-size:11px; font-weight:600; letter-spacing:0.5px; color:#5a7080; margin-bottom:7px;">Requirements</label><textarea name="message" rows="3" placeholder="Tell us about your brand, sizes, colours…" style="width:100%; padding:13px 15px; border:1px solid #ded8c9; border-radius:3px; background:#faf9f5; font-family:'Jost',sans-serif; font-size:14px; color:#2c3744; outline:none; resize:vertical;" style-focus="border-color:#bd9a63; background:#fff;"></textarea></div>
             <button type="submit" style="width:100%; display:flex; align-items:center; justify-content:center; gap:10px; background:#0e2748; color:#f3efe6; font-family:'Jost',sans-serif; font-size:13px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:16px; border:none; border-radius:3px; cursor:pointer;" style-hover="background:#091d38;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#f3efe6" stroke-width="1.8"><path d="M21 4 L11 14 M21 4 L14.5 21 L11 14 L4 10.5 Z" stroke-linejoin="round" stroke-linecap="round"/></svg>Send on WhatsApp</button>
-            <p style="text-align:center; font-size:12px; color:#8fa5b2; margin:14px 0 0;">or email <a href="mailto:info@brandmyhoreca.com" style="color:#0e2748; font-weight:600; text-decoration:none;">info@brandmyhoreca.com</a></p>
+            <p style="text-align:center; font-size:12px; color:#8fa5b2; margin:14px 0 0;">or email <a href="/cdn-cgi/l/email-protection#bad3d4dcd5fad8c8dbd4ded7c3d2d5c8dfd9db94d9d5d7" style="color:#0e2748; font-weight:600; text-decoration:none;"><span class="__cf_email__" data-cfemail="a9c0c7cfc6e9cbdbc8c7cdc4d0c1c6dbcccac887cac6c4">[email&#160;protected]</span></a></p>
           </form>
         </div>
       </div>
@@ -822,7 +822,7 @@
           <div style="font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#bd9a63; margin-bottom:16px;">Contact</div>
           <div style="display:flex; flex-direction:column; gap:10px;">
             <a href="https://www.brandmyhoreca.com" target="_blank" style="font-size:13px; color:rgba(243,239,230,0.7); text-decoration:none;" style-hover="color:#bd9a63;">www.brandmyhoreca.com</a>
-            <a href="mailto:info@brandmyhoreca.com" style="font-size:13px; color:rgba(243,239,230,0.7); text-decoration:none;" style-hover="color:#bd9a63;">info@brandmyhoreca.com</a>
+            <a href="/cdn-cgi/l/email-protection#51383f373e113323303f353c28393e233432307f323e3c" style="font-size:13px; color:rgba(243,239,230,0.7); text-decoration:none;" style-hover="color:#bd9a63;"><span class="__cf_email__" data-cfemail="a8c1c6cec7e8cadac9c6ccc5d1c0c7dacdcbc986cbc7c5">[email&#160;protected]</span></a>
             <a href="tel:+918980009697" style="font-size:13px; color:rgba(243,239,230,0.7); text-decoration:none;" style-hover="color:#bd9a63;">+91 89800 09697</a>
             <span style="font-size:13px; color:rgba(243,239,230,0.7); line-height:1.5;">Ghuma – VIP Road, South Bopal,<br>Ahmedabad 380058</span>
           </div>
@@ -845,7 +845,7 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showLookbook&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showLookbook&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
   state = { cart: 0, openFaq: 0, menuOpen: false, heroIdx: 0,
     calc: { product: 'cutlery', qty: 1000, colours: 1, mat: 0, first: true, gst: true } };
