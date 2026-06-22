@@ -74,10 +74,11 @@
       [style*="grid-template-columns: 1.12fr 0.88fr"] { grid-template-columns: 1fr !important; }
       [style*="grid-template-columns: 0.8fr 1.2fr"] { grid-template-columns: 1fr !important; }
       [style*="grid-template-columns: 1.3fr 0.7fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1.1fr"] { grid-template-columns: 1fr !important; }
       [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
       [style*="grid-template-columns: repeat(12, 1fr)"] { grid-template-columns: 1fr 1fr !important; grid-auto-rows: auto !important; }
       [style*="grid-template-columns: repeat(12, 1fr)"] > * { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 4 / 3 !important; }
-      img[alt="BMH branded essentials flatlay"] { height: auto !important; aspect-ratio: 16 / 10 !important; width: 100% !important; object-fit: cover !important; }
+      img[alt="BMH branded essentials — water bottle, cutlery kit, sachets and straws"] { width: 100% !important; height: auto !important; object-fit: contain !important; padding: 16px 20px !important; box-sizing: border-box !important; }
     }
     @media (max-width: 520px) {
       [style*="grid-template-columns: repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
@@ -117,10 +118,10 @@
 
   <!-- ══ FLATLAY BANNER ══ -->
   <section style="background:#efeadd; overflow:hidden;">
-    <div style="max-width:1400px; margin:0 auto; display:grid; grid-template-columns:1fr 1.1fr; min-height:420px; align-items:stretch;">
+    <div style="max-width:1400px; margin:0 auto; display:grid; grid-template-columns: 1fr 1.1fr; min-height:420px; align-items:stretch;">
 
       <!-- LEFT — text -->
-      <div style="display:flex; align-items:center; padding:56px 48px 56px 40px;">
+      <div style="display:flex; align-items:center; padding:48px 32px 32px 32px;">
         <div style="max-width:440px; animation:bmhBannerIn .8s cubic-bezier(.22,1,.36,1) both;">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
             <span style="width:32px; height:1px; background:#bd9a63; flex:none;"></span>
@@ -142,7 +143,7 @@
       </div>
 
       <!-- RIGHT — image, full composition visible -->
-      <div style="display:flex; align-items:center; justify-content:flex-end; background:#efeadd; padding:20px 0 20px 0;">
+      <div style="display:flex; align-items:center; justify-content:center; background:#efeadd; padding:16px 20px;">
         <img src="banner-flatlay.jpeg" alt="BMH branded essentials — water bottle, cutlery kit, sachets and straws" style="width:100%; height:auto; display:block; object-fit:contain;">
       </div>
 
@@ -225,7 +226,7 @@
             <div style="width:30px; height:1px; background:rgba(189,154,99,0.7); margin-bottom:16px;"></div>
             <div style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; color:#f3efe6; line-height:1.04; margin-bottom:8px;">The Cutlery Kit</div>
             <p style="font-size:14px; line-height:1.6; color:rgba(243,239,230,0.7); margin:0 0 14px; max-width:330px; font-weight:300;">Fork, spoon, knife, tissue and freshener — sealed in a sachet that opens with your name on it.</p>
-            <span style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#bd9a63;">From ₹8 · MOQ 1,000</span>
+            <span style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#bd9a63;">MOQ 1,000 pcs</span>
           </div>
         </a>
 
@@ -237,7 +238,7 @@
           <div style="position:absolute; left:20px; right:18px; bottom:18px;">
             <div style="font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:600; color:#f3efe6; line-height:1.04; margin-bottom:4px;">White Sugar Sachets</div>
             <div style="font-size:12.5px; color:rgba(243,239,230,0.6); margin-bottom:7px; font-weight:300;">Printed edge to edge</div>
-            <span style="font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:#bd9a63;">From ₹3.50</span>
+            <span style="font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:#bd9a63;">MOQ 2,000 pcs</span>
           </div>
         </a>
 
@@ -262,7 +263,7 @@
           <div style="position:absolute; left:20px; right:18px; bottom:18px;">
             <div style="font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:600; color:#f3efe6; line-height:1.04; margin-bottom:4px;">Demerara Sachets</div>
             <div style="font-size:12.5px; color:rgba(243,239,230,0.6); margin-bottom:7px; font-weight:300;">Amber crystals, refined wrap</div>
-            <span style="font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:#bd9a63;">From ₹3.50</span>
+            <span style="font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:#bd9a63;">MOQ 2,000 pcs</span>
           </div>
         </a>
 
@@ -286,7 +287,7 @@
           <div style="position:absolute; left:20px; right:18px; bottom:18px;">
             <div style="font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:600; color:#f3efe6; line-height:1.04; margin-bottom:4px;">Wet Wipes</div>
             <div style="font-size:12.5px; color:rgba(243,239,230,0.6); margin-bottom:7px; font-weight:300;">The note your meal ends on</div>
-            <span style="font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:#bd9a63;">From ₹8</span>
+            <span style="font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:#bd9a63;">MOQ 5,000 pcs</span>
           </div>
         </a>
 
@@ -944,7 +945,7 @@
     </div>
     <div style="max-width:1280px; margin:24px auto 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
       <span style="font-size:11px; color:rgba(243,239,230,0.35);">© 2026 BrandMyHoReCa · All rights reserved</span>
-      <span style="font-size:11px; color:rgba(243,239,230,0.35);">Prices exclusive of GST · Freight at actual</span>
+      <span style="font-size:11px; color:rgba(243,239,230,0.35);">All pricing shared on quote · Freight at actual</span>
     </div>
   </footer>
 
@@ -988,13 +989,13 @@ class Component extends DCLogic {
   }
   renderVals() {
     const faqData = [
-      { q: 'Do repeat orders cost less?', a: 'Yes — re-orders with an unchanged design skip the one-time setup cost, so you only pay for the units.' },
+      { q: 'Do repeat orders cost less?', a: 'Yes — re-orders with an unchanged design skip the one-time setup, so you only pay for the units.' },
       { q: 'What are the minimum order quantities (MOQ)?', a: 'It varies by product — Cutlery Kits from 1,000 pcs, Sachets 2,000 pcs per variant, Wet Wipes 5,000 pcs, and Compostable Straws 10,000 pcs. Water and butter paper are quoted to your requirement.' },
-      { q: 'How do GST and freight work?', a: 'Pricing is shared on quote and is exclusive of GST. Freight is charged at actual based on your delivery destination — we share the exact figure before you confirm.' },
+      { q: 'How do GST and freight work?', a: 'All pricing is shared on quote. GST and freight are confirmed before you place an order — no surprises.' },
       { q: 'Can I see a sample before ordering?', a: 'Yes — we can send a digital mockup of your artwork on the product for approval. Physical samples are available on request before bulk production.' },
       { q: 'What file format do you need for artwork?', a: 'Print-ready vector files (AI, EPS, PDF) are ideal. High-resolution PNG/JPEG (300 DPI+) also work. If you only have a basic logo, our team can prepare the artwork layout for you.' },
       { q: 'Do you ship outside India?', a: 'Currently we serve pan-India. International shipping can be arranged on request — reach out and we\u0027ll work out the logistics.' },
-      { q: 'What do you need from us to start?', a: 'Just your print-ready logo or artwork. We handle layout, proofing and production. A one-time setup cost applies to the first run of each design, which we confirm in your quote.' },
+      { q: 'What do you need from us to start?', a: 'Just your print-ready logo or artwork. We handle layout, proofing and production. A one-time setup applies to the first run of each design, which we confirm in your quote.' },
     ];
     const faqs = faqData.map((it, i) => ({
       q: it.q, a: it.a,
@@ -1003,7 +1004,7 @@ class Component extends DCLogic {
       toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
     }));
     const enquireProduct = (productName) => {
-      const lines = ['Product enquiry — BrandMyHoReCa', 'Product: ' + productName, 'I would like to know more about pricing and availability.'];
+      const lines = ['Product enquiry — BrandMyHoReCa', 'Product: ' + productName, 'I would like to know more about availability and samples.'];
       window.open('https://wa.me/918980009697?text=' + encodeURIComponent(lines.join('\n')), '_blank');
     };
     const submitEnquiry = (e) => {
@@ -1050,7 +1051,7 @@ class Component extends DCLogic {
     const products = PROD.map(p => {
       const active = p.key === c.product;
       return { key:p.key, name:p.name,
-        price: 'from ' + p.moq.toLocaleString('en-IN') + ' pcs',
+        price: 'MOQ ' + p.moq.toLocaleString('en-IN') + ' pcs',
         style: cardStyle(active),
         nameStyle: 'font-size:13.5px; font-weight:600; color:' + (active ? '#f3efe6' : '#0e2748') + ';',
         subStyle: 'font-size:11px; color:' + (active ? '#bd9a63' : '#8fa5b2') + ';',
