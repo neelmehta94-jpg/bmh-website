@@ -2,22 +2,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSL322YC9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-2YSL322YC9');
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
@@ -36,11 +20,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>BrandMyHoReCa — Branded Essentials, App to Arrival</title>
   <meta name="description" content="Custom-printed packaging essentials for Hotels, Restaurants, Cafes &amp; Cloud Kitchens across India — cutlery kits, sachets, branded water, butter paper, wet wipes &amp; compostable straws. Branded essentials, from app to arrival.">
-  <link rel="icon" type="image/png" href="bmh-mark-navy.png">
+  <link rel="icon" type="image/png" href="assets/bmh-mark-navy.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="BrandMyHoReCa — Branded Essentials, App to Arrival">
   <meta property="og:description" content="Custom-printed HoReCa packaging — cutlery kits, sachets, branded water &amp; more. Every detail carries your name.">
-  <meta property="og:image" content="https://www.brandmyhoreca.com/banner-flatlay.jpeg">
+  <meta property="og:image" content="https://www.brandmyhoreca.com/assets/banner-flatlay.jpeg">
   <meta property="og:url" content="https://www.brandmyhoreca.com/">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -64,6 +48,11 @@
       .bmh-nav.bmh-open { display: flex !important; }
       .bmh-nav a { padding: 14px 22px !important; }
       section { padding-left: 20px !important; padding-right: 20px !important; }
+      .bmh-explorer { grid-template-columns: 1fr !important; gap: 30px !important; }
+      .bmh-stage-wrap { order: 1; }
+      .bmh-explorer-list { order: 2; }
+      .bmh-cutlery-feature { grid-template-columns: 1fr !important; gap: 34px !important; }
+      .bmh-cutlery-img { max-width: 300px !important; }
       h1 { font-size: 44px !important; }
       [style*="padding: 88px 40px 96px"] { padding: 56px 22px 64px !important; }
       [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
@@ -95,7 +84,7 @@
   <header style="position:sticky; top:0; z-index:50; background:#091d38; border-bottom:1px solid rgba(189,154,99,0.25);">
     <div style="max-width:1280px; margin:0 auto; padding:0 40px; height:78px; display:flex; align-items:center; justify-content:space-between; gap:32px;">
       <a href="#top" style="display:flex; align-items:center; text-decoration:none;">
-        <img src="bmh-mark-cream.png" alt="BrandMyHoReCa" style="height:50px; width:auto; display:block;">
+        <img src="assets/bmh-mark-cream.png" alt="BrandMyHoReCa" style="height:50px; width:auto; display:block;">
       </a>
 
       <nav class="bmh-nav {{ navOpenClass }}" onClick="{{ closeMenu }}" style="display:flex; align-items:center; gap:34px;">
@@ -144,7 +133,7 @@
 
       <!-- RIGHT — image, full composition visible -->
       <div style="display:flex; align-items:center; justify-content:center; background:#efeadd; padding:16px 20px;">
-        <img src="banner-flatlay.jpeg" alt="BMH branded essentials — water bottle, cutlery kit, sachets and straws" style="width:100%; height:auto; display:block; object-fit:contain;">
+        <img src="assets/banner-flatlay.jpeg" alt="BMH branded essentials — water bottle, cutlery kit, sachets and straws" style="width:100%; height:auto; display:block; object-fit:contain;">
       </div>
 
     </div>
@@ -178,7 +167,7 @@
             <button onClick="{{ d.go }}" style="{{ d.style }}"></button>
           </sc-for>
         </div>
-        <div style="position:absolute; bottom:52px; left:50%; transform:translateX(-50%); font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; font-weight:600; color:rgba(243,239,230,0.85); letter-spacing:1px; text-align:center; white-space:nowrap;">{{ heroLabel }}</div>
+        <div style="position:absolute; bottom:38px; left:50%; transform:translateX(-50%); font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; font-weight:600; color:#f3efe6; letter-spacing:1px; text-align:center; white-space:nowrap; padding:7px 18px; background:rgba(9,29,56,0.78); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border:1px solid rgba(189,154,99,0.4); border-radius:30px; box-shadow:0 6px 18px rgba(0,0,0,0.3);">{{ heroLabel }}</div>
       </div>
     </div>
   </section>
@@ -216,7 +205,7 @@
 
         <!-- Signature feature — Cutlery -->
         <a href="#calculator" style="grid-column:span 5; grid-row:span 2; position:relative; display:block; overflow:hidden; background:#0e2748; text-decoration:none; border:1px solid rgba(189,154,99,0.2); transition:border-color .25s;" style-hover="border-color:#bd9a63;">
-          <img src="prod-cutlery.jpeg" alt="Branded cutlery kit" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 24%; display:block;">
+          <img src="assets/prod-cutlery.jpeg" alt="Branded cutlery kit" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 24%; display:block;">
           <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,29,56,0) 40%, rgba(9,29,56,0.92) 100%);"></div>
           <div style="position:absolute; top:18px; left:20px; display:flex; align-items:center; gap:10px;">
             <span style="font-family:'Cormorant Garamond',serif; font-size:15px; color:rgba(189,154,99,0.9); letter-spacing:1px;">01</span>
@@ -232,7 +221,7 @@
 
         <!-- Sugar -->
         <a href="#calculator" style="grid-column:span 4; grid-row:span 1; position:relative; display:block; overflow:hidden; background:#0e2748; text-decoration:none; border:1px solid rgba(189,154,99,0.2); transition:border-color .25s;" style-hover="border-color:#bd9a63;">
-          <img src="prod-sugar.jpeg" alt="White sugar sachet" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <img src="assets/prod-sugar.jpeg" alt="White sugar sachet" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
           <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,29,56,0) 34%, rgba(9,29,56,0.9) 100%);"></div>
           <span style="position:absolute; top:16px; left:18px; font-family:'Cormorant Garamond',serif; font-size:15px; color:rgba(189,154,99,0.9); letter-spacing:1px;">02</span>
           <div style="position:absolute; left:20px; right:18px; bottom:18px;">
@@ -244,7 +233,7 @@
 
         <!-- Water — tall -->
         <a href="#calculator" style="grid-column:span 3; grid-row:span 2; position:relative; display:block; overflow:hidden; background:#0e2748; text-decoration:none; border:1px solid rgba(189,154,99,0.2); transition:border-color .25s;" style-hover="border-color:#bd9a63;">
-          <img src="prod-water.jpeg" alt="Custom branded water" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;">
+          <img src="assets/prod-water.jpeg" alt="Custom branded water" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;">
           <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,29,56,0) 42%, rgba(9,29,56,0.92) 100%);"></div>
           <span style="position:absolute; top:16px; left:18px; font-family:'Cormorant Garamond',serif; font-size:15px; color:rgba(189,154,99,0.9); letter-spacing:1px;">03</span>
           <div style="position:absolute; left:22px; right:18px; bottom:22px;">
@@ -257,7 +246,7 @@
 
         <!-- Demerara -->
         <a href="#calculator" style="grid-column:span 4; grid-row:span 1; position:relative; display:block; overflow:hidden; background:#0e2748; text-decoration:none; border:1px solid rgba(189,154,99,0.2); transition:border-color .25s;" style-hover="border-color:#bd9a63;">
-          <img src="prod-demerara.jpeg" alt="Demerara sugar sachet" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <img src="assets/prod-demerara.jpeg" alt="Demerara sugar sachet" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
           <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,29,56,0) 34%, rgba(9,29,56,0.9) 100%);"></div>
           <span style="position:absolute; top:16px; left:18px; font-family:'Cormorant Garamond',serif; font-size:15px; color:rgba(189,154,99,0.9); letter-spacing:1px;">04</span>
           <div style="position:absolute; left:20px; right:18px; bottom:18px;">
@@ -269,7 +258,7 @@
 
         <!-- Butter Paper — wide -->
         <a href="#calculator" style="grid-column:span 7; grid-row:span 1; position:relative; display:block; overflow:hidden; background:#0e2748; text-decoration:none; border:1px solid rgba(189,154,99,0.2); transition:border-color .25s;" style-hover="border-color:#bd9a63;">
-          <img src="prod-butter-paper.jpeg" alt="Branded butter paper" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <img src="assets/prod-butter-paper.jpeg" alt="Branded butter paper" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
           <div style="position:absolute; inset:0; background:linear-gradient(110deg, rgba(9,29,56,0.86) 0%, rgba(9,29,56,0.3) 55%, rgba(9,29,56,0) 100%);"></div>
           <span style="position:absolute; top:16px; left:20px; font-family:'Cormorant Garamond',serif; font-size:15px; color:rgba(189,154,99,0.9); letter-spacing:1px;">05</span>
           <div style="position:absolute; left:24px; top:50%; transform:translateY(-50%); max-width:260px;">
@@ -281,7 +270,7 @@
 
         <!-- Wet Wipes — wide -->
         <a href="#calculator" style="grid-column:span 5; grid-row:span 1; position:relative; display:block; overflow:hidden; background:#0e2748; text-decoration:none; border:1px solid rgba(189,154,99,0.2); transition:border-color .25s;" style-hover="border-color:#bd9a63;">
-          <img src="mk-wetwipes.jpeg" alt="Branded wet wipes" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+          <img src="assets/mk-wetwipes.jpeg" alt="Branded wet wipes" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
           <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,29,56,0) 34%, rgba(9,29,56,0.9) 100%);"></div>
           <span style="position:absolute; top:16px; left:18px; font-family:'Cormorant Garamond',serif; font-size:15px; color:rgba(189,154,99,0.9); letter-spacing:1px;">06</span>
           <div style="position:absolute; left:20px; right:18px; bottom:18px;">
@@ -336,7 +325,7 @@
       <div style="position:relative;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.45); margin:16px; pointer-events:none; z-index:2;"></div>
         <div style="position:relative; width:100%; max-width:480px; margin:0 auto; aspect-ratio:634/801; overflow:hidden; background:#000; box-shadow:0 40px 90px rgba(0,0,0,0.55);">
-          <video ref="{{ pvref }}" src="realism-video.mp4" autoplay loop muted playsinline preload="auto"
+          <video ref="{{ pvref }}" src="assets/realism-video.mp4" autoplay loop muted playsinline preload="auto"
             style="position:absolute; top:0; left:0; width:100%; height:auto; display:block;"></video>
           <div style="position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(125% 95% at 50% 38%, rgba(9,29,56,0) 52%, rgba(9,29,56,0.30) 100%);"></div>
           <div style="position:absolute; left:18px; top:18px; z-index:3; display:flex; align-items:center; gap:7px; background:rgba(9,29,56,0.55); backdrop-filter:blur(4px); padding:6px 12px; border-radius:20px;">
@@ -369,7 +358,7 @@
     <div style="max-width:1280px; margin:0 auto; padding:40px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
       <div style="position:relative; background:#f3efe6;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
-        <img src="prod-cutlery.jpeg" alt="Branded cutlery kit" style="width:100%; aspect-ratio:1024/1280; object-fit:cover; object-position:center 22%; display:block;">
+        <img src="assets/prod-cutlery.jpeg" alt="Branded cutlery kit" style="width:100%; aspect-ratio:1024/1280; object-fit:cover; object-position:center 22%; display:block;">
       </div>
       <div>
         <div style="display:inline-block; font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#091d38; background:#bd9a63; padding:5px 12px; margin-bottom:18px;">Bestseller</div>
@@ -413,6 +402,8 @@
         <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px;">
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">White Sugar</span>
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Demerara Sugar</span>
+          <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Jaggery Powder</span>
+          <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Monk Fruit Sugar</span>
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Mouth Freshener</span>
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Oregano</span>
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Chilli Flakes</span>
@@ -443,8 +434,8 @@
         <button onClick="{{ enquireSachets }}" style="background:#0e2748; color:#f3efe6; font-family:'Jost',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 30px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#091d38;">Enquire on WhatsApp</button>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
-        <div style="background:#fff; box-shadow:0 16px 40px rgba(14,39,72,0.1);"><img src="prod-demerara.jpeg" alt="Demerara sugar sachet" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"></div>
-        <div style="background:#fff; box-shadow:0 16px 40px rgba(14,39,72,0.1); margin-top:36px;"><img src="prod-sugar.jpeg" alt="White sugar sachet" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"></div>
+        <div style="background:#fff; box-shadow:0 16px 40px rgba(14,39,72,0.1);"><img src="assets/prod-demerara.jpeg" alt="Demerara sugar sachet" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"></div>
+        <div style="background:#fff; box-shadow:0 16px 40px rgba(14,39,72,0.1); margin-top:36px;"><img src="assets/prod-sugar.jpeg" alt="White sugar sachet" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"></div>
       </div>
     </div>
     </div>
@@ -453,7 +444,7 @@
     <div style="max-width:1280px; margin:0 auto; padding:64px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
       <div style="position:relative; background:#0e2748; display:flex; justify-content:center;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
-        <img src="prod-water.jpeg" alt="Custom branded water bottle" style="width:100%; max-width:340px; aspect-ratio:787/1100; object-fit:cover; object-position:center 30%; display:block;">
+        <img src="assets/prod-water.jpeg" alt="Custom branded water bottle" style="width:100%; max-width:340px; aspect-ratio:787/1100; object-fit:cover; object-position:center 30%; display:block;">
       </div>
       <div>
         <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#0e2748; margin:0 0 14px;">Custom Branded Water</h3>
@@ -524,7 +515,7 @@
       </div>
       <div style="position:relative; background:#fff;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
-        <img src="prod-butter-paper.jpeg" alt="Branded butter paper" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+        <img src="assets/prod-butter-paper.jpeg" alt="Branded butter paper" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
       </div>
     </div>
     </div>
@@ -533,7 +524,7 @@
     <div style="max-width:1280px; margin:0 auto; padding:64px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
       <div style="position:relative; background:#0e2748;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
-        <img src="mk-wetwipes.jpeg" alt="Branded wet wipes" style="width:100%; aspect-ratio:3/2; object-fit:cover; object-position:50% 35%; display:block;">
+        <img src="assets/mk-wetwipes.jpeg" alt="Branded wet wipes" style="width:100%; aspect-ratio:3/2; object-fit:cover; object-position:50% 35%; display:block;">
       </div>
       <div>
         <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#0e2748; margin:0 0 14px;">Branded Wet Wipes</h3>
@@ -602,121 +593,81 @@
       </div>
       <div style="position:relative; background:#fff;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
-        <img src="prod-straws.jpeg" alt="Compostable straws" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
+        <img src="assets/prod-straws.jpeg" alt="Compostable straws" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
       </div>
     </div>
     </div>
   </section>
-  <!-- ══ MOCKUPS ══ -->
-  <section id="mockups" style="background:#fff; padding:100px 40px;">
-    <div style="max-width:1180px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:52px;">
-        <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">The Work</div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:600; color:#0e2748; margin:0 0 14px;">Designed to be noticed</h2>
-        <p style="font-size:16px; line-height:1.7; color:#5a7080; margin:0 auto; max-width:560px; font-weight:300;">Real mockups in your brand — sugar &amp; demerara sticks, mouth freshener, cutlery kits, wet wipes and compostable straws. Pick a label style and we make it yours.</p>
+  <!-- ══ THE COLLECTION (interactive explorer) ══ -->
+  <section id="range" style="background:#fff; padding:104px 40px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:58px;">
+        <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">The Collection</div>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:600; color:#0e2748; margin:0 0 14px;">Every touchpoint, in your brand</h2>
+        <p style="font-size:16px; line-height:1.7; color:#5a7080; margin:0 auto; max-width:560px; font-weight:300;">Sweeteners, seasonings, cutlery and care — each printed edge-to-edge in your identity. Tap any item to see it on the stand.</p>
       </div>
 
-      <!-- centerpiece board -->
-      <div style="position:relative; max-width:1040px; margin:0 auto;">
-        <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.45); margin:14px; pointer-events:none; z-index:2;"></div>
-        <img src="mk-board.jpeg" alt="BMH full product range — sugar, mouth freshener and compostable straw options" style="width:100%; height:auto; display:block; box-shadow:0 34px 80px rgba(14,39,72,0.18);">
-      </div>
-      <p style="text-align:center; font-size:13px; letter-spacing:1px; color:#8fa5b2; margin:18px 0 0; text-transform:uppercase;">The full range — three label options per product</p>
+      <div class="bmh-explorer" style="display:grid; grid-template-columns:0.82fr 1.18fr; gap:60px; align-items:center;">
+        <!-- LEFT — grouped product index -->
+        <div class="bmh-explorer-list">
+          <sc-for list="{{ explorer.groups }}" as="g" hint-placeholder-count="4">
+            <div style="margin-bottom:24px;">
+              <div style="font-size:10.5px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#bd9a63; margin-bottom:4px;">{{ g.cat }}</div>
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <button onClick="{{ it.select }}" style="{{ it.rowStyle }}" style-hover="color:#0e2748;">
+                  <span style="{{ it.markerStyle }}"></span>
+                  <span style="flex:1;">{{ it.name }}</span>
+                  <span style="{{ it.tagStyle }}">{{ it.tag }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
 
-      <!-- 3-up mockup tiles -->
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:52px;">
-        <div style="position:relative; overflow:hidden; background:#f3efe6; box-shadow:0 16px 40px rgba(14,39,72,0.08);">
-          <img src="mk-sugarsticks.jpeg" alt="BMH sugar stick sachets" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
-          <span style="position:absolute; left:14px; bottom:14px; background:rgba(9,29,56,0.82); color:#f3efe6; font-size:10.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:7px 13px;">Sugar Sticks</span>
-        </div>
-        <div style="position:relative; overflow:hidden; background:#f3efe6; box-shadow:0 16px 40px rgba(14,39,72,0.08);">
-          <img src="mk-demerara.jpeg" alt="BMH demerara brown sugar sachet" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
-          <span style="position:absolute; left:14px; bottom:14px; background:rgba(9,29,56,0.82); color:#f3efe6; font-size:10.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:7px 13px;">Demerara Sachet</span>
-        </div>
-        <div style="position:relative; overflow:hidden; background:#f3efe6; box-shadow:0 16px 40px rgba(14,39,72,0.08);">
-          <img src="mk-wetwipes.jpeg" alt="BMH wet wipes pack" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
-          <span style="position:absolute; left:14px; bottom:14px; background:rgba(9,29,56,0.82); color:#f3efe6; font-size:10.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:7px 13px;">Wet Wipes</span>
-        </div>
-      </div>
-
-      <!-- cutlery feature -->
-      <div style="display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center; margin-top:64px;">
-        <div style="position:relative; max-width:360px; margin:0 auto;">
-          <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.4); margin:13px; pointer-events:none; z-index:2;"></div>
-          <img src="mk-cutlery.jpeg" alt="BMH disposable cutlery kit sachet" style="width:100%; height:auto; display:block; box-shadow:0 26px 60px rgba(14,39,72,0.14);">
-        </div>
-        <div>
-          <div style="font-size:11px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Sealed &amp; ready</div>
-          <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:36px; font-weight:600; color:#0e2748; margin:0 0 16px; line-height:1.1;">A cutlery kit that opens with your name on it</h3>
-          <p style="font-size:16px; line-height:1.8; color:#5a7080; margin:0 0 26px; font-weight:300; max-width:460px;">Fork, spoon, knife, tissue and mouth freshener — sealed in a custom-printed sachet. The first thing your guest touches, and the last thing they forget.</p>
-          <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; background:#0e2748; color:#f3efe6; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 30px; text-decoration:none; border-radius:2px;" style-hover="background:#091d38;">Get this branded
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f3efe6" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"/><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ GALLERY GRID ══ -->
-  <section id="range" style="background:#0e2748; padding:96px 40px;">
-    <div style="max-width:1280px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:52px;">
-        <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">The Full Range</div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:600; color:#f3efe6; margin:0;">One brand, every touchpoint</h2>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:170px; gap:18px;">
-        <div style="grid-column:span 5; grid-row:span 2; background:#f3efe6; overflow:hidden; position:relative;">
-          <img src="prod-cutlery.jpeg" alt="Cutlery kit" style="width:100%; height:100%; object-fit:cover; display:block;">
-          <span style="position:absolute; left:18px; bottom:16px; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,0.6);">Cutlery Kit</span>
-        </div>
-        <div style="grid-column:span 4; background:#f3efe6; overflow:hidden; position:relative;">
-          <img src="prod-demerara.jpeg" alt="Demerara sachet" style="width:100%; height:100%; object-fit:cover; display:block;">
-          <span style="position:absolute; left:18px; bottom:14px; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,0.6);">Demerara Sachet</span>
-        </div>
-        <div style="grid-column:span 3; background:#fff; overflow:hidden; position:relative;">
-          <img src="prod-sugar.jpeg" alt="Sugar sachet" style="width:100%; height:100%; object-fit:cover; display:block;">
-          <span style="position:absolute; left:16px; bottom:14px; font-size:11.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#0e2748;">White Sugar</span>
-        </div>
-        <div style="grid-column:span 4; background:#0e2748; overflow:hidden; position:relative; display:flex; justify-content:center;">
-          <img src="prod-water.jpeg" alt="Branded water" style="width:auto; height:100%; object-fit:cover; display:block;">
-          <span style="position:absolute; left:18px; bottom:14px; font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,0.6);">Branded Water</span>
-        </div>
-        <div style="grid-column:span 3; background:#f3efe6; overflow:hidden; position:relative;">
-          <img src="prod-butter-paper.jpeg" alt="Butter paper" style="width:100%; height:100%; object-fit:cover; display:block;">
-          <span style="position:absolute; left:16px; bottom:14px; font-size:11.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#0e2748;">Butter Paper</span>
+        <!-- RIGHT — stage -->
+        <div class="bmh-stage-wrap">
+          <div style="position:relative; aspect-ratio:4/3; background:linear-gradient(155deg,#f7f2e7 0%,#ede4d2 100%); overflow:hidden; box-shadow:0 30px 70px rgba(14,39,72,0.14);">
+            <div style="position:absolute; inset:14px; border:1px solid rgba(189,154,99,0.4); pointer-events:none; z-index:3;"></div>
+            <div style="position:absolute; left:0; right:0; bottom:0; height:38%; background:radial-gradient(ellipse at 50% 100%, rgba(14,39,72,0.10), rgba(14,39,72,0) 70%); z-index:1;"></div>
+            <sc-for list="{{ explorer.stage }}" as="s" hint-placeholder-count="1">
+              <img src="{{ s.img }}" alt="{{ s.alt }}" style="{{ s.style }}">
+            </sc-for>
+            <div style="position:absolute; top:18px; right:22px; z-index:4; font-size:12px; letter-spacing:2px; color:#0e2748; opacity:0.45; font-weight:600;">{{ explorer.counter }}</div>
+          </div>
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:26px; margin-top:26px;">
+            <div style="flex:1;">
+              <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:30px; font-weight:600; color:#0e2748; margin:0 0 7px; line-height:1.1;">{{ explorer.activeName }}</h3>
+              <p style="font-size:15px; line-height:1.7; color:#5a7080; margin:0; font-weight:300; max-width:430px;">{{ explorer.activeDesc }}</p>
+            </div>
+            <a href="#contact" style="flex:none; display:inline-flex; align-items:center; gap:9px; background:#0e2748; color:#f3efe6; font-size:11.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:14px 24px; text-decoration:none; border-radius:2px;" style-hover="background:#091d38;">Brand this
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f3efe6" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"/><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ LOOKBOOK SCROLL ══ -->
-  <sc-if value="{{ showLookbook }}" hint-placeholder-val="{{ true }}">
-  <section style="background:#091d38; padding:72px 0 84px;">
-    <div style="max-width:1280px; margin:0 auto; padding:0 40px; display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:30px;">
+  <!-- ══ SIGNATURE — CUTLERY FEATURE ══ -->
+  <section style="background:#091d38; padding:96px 40px; border-top:1px solid rgba(189,154,99,0.18);">
+    <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:0.82fr 1.18fr; gap:64px; align-items:center;" class="bmh-cutlery-feature">
+      <div style="position:relative; max-width:360px; margin:0 auto; width:100%;" class="bmh-cutlery-img">
+        <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.45); margin:13px; pointer-events:none; z-index:2;"></div>
+        <img src="assets/mk-cutlery.jpeg" alt="BMH custom-printed disposable cutlery kit sachet" style="width:100%; height:auto; display:block; box-shadow:0 30px 70px rgba(0,0,0,0.45);">
+      </div>
       <div>
-        <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:12px;">Lookbook</div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#f3efe6; margin:0;">Seen in the wild</h2>
-      </div>
-      <span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(243,239,230,0.4);">Always moving · hover to pause</span>
-    </div>
-    <div style="overflow:hidden; padding:6px 0;">
-      <div class="bmh-marquee-track" style="display:flex; gap:22px; width:max-content; padding:0 11px;">
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#f3efe6; overflow:hidden;"><img src="mk-cutlery.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#f3efe6; overflow:hidden;"><img src="prod-cutlery.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#fff; overflow:hidden;"><img src="prod-sugar.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#0e2748; overflow:hidden; display:flex; justify-content:center;"><img src="prod-water.jpeg" alt="" style="width:auto; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#f3efe6; overflow:hidden;"><img src="prod-demerara.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#fff; overflow:hidden;"><img src="prod-butter-paper.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#f3efe6; overflow:hidden;" aria-hidden="true"><img src="mk-cutlery.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#f3efe6; overflow:hidden;" aria-hidden="true"><img src="prod-cutlery.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#fff; overflow:hidden;" aria-hidden="true"><img src="prod-sugar.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#0e2748; overflow:hidden; display:flex; justify-content:center;" aria-hidden="true"><img src="prod-water.jpeg" alt="" style="width:auto; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#f3efe6; overflow:hidden;" aria-hidden="true"><img src="prod-demerara.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-        <div style="flex:none; width:300px; aspect-ratio:1024/1280; background:#fff; overflow:hidden;" aria-hidden="true"><img src="prod-butter-paper.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+        <div style="font-size:11px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:#bd9a63; margin-bottom:16px;">The Signature · Sealed &amp; ready</div>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:42px; font-weight:600; color:#f3efe6; margin:0 0 20px; line-height:1.08;">A cutlery kit that opens<br>with your name on it</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:rgba(243,239,230,0.74); margin:0 0 30px; font-weight:300; max-width:480px;">Fork, spoon, knife, tissue and mouth freshener — sealed in a custom-printed sachet. The first thing your guest touches, and the last thing they forget.</p>
+        <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+          <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; background:#bd9a63; color:#091d38; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 30px; text-decoration:none; border-radius:2px;" style-hover="background:#cdab73;">Get this branded
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"/><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <span style="font-size:12px; letter-spacing:1px; text-transform:uppercase; color:rgba(243,239,230,0.45);">From 1,000 pcs · 211 × 70 mm</span>
+        </div>
       </div>
     </div>
   </section>
-  </sc-if>
 
   <!-- ══ COSTING CALCULATOR ══ -->
   <section id="calculator" style="background:#f3efe6; padding:100px 40px; border-top:1px solid #e6e0d2;">
@@ -917,7 +868,7 @@
   <footer style="background:#091d38; padding:56px 40px 36px;">
     <div style="max-width:1280px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:34px; border-bottom:1px solid rgba(243,239,230,0.12);">
       <div style="max-width:300px;">
-        <img src="bmh-logo-cream.png" alt="BrandMyHoReCa" style="height:92px; width:auto; display:block; margin-bottom:18px;">
+        <img src="assets/bmh-logo-cream.png" alt="BrandMyHoReCa" style="height:92px; width:auto; display:block; margin-bottom:18px;">
         <p style="font-size:13px; line-height:1.7; color:rgba(243,239,230,0.55); margin:0; font-weight:300;">Custom-printed packaging essentials for Hotels, Restaurants, Cafes &amp; Cloud Kitchens across India.</p>
       </div>
       <div style="display:flex; gap:64px; flex-wrap:wrap;">
@@ -961,16 +912,16 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showLookbook&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { cart: 0, openFaq: 0, menuOpen: false, heroIdx: 0,
+  state = { cart: 0, openFaq: 0, menuOpen: false, heroIdx: 0, explorerKey: 'cutlery',
     calc: { product: 'cutlery', qty: 1000, colours: 1, mat: 0, first: true, gst: true } };
 
   heroImages = [
-    { src: 'prod-cutlery.jpeg', label: 'Cutlery Kit' },
-    { src: 'prod-sugar.jpeg', label: 'Sugar Sachets' },
-    { src: 'prod-water.jpeg', label: 'Branded Water' },
-    { src: 'mk-wetwipes.jpeg', label: 'Wet Wipes', pos: '50% 35%', fit: 'contain' },
-    { src: 'prod-demerara.jpeg', label: 'Demerara Sachets' },
-    { src: 'prod-butter-paper.jpeg', label: 'Butter Paper' },
+    { src: 'assets/prod-cutlery.jpeg', label: 'Cutlery Kit' },
+    { src: 'assets/prod-sugar.jpeg', label: 'Sugar Sachets' },
+    { src: 'assets/prod-water.jpeg', label: 'Branded Water' },
+    { src: 'assets/mk-wetwipes.jpeg', label: 'Wet Wipes', pos: '50% 35%', fit: 'contain' },
+    { src: 'assets/prod-demerara.jpeg', label: 'Demerara Sachets' },
+    { src: 'assets/prod-butter-paper.jpeg', label: 'Butter Paper' },
   ];
   pvref = React.createRef();
   formRef = React.createRef();
@@ -1116,9 +1067,53 @@ class Component extends DCLogic {
       go: () => this.setState({ heroIdx: i }),
     }));
 
+    // ---- Product Explorer ("The Collection") ----
+    const EXPLORE = [
+      { key:'cutlery',    cat:'Signature',    name:'Cutlery Kit',        img:'assets/mk-cutlery.jpeg',           tag:'5-in-1', desc:'The hero of the table — fork, spoon, knife, tissue and mouth freshener, sealed in a custom-printed sachet. The first thing your guest touches, and the last they forget.' },
+      { key:'sugar',      cat:'Sweeteners',   name:'White Sugar',        img:'assets/sachet-sugar.jpeg',         tag:'5g', desc:'Refined white sugar in a 5g sachet, printed edge-to-edge in your identity.' },
+      { key:'demerara',   cat:'Sweeteners',   name:'Demerara',           img:'assets/prod-demerara.jpeg',        tag:'Raw cane', desc:'Premium raw-cane demerara for the discerning cup.' },
+      { key:'jaggery',    cat:'Sweeteners',   name:'Jaggery Powder',     img:'assets/sachet-jaggery.jpeg',       tag:'5g', desc:'Traditional jaggery powder — the desi sweetener your guests already love.' },
+      { key:'monkfruit',  cat:'Sweeteners',   name:'Monkfruit',          img:'assets/sachet-monkfruit.jpeg',     tag:'5g · 0 cal', desc:'Natural zero-calorie monkfruit sweetener for the health-forward menu.' },
+      { key:'salt',       cat:'Seasonings',   name:'Iodized Salt',       img:'assets/sachet-salt.jpeg',          tag:'3g', desc:'Pure, refined iodized salt in a slim 3g stick.' },
+      { key:'pepper',     cat:'Seasonings',   name:'Black Pepper',       img:'assets/sachet-blackpepper.jpeg',   tag:'3g', desc:'Pure, aromatic ground black pepper — table-ready.' },
+      { key:'chilli',     cat:'Seasonings',   name:'Chilli Flakes',      img:'assets/sachet-chilliflakes.jpeg',  tag:'5g', desc:'The pizza-night essential — bright, fiery chilli flakes.' },
+      { key:'oregano',    cat:'Seasonings',   name:'Oregano',            img:'assets/sachet-oregano.jpeg',       tag:'5g', desc:'Aromatic dried oregano, sealed fresh in your branding.' },
+      { key:'pizza',      cat:'Seasonings',   name:'Pizza Seasoning',    img:'assets/sachet-pizzaseasoning.jpeg',tag:'5g', desc:'A blended pizza seasoning that finishes every slice.' },
+      { key:'wipes',      cat:'Table & Care', name:'Wet Wipes',          img:'assets/mk-wetwipes.jpeg',          tag:'Sealed', desc:'A refreshing, hygienic wet wipe in a branded sleeve.' },
+      { key:'straws',     cat:'Table & Care', name:'Compostable Straws', img:'assets/prod-straws.jpeg',          tag:'Eco', desc:'Compostable straws with a printed paper sleeve.' },
+      { key:'water',      cat:'Table & Care', name:'Branded Water',      img:'assets/prod-water.jpeg',           tag:'Custom label', desc:'Custom-label bottled water for rooms, tables and events.' },
+      { key:'butter',     cat:'Table & Care', name:'Butter Paper',       img:'assets/prod-butter-paper.jpeg',    tag:'Food-grade', desc:'Food-grade printed butter paper and wraps.' },
+    ];
+    const exKey = this.state.explorerKey || 'cutlery';
+    let exIdx = EXPLORE.findIndex(p => p.key === exKey); if (exIdx < 0) exIdx = 0;
+    const exActive = EXPLORE[exIdx];
+    const exSelect = (k) => this.setState({ explorerKey: k });
+    const exStage = EXPLORE.map(p => ({
+      img: p.img, alt: p.name + ' — branded for your venue',
+      style: 'position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:8%; box-sizing:border-box; opacity:' + (p.key === exKey ? '1' : '0') + '; transition:opacity .55s ease; will-change:opacity;'
+    }));
+    const exCats = [];
+    EXPLORE.forEach(p => {
+      let g = exCats.find(c => c.cat === p.cat);
+      if (!g) { g = { cat: p.cat, items: [] }; exCats.push(g); }
+      const active = p.key === exKey;
+      g.items.push({
+        name: p.name, tag: p.tag, select: () => exSelect(p.key),
+        rowStyle: 'display:flex; align-items:center; gap:13px; width:100%; text-align:left; background:transparent; border:none; cursor:pointer; padding:8px 0; font-family:Jost,sans-serif; font-size:15.5px; letter-spacing:.2px; transition:color .25s ease; color:' + (active ? '#0e2748' : '#8295a1') + '; font-weight:' + (active ? '600' : '400') + ';',
+        markerStyle: 'flex:none; height:2px; transition:all .3s ease; width:' + (active ? '24px' : '9px') + '; background:' + (active ? '#bd9a63' : '#d8cdb8') + ';',
+        tagStyle: 'flex:none; font-size:10.5px; letter-spacing:1px; text-transform:uppercase; color:' + (active ? '#bd9a63' : '#aeb9c0') + ';'
+      });
+    });
+    const explorer = {
+      groups: exCats, stage: exStage,
+      activeName: exActive.name, activeDesc: exActive.desc,
+      counter: String(exIdx + 1).padStart(2, '0') + ' / ' + String(EXPLORE.length).padStart(2, '0'),
+    };
+
     const email = ['info', 'brandmyhoreca.com'].join('@');
     return {
       calc,
+      explorer,
       email, emailHref: 'mailto:' + email,
       heroCarousel, heroLabel, heroDots,
       navOpenClass: this.state.menuOpen ? 'bmh-open' : '',
@@ -1138,8 +1133,5 @@ class Component extends DCLogic {
   }
 }
 </script>
-</body>
-</html>
-
 </body>
 </html>
