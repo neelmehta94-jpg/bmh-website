@@ -47,6 +47,7 @@
     .bmh-marquee-track { animation: bmh-marquee 48s linear infinite; }
     .bmh-marquee-track:hover { animation-play-state: paused; }
     @keyframes bmhBannerIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes bmhWordIn { from { opacity:0; transform:translateY(0.32em); filter:blur(2px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
     @media (prefers-reduced-motion: reduce) { [style*="bmhBannerIn"] { animation: none !important; } }
 
     @media (max-width: 860px) {
@@ -124,8 +125,12 @@
             <span style="width:32px; height:1px; background:#bd9a63; flex:none;"></span>
             <span style="font-size:10px; font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:#bd9a63;">Custom HoReCa Packaging</span>
           </div>
-          <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(36px,4.2vw,58px); font-weight:600; line-height:1.04; color:#0e2748; margin:0 0 18px; letter-spacing:-0.2px; text-wrap:balance;">Every detail<br>carries your name</h2>
-          <p style="font-size:15.5px; line-height:1.75; color:#4a5f6e; margin:0 0 30px; font-weight:300;">From the bottle on the table to the cutlery in the bag — we print your identity onto every piece a guest actually touches.</p>
+          <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(36px,4.2vw,58px); font-weight:600; line-height:1.04; color:#0e2748; margin:0 0 18px; letter-spacing:-0.2px; text-wrap:balance;">Every {{ bannerWordEl }}<br>carries your name</h2>
+          <p style="font-size:15.5px; line-height:1.75; color:#4a5f6e; margin:0 0 14px; font-weight:300;">From the bottle on the table to the cutlery in the bag — we print your identity onto every piece a guest actually touches.</p>
+          <div style="display:flex; align-items:center; gap:11px; min-height:28px; margin:0 0 26px;">
+            <span style="width:18px; height:2px; background:#bd9a63; flex:none;"></span>
+            <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:19px; font-style:italic; font-weight:500; color:#0e2748; line-height:1.2;">{{ bannerTagEl }}</span>
+          </div>
           <div style="display:inline-flex; align-items:center; gap:8px; background:#0e2748; padding:7px 14px; border-radius:2px; margin-bottom:22px;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#bd9a63" stroke-width="2"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span style="font-size:10.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#f3efe6;">Lowest MOQ in Asia</span>
@@ -513,7 +518,7 @@
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Fine dining</span>
         </div>
 
-        <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-style:italic; line-height:1.45; color:#0e2748; margin:0 0 22px;">The last canvas before the first bite.</p>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-style:italic; line-height:1.45; color:#0e2748; margin:0 0 22px;">Your brand, wrapped around every bite.</p>
 
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:28px;">
           <div style="display:flex; gap:10px; align-items:center; font-size:13.5px; color:#5a7080;"><span style="width:5px; height:5px; border-radius:50%; background:#bd9a63;"></span>Choose weight, stock &amp; cut size; full-surface print in your brand</div>
@@ -677,6 +682,23 @@
     </div>
   </section>
 
+  <!-- ══ PRINT TEMPLATE CTA ══ -->
+  <section id="templates" style="background:#0e2748; padding:66px 40px; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-90px; right:-70px; width:260px; height:260px; border-radius:50%; background:rgba(189,154,99,0.07);"></div>
+    <div style="max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; position:relative; z-index:2;">
+      <div style="max-width:640px;">
+        <div style="display:inline-flex; align-items:center; gap:9px; font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:16px;">
+          <span style="width:26px; height:1px; background:#bd9a63;"></span>Free with every order
+        </div>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:42px; font-weight:600; color:#f3efe6; line-height:1.05; margin:0 0 14px;">See exactly where your brand prints</h2>
+        <p style="font-size:15.5px; line-height:1.7; color:rgba(243,239,230,0.66); margin:0; font-weight:300;">Every product ships with a KLD — a keyline template showing your pack flat, with the print area, safe zone and sealed edges mapped out. Explore the live template for each product before you order.</p>
+      </div>
+      <a href="print-template.html" style="flex:none; display:inline-flex; align-items:center; gap:10px; background:#bd9a63; color:#091d38; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:16px 30px; text-decoration:none; border-radius:2px;" style-hover="background:#cdab78;">View print templates
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"></line><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+      </a>
+    </div>
+  </section>
+
   <!-- ══ COSTING CALCULATOR ══ -->
   <section id="calculator" style="background:#f3efe6; padding:100px 40px; border-top:1px solid #e6e0d2;">
     <div style="max-width:1160px; margin:0 auto;">
@@ -775,7 +797,26 @@
               </div>
             </div>
 
-            <p style="font-size:14px; line-height:1.7; color:rgba(243,239,230,0.7); margin:24px 0; font-weight:300;">Send us the spec and we'll come back with exact pricing, a digital mockup and freight — usually within the hour.</p>
+            <div style="margin:22px 0 0; padding:20px; background:rgba(189,154,99,0.1); border:1px solid rgba(189,154,99,0.32); border-radius:5px;">
+              <div style="font-size:10.5px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#bd9a63; margin-bottom:10px;">Indicative estimate</div>
+              <div style="display:flex; align-items:baseline; gap:8px;">
+                <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:36px; font-weight:600; color:#f3efe6; line-height:1;">{{ calc.estPerPiece }}</span>
+                <span style="font-size:13px; color:rgba(243,239,230,0.6);">/ piece</span>
+              </div>
+              <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding-top:13px; margin-top:14px; border-top:1px solid rgba(243,239,230,0.14);">
+                <span style="font-size:13.5px; color:rgba(243,239,230,0.72);">Est. order value</span>
+                <span style="font-size:16px; font-weight:600; color:#f3efe6; white-space:nowrap;">{{ calc.estTotal }}</span>
+              </div>
+              <sc-if value="{{ calc.showSavings }}">
+                <div style="display:inline-flex; align-items:center; gap:7px; margin-top:14px; background:rgba(243,239,230,0.08); padding:6px 12px; border-radius:20px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#bd9a63" stroke-width="2"><polyline points="4 15 10 9 14 13 20 6" stroke-linecap="round" stroke-linejoin="round"></polyline><polyline points="20 11 20 6 15 6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+                  <span style="font-size:11.5px; font-weight:500; color:rgba(243,239,230,0.82);">~{{ calc.savePct }}% cheaper per piece vs minimum order</span>
+                </div>
+              </sc-if>
+              <p style="font-size:10.5px; line-height:1.55; color:rgba(243,239,230,0.42); margin:13px 0 0;">Indicative range only — excludes GST, freight &amp; one-time setup. Your exact price is confirmed by our team.</p>
+            </div>
+
+            <p style="font-size:14px; line-height:1.7; color:rgba(243,239,230,0.7); margin:20px 0; font-weight:300;">Send us the spec and we'll come back with your <strong style="color:#f3efe6; font-weight:600;">exact</strong> pricing, a digital mockup and freight — usually within the hour.</p>
 
             <button onClick="{{ calc.waQuote }}" style="width:100%; display:flex; align-items:center; justify-content:center; gap:10px; background:#bd9a63; color:#091d38; font-family:'Jost',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px; border:none; border-radius:3px; cursor:pointer;" style-hover="background:#cdab78;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="1.8"><path d="M5 4 H9 L11 9 L8.5 11 C9.5 13.5 11 15 13 16 L15 13.5 L20 15.5 V19 C20 20 19 21 18 21 C10 20.5 4 14 3.5 6 C3.5 5 4 4 5 4 Z" stroke-linejoin="round"/></svg>
@@ -920,14 +961,14 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showTrustBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showLookbook&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { cart: 0, openFaq: 0, menuOpen: false, heroIdx: 0, explorerKey: 'cutlery',
+  state = { cart: 0, openFaq: 0, menuOpen: false, heroIdx: 0, bannerIdx: 0, explorerKey: 'cutlery',
     calc: { product: 'cutlery', qty: 1000, colours: 1, mat: 0, first: true, gst: true } };
 
   heroImages = [
     { src: 'prod-cutlery.jpeg', label: 'Cutlery Kit' },
     { src: 'prod-sugar.jpeg', label: 'Sugar Sachets' },
     { src: 'prod-water.jpeg', label: 'Branded Water' },
-    { src: 'mk-wetwipes.jpeg', label: 'Wet Wipes', pos: '50% 35%', fit: 'contain' },
+    { src: 'wetwipes-pack.jpeg', label: 'Wet Wipes', fit: 'contain' },
     { src: 'prod-demerara.jpeg', label: 'Demerara Sachets' },
     { src: 'prod-butter-paper.jpeg', label: 'Butter Paper' },
   ];
@@ -938,6 +979,9 @@ class Component extends DCLogic {
     this._heroTimer = setInterval(() => {
       this.setState(s => ({ heroIdx: (s.heroIdx + 1) % this.heroImages.length }));
     }, 3500);
+    this._bannerTimer = setInterval(() => {
+      this.setState(s => ({ bannerIdx: s.bannerIdx + 1 }));
+    }, 2300);
     const v = this.pvref.current;
     if (v) {
       v.muted = true; v.loop = true; v.playsInline = true; v.defaultMuted = true;
@@ -945,6 +989,10 @@ class Component extends DCLogic {
       go();
       v.addEventListener('canplay', go, { once: true });
     }
+  }
+  componentWillUnmount() {
+    clearInterval(this._heroTimer);
+    clearInterval(this._bannerTimer);
   }
   renderVals() {
     const faqData = [
@@ -1003,6 +1051,31 @@ class Component extends DCLogic {
     const matName = cp.materials[c.mat] || cp.materials[0];
     const belowMoq = qty < cp.moq;
 
+    // ── INDICATIVE PRICING (ranges only — exact price always via team) ──
+    const PRICING = {
+      cutlery:  { qLo:1000,  rLo:6.5, qHi:10000, rHi:5.0 },
+      sachet:   { qLo:2000,  rLo:2.5, qHi:20000, rHi:1.5 },
+      wetwipes: { qLo:5000,  rLo:4.0, qHi:50000, rHi:3.0 },
+      straws:   { qLo:10000, rLo:2.5, qHi:50000, rHi:2.0 },
+      water:    { qLo:1000,  rLo:6.0, qHi:10000, rHi:4.5 },
+      butter:   { qLo:5000,  rLo:1.8, qHi:50000, rHi:1.2 },
+    };
+    const pr = PRICING[c.product] || PRICING.cutlery;
+    const qForRate = Math.max(pr.qLo, Math.min(pr.qHi, qty > 0 ? qty : pr.qLo));
+    const tRate = pr.qHi === pr.qLo ? 0 : (qForRate - pr.qLo) / (pr.qHi - pr.qLo);
+    const rawRate = pr.rLo + tRate * (pr.rHi - pr.rLo);
+    const colourFactor = 1 + (colours - 1) * 0.03;
+    const baseRate = rawRate * colourFactor;
+    const rateLow = baseRate * 0.92;
+    const rateHigh = baseRate * 1.12;
+    const fmtRate = (n) => '\u20B9' + (n < 2 ? n.toFixed(2) : n.toFixed(1));
+    const round100 = (n) => Math.round(n / 100) * 100;
+    const fmtINR = (n) => '\u20B9' + round100(n).toLocaleString('en-IN');
+    const estPerPiece = fmtRate(rateLow) + ' \u2013 ' + fmtRate(rateHigh);
+    const estTotal = qty > 0 ? (fmtINR(rateLow * qty) + ' \u2013 ' + fmtINR(rateHigh * qty)) : '\u2014';
+    const savePct = Math.round((1 - rawRate / pr.rLo) * 100);
+    const showSavings = qty > pr.qLo && savePct >= 1;
+
     const setCalc = (patch) => this.setState(s => ({ calc: { ...s.calc, ...patch } }));
     const cardStyle = (active) => 'display:flex; flex-direction:column; gap:5px; align-items:flex-start; text-align:left; padding:13px 14px; border-radius:4px; cursor:pointer; font-family:Jost,sans-serif; transition:all .15s; border:1px solid ' + (active ? '#0e2748' : '#ded8c9') + '; background:' + (active ? '#0e2748' : '#faf9f5') + ';';
     const seg = (active) => 'flex:1; padding:11px 10px; border-radius:4px; cursor:pointer; font-family:Jost,sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.3px; transition:all .15s; border:1px solid ' + (active ? '#0e2748' : '#ded8c9') + '; background:' + (active ? '#0e2748' : '#faf9f5') + '; color:' + (active ? '#f3efe6' : '#42505c') + ';';
@@ -1050,6 +1123,7 @@ class Component extends DCLogic {
       first: c.first, firstStyle: seg(c.first), reorderStyle: seg(!c.first),
       setFirst: () => setCalc({ first:true }), setReorder: () => setCalc({ first:false }),
       orderTypeLabel: c.first ? 'First order' : 'Repeat',
+      estPerPiece, estTotal, savePct, showSavings,
       waQuote,
     };
 
@@ -1118,9 +1192,30 @@ class Component extends DCLogic {
       counter: String(exIdx + 1).padStart(2, '0') + ' / ' + String(EXPLORE.length).padStart(2, '0'),
     };
 
+    // ── Rotating banner word + taglines (fun, on-brand) ──
+    const bannerWords = ['sachet', 'bottle', 'napkin', 'straw', 'wrapper', 'detail'];
+    const bannerTags = [
+      'From the first sip to the last wipe.',
+      'Unbox a brand — not just a meal.',
+      'Small things. Big impression.',
+      'Make every table talk.',
+      'The takeaway that takes your name home.',
+    ];
+    const bw = bannerWords[this.state.bannerIdx % bannerWords.length];
+    const bt = bannerTags[this.state.bannerIdx % bannerTags.length];
+    const bannerWordEl = React.createElement('span', {
+      key: 'w' + this.state.bannerIdx,
+      style: { color: '#bd9a63', display: 'inline-block', animation: 'bmhWordIn .55s cubic-bezier(.22,1,.36,1) both' }
+    }, bw);
+    const bannerTagEl = React.createElement('span', {
+      key: 't' + this.state.bannerIdx,
+      style: { display: 'inline-block', animation: 'bmhWordIn .55s cubic-bezier(.22,1,.36,1) both' }
+    }, bt);
+
     const email = ['info', 'brandmyhoreca.com'].join('@');
     return {
       calc,
+      bannerWordEl, bannerTagEl,
       explorer,
       email, emailHref: 'mailto:' + email,
       heroCarousel, heroLabel, heroDots,

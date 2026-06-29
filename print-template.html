@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSL322YC9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2YSL322YC9');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin:0; padding:0; background:#0a1d38; }
+    *, *::before, *::after { box-sizing:border-box; }
+    @keyframes kldIn { from { transform:translateY(10px); opacity:0.001; } to { transform:translateY(0); opacity:1; } }
+    .kld-cards { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .kld-diagram { overflow-x:auto; }
+    .kld-diagram::-webkit-scrollbar { height:6px; }
+    .kld-diagram::-webkit-scrollbar-thumb { background:rgba(14,39,72,0.22); border-radius:6px; }
+    @media (max-width: 900px) { .kld-cards { grid-template-columns:1fr !important; } }
+    @media (max-width: 600px) {
+      .kld-page { padding:34px 16px 52px !important; }
+      .kld-h1 { font-size:34px !important; }
+      .kld-cta { flex-direction:column !important; align-items:flex-start !important; padding:24px 22px !important; }
+      .kld-cta a { width:100%; justify-content:center; }
+    }
+  </style>
+</helmet>
+
+<div data-screen-label="KLD Print Template" class="kld-page" style="font-family:'Jost',system-ui,sans-serif; background:#0a1d38; min-height:100vh; padding:54px 40px 70px; color:#f3efe6;">
+  <div style="max-width:1200px; margin:0 auto;">
+
+    <a href="index.html" style="display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(243,239,230,0.6); text-decoration:none; margin-bottom:30px;" style-hover="color:#bd9a63;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 6 9 12 15 18" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+      Back to site
+    </a>
+
+    <div style="max-width:720px; margin:0 0 44px;">
+      <div style="display:inline-flex; align-items:center; gap:9px; font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:16px;">
+        <span style="width:24px; height:1px; background:#bd9a63;"></span>The Print Template · KLD
+      </div>
+      <h1 class="kld-h1" style="font-family:'Cormorant Garamond',Georgia,serif; font-size:52px; font-weight:600; line-height:1.04; margin:0 0 16px; color:#f3efe6;">Know exactly where your brand prints</h1>
+      <p style="font-size:16px; line-height:1.75; color:rgba(243,239,230,0.66); margin:0; font-weight:300;">Every product ships with a <strong style="color:#f3efe6; font-weight:500;">KLD</strong> — the keyline diagram that maps your pack flat: its true size, the full-bleed print area, the safe zone for your logo and the sealed edges. Send a print-ready logo and we drop it straight into the safe zone. No guesswork, no reprints.</p>
+    </div>
+
+    <div class="kld-cards">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+        <div style="background:#f3efe6; border-radius:8px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.34);">
+          <div style="display:flex; align-items:center; gap:14px; padding:16px 20px; border-bottom:1px solid #e2dcce; background:#faf9f5;">
+            <div style="flex:none; width:46px; height:46px; border-radius:6px; overflow:hidden; background:#0e2748;">{{ c.thumb }}</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; color:#0e2748; line-height:1;">{{ c.name }}</div>
+              <div style="font-size:11px; color:#8fa5b2; margin-top:3px; font-family:'IBM Plex Mono',monospace;">{{ c.kldLine }}</div>
+            </div>
+            <span style="flex:none; font-size:9.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#091d38; background:#bd9a63; padding:5px 10px; border-radius:3px;">{{ c.form }}</span>
+          </div>
+
+          <div class="kld-diagram" style="background:repeating-linear-gradient(0deg,#f3efe6,#f3efe6 23px,#ece6d6 23px,#ece6d6 24px),repeating-linear-gradient(90deg,#f3efe6,#f3efe6 23px,#ece6d6 23px,#ece6d6 24px); padding:14px;">
+            <div style="animation:kldIn .45s ease both; min-width:430px;">{{ c.diagram }}</div>
+          </div>
+
+          <div style="padding:14px 20px 8px;">
+            <p style="font-size:13px; line-height:1.6; color:#5a7080; margin:0; font-weight:300;">{{ c.note }}</p>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:#e2dcce; margin-top:10px;">
+            <div style="background:#faf9f5; padding:13px 16px;">
+              <div style="font-size:9px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#8fa5b2; margin-bottom:5px;">Flat size</div>
+              <div style="font-size:13.5px; font-weight:600; color:#0e2748; font-family:'IBM Plex Mono',monospace;">{{ c.dimLabel }}</div>
+            </div>
+            <div style="background:#faf9f5; padding:13px 16px;">
+              <div style="font-size:9px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#8fa5b2; margin-bottom:5px;">Material</div>
+              <div style="font-size:12.5px; font-weight:600; color:#0e2748;">{{ c.material }}</div>
+            </div>
+            <div style="background:#faf9f5; padding:13px 16px;">
+              <div style="font-size:9px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#8fa5b2; margin-bottom:5px;">Min order</div>
+              <div style="font-size:13.5px; font-weight:600; color:#0e2748; font-family:'IBM Plex Mono',monospace;">{{ c.moq }}</div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div class="kld-cta" style="margin-top:44px; padding:30px 34px; border:1px solid rgba(189,154,99,0.28); border-radius:8px; background:rgba(189,154,99,0.06); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div style="max-width:560px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:#f3efe6; margin-bottom:6px;">Have your artwork ready?</div>
+        <p style="font-size:14px; line-height:1.6; color:rgba(243,239,230,0.6); margin:0; font-weight:300;">Send us your logo and the products you want — we'll place it on the right KLD and return a digital mockup, usually within the hour.</p>
+      </div>
+      <a href="https://wa.me/918980009697" target="_blank" style="flex:none; display:inline-flex; align-items:center; gap:9px; background:#bd9a63; color:#091d38; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 28px; text-decoration:none; border-radius:3px;" style-hover="background:#cdab78;">Send your logo
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"></line><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+      </a>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:860}}">
+class Component extends DCLogic {
+  renderVals() {
+    const PRODUCTS = [
+      { key:'cutlery', name:'Cutlery Kit',      form:'Pouch', type:'pouch', w:211, h:70,  seal:9,  notch:true,
+        material:'Chromo / Kraft Poly', moq:'1,000 pcs', photo:'mk-cutlery.jpeg',
+        note:'Fork, spoon, knife, tissue & freshener seal inside. Vertical fin-seals down both sides; opens at a tear-notch.' },
+      { key:'sachet', name:'Condiment Sachet',  form:'Pouch', type:'pouch', w:100, h:50,  seal:7,  notch:true,
+        material:'Chromo / Kraft Poly', moq:'2,000 / variant', photo:'sachet-sugar.jpeg',
+        note:'Single-serve sugar, salt, seasoning or freshener — printed edge-to-edge in your identity.' },
+      { key:'water', name:'Branded Water Label', form:'Wrap label', type:'label', w:190, h:60,
+        material:'BOPP / Paper', moq:'On enquiry', photo:'prod-water.jpeg',
+        note:'A full wrap-around bottle label. Artwork runs the whole circumference; the trailing edge tucks under as a glue lap.' },
+      { key:'butter', name:'Butter Paper',      form:'Sheet', type:'sheet', w:300, h:300, custom:true,
+        material:'Natural Kraft / White MG', moq:'On quote', photo:'prod-butter-paper.jpeg',
+        note:'Food-grade sheet, custom-cut to your size. Full-surface print, edge to edge — mind the grain direction.' },
+      { key:'wipes', name:'Wet Wipe Sachet',    form:'Pouch', type:'pouch', w:160, h:120, seal:10, notch:false, fold:true, folded:'70 × 120 mm',
+        material:'Pearl / Matte Film', moq:'5,000 pcs', photo:'wetwipes-hero.jpeg',
+        note:'Printed flat at 160 × 120 mm, then folded and sealed down to a 70 × 120 mm closed sachet.' },
+      { key:'straws', name:'Straw Wrap',        form:'Sleeve', type:'wrap', w:200, h:24, endseal:true,
+        material:'Paper / PLA', moq:'10,000 pcs', photo:'prod-straws.jpeg',
+        note:'A printed sleeve for a 6 mmØ straw — branded the full 200 mm length and sealed at one end.' },
+    ];
+
+    const cards = PRODUCTS.map(p => ({
+      name: p.name, form: p.form, material: p.material, moq: p.moq, note: p.note, photo: p.photo,
+      dimLabel: p.custom ? 'Custom-cut' : (p.w + ' × ' + p.h + ' mm'),
+      kldLine: p.custom ? 'KLD · any size · flat keyline' : ('KLD · ' + p.w + ' × ' + p.h + ' mm · flat keyline'),
+      thumb: React.createElement('img', { src: p.photo, alt: p.name, style: { width:'100%', height:'100%', objectFit:'cover', display:'block' } }),
+      diagram: this.buildDieline(p),
+    }));
+
+    return { cards };
+  }
+
+  buildDieline(p) {
+    const el = React.createElement;
+    const VB_W = 720, VB_H = 430;
+    const ink = '#0e2748', gold = '#bd9a63', muted = '#9aa7b0';
+    const maxW = 380, maxH = 224;
+    const ar = p.w / p.h;
+    let pw = maxW, ph = pw / ar;
+    if (ph > maxH) { ph = maxH; pw = ph * ar; }
+    if (ph < 60) ph = 60;
+    const cx = VB_W / 2, cy = VB_H / 2 - 2;
+    const px = cx - pw / 2, py = cy - ph / 2;
+    const mm = pw / p.w;
+    const seal = p.seal ? Math.min(pw * 0.16, Math.max(13, p.seal * mm)) : 0;
+    const safeI = Math.max(13, Math.min(ph, pw) * 0.12);
+    const k = [];
+
+    k.push(el('defs', { key:'d' },
+      el('pattern', { id:'kh' + p.key, width:7, height:7, patternUnits:'userSpaceOnUse', patternTransform:'rotate(45)' },
+        el('rect', { width:7, height:7, fill:'rgba(14,39,72,0.035)' }),
+        el('line', { x1:0, y1:0, x2:0, y2:7, stroke:'rgba(14,39,72,0.26)', strokeWidth:1.3 })
+      )
+    ));
+    // face
+    k.push(el('rect', { key:'face', x:px, y:py, width:pw, height:ph, fill:'#fdfbf6', stroke:ink, strokeWidth:2 }));
+
+    // type-specific structure
+    if (p.type === 'pouch') {
+      k.push(el('rect', { key:'sl', x:px, y:py, width:seal, height:ph, fill:'url(#kh' + p.key + ')' }));
+      k.push(el('rect', { key:'sr', x:px + pw - seal, y:py, width:seal, height:ph, fill:'url(#kh' + p.key + ')' }));
+      k.push(el('line', { key:'sll', x1:px + seal, y1:py, x2:px + seal, y2:py + ph, stroke:muted, strokeWidth:1, strokeDasharray:'2 3' }));
+      k.push(el('line', { key:'srl', x1:px + pw - seal, y1:py, x2:px + pw - seal, y2:py + ph, stroke:muted, strokeWidth:1, strokeDasharray:'2 3' }));
+      if (p.notch) {
+        const nx = px + pw - seal / 2;
+        k.push(el('path', { key:'n', d:'M ' + (nx - 6) + ' ' + py + ' L ' + nx + ' ' + (py + 9) + ' L ' + (nx + 6) + ' ' + py, fill:'#f3efe6', stroke:ink, strokeWidth:1.6, strokeLinejoin:'round' }));
+      }
+      if (p.fold) {
+        const fx = px + pw * 0.5;
+        k.push(el('line', { key:'fold', x1:fx, y1:py - 6, x2:fx, y2:py + ph + 6, stroke:gold, strokeWidth:1.3, strokeDasharray:'2 4' }));
+        k.push(el('text', { key:'foldt', x:fx, y:py - 11, textAnchor:'middle', fill:gold, fontFamily:'IBM Plex Mono, monospace', fontSize:10.5 }, 'fold \u2192 ' + p.folded));
+      }
+    } else if (p.type === 'label') {
+      // glue lap on right edge
+      k.push(el('rect', { key:'lap', x:px + pw - seal4(pw), y:py, width:seal4(pw), height:ph, fill:'url(#kh' + p.key + ')' }));
+      k.push(el('line', { key:'lapl', x1:px + pw - seal4(pw), y1:py, x2:px + pw - seal4(pw), y2:py + ph, stroke:muted, strokeWidth:1, strokeDasharray:'2 3' }));
+      // wrap-direction arrow
+      const ay = py + ph + 0;
+      k.push(el('line', { key:'wa', x1:px + 12, y1:py + ph + 16, x2:px + pw - 12, y2:py + ph + 16, stroke:gold, strokeWidth:1.3 }));
+      k.push(el('path', { key:'wah', d:'M ' + (px + pw - 12) + ' ' + (py + ph + 16) + ' l -7 -4 l 0 8 z', fill:gold }));
+      k.push(el('text', { key:'wat', x:cx, y:py + ph + 32, textAnchor:'middle', fill:muted, fontFamily:'Jost, sans-serif', fontSize:11 }, 'wrap direction \u00b7 full circumference'));
+    } else if (p.type === 'sheet') {
+      // grain arrow (vertical)
+      const gx = px + pw - 26;
+      k.push(el('line', { key:'gr', x1:gx, y1:py + 14, x2:gx, y2:py + ph - 14, stroke:gold, strokeWidth:1.3 }));
+      k.push(el('path', { key:'grh', d:'M ' + gx + ' ' + (py + ph - 14) + ' l -4 -7 l 8 0 z', fill:gold }));
+      k.push(el('text', { key:'grt', x:gx + 8, y:cy, fill:muted, fontFamily:'Jost, sans-serif', fontSize:11, transform:'rotate(90 ' + (gx + 8) + ' ' + cy + ')' }, 'grain'));
+    } else if (p.type === 'wrap') {
+      k.push(el('rect', { key:'es', x:px + pw - seal4(pw), y:py, width:seal4(pw), height:ph, fill:'url(#kh' + p.key + ')' }));
+      k.push(el('line', { key:'esl', x1:px + pw - seal4(pw), y1:py, x2:px + pw - seal4(pw), y2:py + ph, stroke:muted, strokeWidth:1, strokeDasharray:'2 3' }));
+    }
+
+    // safe zone + artwork label
+    const sx = px + (seal || safeI * 0.6) + 4, sy = py + safeI, sw = pw - 2 * (seal || safeI * 0.6) - 8, sh = ph - 2 * safeI;
+    if (sw > 30 && sh > 18) {
+      k.push(el('rect', { key:'safe', x:sx, y:sy, width:sw, height:sh, fill:'none', stroke:gold, strokeWidth:1.3, strokeDasharray:'6 5', rx:2 }));
+      if (sh > 34) {
+        k.push(el('text', { key:'a1', x:sx + sw / 2, y:sy + sh / 2 - 4, textAnchor:'middle', fill:'rgba(189,154,99,0.9)', fontFamily:'IBM Plex Mono, monospace', fontSize:12, letterSpacing:1 }, 'YOUR ARTWORK'));
+        k.push(el('text', { key:'a2', x:sx + sw / 2, y:sy + sh / 2 + 12, textAnchor:'middle', fill:'rgba(14,39,72,0.34)', fontFamily:'Jost, sans-serif', fontSize:10, letterSpacing:0.4 }, 'full-colour, edge to edge'));
+      } else {
+        k.push(el('text', { key:'a1', x:sx + sw / 2, y:sy + sh / 2 + 4, textAnchor:'middle', fill:'rgba(189,154,99,0.9)', fontFamily:'IBM Plex Mono, monospace', fontSize:11, letterSpacing:1 }, 'YOUR ARTWORK'));
+      }
+    }
+
+    // width dimension (below)
+    const dwY = py + ph + (p.type === 'label' ? 48 : 30);
+    const wlabel = p.custom ? 'custom' : (p.w + ' mm');
+    k.push(el('line', { key:'dw', x1:px, y1:dwY, x2:px + pw, y2:dwY, stroke:ink, strokeWidth:1 }));
+    k.push(el('line', { key:'dwa', x1:px, y1:dwY - 5, x2:px, y2:dwY + 5, stroke:ink, strokeWidth:1 }));
+    k.push(el('line', { key:'dwb', x1:px + pw, y1:dwY - 5, x2:px + pw, y2:dwY + 5, stroke:ink, strokeWidth:1 }));
+    k.push(el('rect', { key:'dwbg', x:cx - 36, y:dwY - 11, width:72, height:22, fill:'#f3efe6' }));
+    k.push(el('text', { key:'dwt', x:cx, y:dwY + 5, textAnchor:'middle', fill:ink, fontFamily:'IBM Plex Mono, monospace', fontSize:12.5, fontWeight:500 }, wlabel));
+
+    // height dimension (left)
+    const dhX = px - 26;
+    const hlabel = p.custom ? 'custom' : (p.h + ' mm');
+    k.push(el('line', { key:'dh', x1:dhX, y1:py, x2:dhX, y2:py + ph, stroke:ink, strokeWidth:1 }));
+    k.push(el('line', { key:'dha', x1:dhX - 5, y1:py, x2:dhX + 5, y2:py, stroke:ink, strokeWidth:1 }));
+    k.push(el('line', { key:'dhb', x1:dhX - 5, y1:py + ph, x2:dhX + 5, y2:py + ph, stroke:ink, strokeWidth:1 }));
+    k.push(el('g', { key:'dhg', transform:'translate(' + dhX + ',' + cy + ') rotate(-90)' },
+      el('rect', { x:-36, y:-11, width:72, height:22, fill:'#f3efe6' }),
+      el('text', { x:0, y:5, textAnchor:'middle', fill:ink, fontFamily:'IBM Plex Mono, monospace', fontSize:12.5, fontWeight:500 }, hlabel)
+    ));
+
+    // callouts (right)
+    const rX = px + pw + 24;
+    const callout = (key, ty, lx, ly, label, color) => el('g', { key },
+      el('line', { x1:lx, y1:ly, x2:rX - 6, y2:ty, stroke:color, strokeWidth:1 }),
+      el('circle', { cx:lx, cy:ly, r:2.6, fill:color }),
+      el('text', { x:rX, y:ty + 4, fill:ink, fontFamily:'Jost, sans-serif', fontSize:11, fontWeight:500 }, label)
+    );
+    if (p.type === 'pouch') {
+      k.push(callout('c1', py + 12, px + pw - seal / 2, py + ph * 0.2, 'Sealed edge', muted));
+      k.push(callout('c2', cy - 2, sx + sw, sy + sh * 0.5, 'Safe zone', gold));
+      k.push(callout('c3', py + ph - 4, px + pw * 0.6, py + ph - 9, 'Full-bleed print', ink));
+    } else if (p.type === 'label') {
+      k.push(callout('c1', py + 12, px + pw - seal4(pw) / 2, py + ph * 0.3, 'Glue lap', muted));
+      k.push(callout('c2', cy + 4, sx + sw, sy + sh * 0.5, 'Safe zone', gold));
+    } else if (p.type === 'sheet') {
+      k.push(callout('c1', py + 14, px + pw * 0.5, py + 6, 'Custom-cut size', muted));
+      k.push(callout('c2', cy + 6, sx + sw, sy + sh * 0.5, 'Safe margin', gold));
+    } else if (p.type === 'wrap') {
+      k.push(callout('c1', py + 6, px + pw - seal4(pw) / 2, py + ph * 0.5, 'End seal', muted));
+      k.push(callout('c2', py + ph + 2, px + pw * 0.4, py + ph * 0.5, '6 mm\u00d8 straw', gold));
+    }
+
+    function seal4(w) { return Math.max(11, w * 0.07); }
+
+    return el('svg', { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 ' + VB_W + ' ' + VB_H, width:'100%', style:{ display:'block' } }, k);
+  }
+}
+</script>
+</body>
+</html>
