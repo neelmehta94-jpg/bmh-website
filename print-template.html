@@ -71,6 +71,12 @@
 
           <div style="padding:14px 20px 8px;">
             <p style="font-size:13px; line-height:1.6; color:#5a7080; margin:0; font-weight:300;">{{ c.note }}</p>
+            <sc-if value="{{ c.kld }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ c.kld }}" target="_blank" download style="display:inline-flex; align-items:center; gap:7px; margin-top:13px; font-size:10.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#0e2748; background:rgba(189,154,99,0.18); border:1px solid rgba(189,154,99,0.45); padding:9px 15px; border-radius:5px; text-decoration:none;" style-hover="background:rgba(189,154,99,0.3);">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0e2748" stroke-width="2"><path d="M12 3v12M7 12l5 5 5-5M5 21h14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Download KLD (PDF)
+              </a>
+            </sc-if>
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:#e2dcce; margin-top:10px;">
             <div style="background:#faf9f5; padding:13px 16px;">
@@ -108,30 +114,30 @@ class Component extends DCLogic {
   renderVals() {
     const PRODUCTS = [
       { key:'cutlery', name:'Cutlery Kit',      form:'Pouch', type:'pouch', w:211, h:70,  seal:9,  notch:true,
-        material:'Chromo / Kraft Poly', moq:'1,000 pcs', photo:'mk-cutlery.jpeg',
+        material:'Chromo / Kraft Poly', moq:'1,000 pcs', kld:'cutlery-kit.pdf', photo:'mk-cutlery.webp',
         note:'Fork, spoon, knife, tissue & freshener seal inside. Vertical fin-seals down both sides; opens at a tear-notch.' },
       { key:'sachet', name:'Condiment Sachet',  form:'Pouch', type:'pouch', w:100, h:50,  seal:7,  notch:true,
-        material:'Chromo / Kraft Poly', moq:'2,000 / variant', photo:'sachet-sugar.jpeg',
+        material:'Chromo / Kraft Poly', moq:'2,000 / variant', kld:'sachet.pdf', photo:'sachet-sugar.webp',
         note:'Single-serve sugar, salt, seasoning or freshener — printed edge-to-edge in your identity.' },
       { key:'water', name:'Branded Water Label', form:'Wrap label', type:'label', w:190, h:60,
-        material:'BOPP / Paper', moq:'On enquiry', photo:'prod-water.jpeg',
+        material:'BOPP / Paper', moq:'On enquiry', photo:'prod-water.webp',
         note:'A full wrap-around bottle label. Artwork runs the whole circumference; the trailing edge tucks under as a glue lap.' },
       { key:'butter', name:'Butter Paper',      form:'Sheet', type:'sheet', w:300, h:300, custom:true,
-        material:'Natural Kraft / White MG', moq:'On quote', photo:'prod-butter-paper.jpeg',
+        material:'Natural Kraft / White MG', moq:'On quote', photo:'prod-butter-paper.webp',
         note:'Food-grade sheet, custom-cut to your size. Full-surface print, edge to edge — mind the grain direction.' },
       { key:'wipes', name:'Wet Wipe Sachet',    form:'Pouch', type:'pouch', w:160, h:120, seal:10, notch:false, fold:true, folded:'70 × 120 mm',
-        material:'Pearl / Matte Film', moq:'5,000 pcs', photo:'wetwipes-hero.jpeg',
+        material:'Pearl / Matte Film', moq:'5,000 pcs', kld:'wet-wipes.pdf', photo:'wetwipes-hero.webp',
         note:'Printed flat at 160 × 120 mm, then folded and sealed down to a 70 × 120 mm closed sachet.' },
       { key:'straws', name:'Straw Wrap',        form:'Sleeve', type:'wrap', w:200, h:24, endseal:true,
-        material:'Paper / PLA', moq:'10,000 pcs', photo:'prod-straws.jpeg',
+        material:'Paper / PLA', moq:'10,000 pcs', kld:'straws.pdf', photo:'prod-straws.webp',
         note:'A printed sleeve for a 6 mmØ straw — branded the full 200 mm length and sealed at one end.' },
     ];
 
     const cards = PRODUCTS.map(p => ({
-      name: p.name, form: p.form, material: p.material, moq: p.moq, note: p.note, photo: p.photo,
+      name: p.name, form: p.form, material: p.material, moq: p.moq, note: p.note, photo: p.photo, kld: p.kld || null,
       dimLabel: p.custom ? 'Custom-cut' : (p.w + ' × ' + p.h + ' mm'),
       kldLine: p.custom ? 'KLD · any size · flat keyline' : ('KLD · ' + p.w + ' × ' + p.h + ' mm · flat keyline'),
-      thumb: React.createElement('img', { src: p.photo, alt: p.name, style: { width:'100%', height:'100%', objectFit:'cover', display:'block' } }),
+      thumb: React.createElement('img', { src: p.photo, loading: 'lazy', alt: p.name, style: { width:'100%', height:'100%', objectFit:'cover', display:'block' } }),
       diagram: this.buildDieline(p),
     }));
 
