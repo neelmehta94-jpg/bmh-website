@@ -66,7 +66,7 @@
           </div>
 
           <div class="kld-diagram" style="background:repeating-linear-gradient(0deg,#f3efe6,#f3efe6 23px,#ece6d6 23px,#ece6d6 24px),repeating-linear-gradient(90deg,#f3efe6,#f3efe6 23px,#ece6d6 23px,#ece6d6 24px); padding:14px;">
-            <div style="animation:kldIn .45s ease both; min-width:430px;">{{ c.diagram }}</div>
+            <div style="animation:kldIn .45s ease both;">{{ c.diagramEl }}</div>
           </div>
 
           <div style="padding:14px 20px 8px;">
@@ -114,32 +114,50 @@ class Component extends DCLogic {
   renderVals() {
     const PRODUCTS = [
       { key:'cutlery', name:'Cutlery Kit',      form:'Pouch', type:'pouch', w:211, h:70,  seal:9,  notch:true,
-        material:'Chromo / Kraft Poly', moq:'1,000 pcs', kld:'cutlery-kit.pdf', photo:'mk-cutlery.webp',
-        note:'Fork, spoon, knife, tissue & freshener seal inside. Vertical fin-seals down both sides; opens at a tear-notch.' },
+        material:'Chromo / Kraft Poly', moq:'1,000 pcs', kld:'cutlery-kit.pdf', svg:'cutlery-kit.svg', photo:'mk-cutlery.webp',
+        note:'Fork, spoon, knife, tissue & freshener seal inside. Vertical fin-seals down both sides; opens at a tear-notch. Shown here as the compact kit (158.70 × 60 mm) — also made at the standard 211 × 70 mm.' },
       { key:'sachet', name:'Condiment Sachet',  form:'Pouch', type:'pouch', w:100, h:50,  seal:7,  notch:true,
-        material:'Chromo / Kraft Poly', moq:'2,000 / variant', kld:'sachet.pdf', photo:'sachet-sugar.webp',
+        material:'Chromo / Kraft Poly', moq:'2,000 / variant', kld:'sachet.pdf', svg:'sachet.svg', photo:'sachet-sugar.webp',
         note:'Single-serve sugar, salt, seasoning or freshener — printed edge-to-edge in your identity.' },
       { key:'water', name:'Branded Water Label', form:'Wrap label', type:'label', w:190, h:60,
         material:'BOPP / Paper', moq:'On enquiry', photo:'prod-water.webp',
-        note:'A full wrap-around bottle label. Artwork runs the whole circumference; the trailing edge tucks under as a glue lap.' },
+        note:'A full wrap-around bottle label. Artwork runs the whole circumference; the trailing edge tucks under as a glue lap. Cut to your bottle — no fixed die.' },
       { key:'butter', name:'Butter Paper',      form:'Sheet', type:'sheet', w:300, h:300, custom:true,
         material:'Natural Kraft / White MG', moq:'On quote', photo:'prod-butter-paper.webp',
-        note:'Food-grade sheet, custom-cut to your size. Full-surface print, edge to edge — mind the grain direction.' },
+        note:'Food-grade sheet, custom-cut to your size. Full-surface print, edge to edge — a plain rectangle, so no die-line is needed.' },
       { key:'wipes', name:'Wet Wipe Sachet',    form:'Pouch', type:'pouch', w:160, h:120, seal:10, notch:false, fold:true, folded:'70 × 120 mm',
-        material:'Pearl / Matte Film', moq:'5,000 pcs', kld:'wet-wipes.pdf', photo:'wetwipes-hero.webp',
-        note:'Printed flat at 160 × 120 mm, then folded and sealed down to a 70 × 120 mm closed sachet.' },
+        material:'Pearl / Matte Film', moq:'5,000 pcs', kld:'wet-wipes.pdf', svg:'wet-wipes.svg', photo:'wetwipes-hero.webp',
+        note:'Printed flat, then folded and sealed down to a closed sachet. The KLD shows the flat sheet before folding.' },
       { key:'straws', name:'Straw Wrap',        form:'Sleeve', type:'wrap', w:200, h:24, endseal:true,
-        material:'Paper / PLA', moq:'10,000 pcs', kld:'straws.pdf', photo:'prod-straws.webp',
-        note:'A printed sleeve for a 6 mmØ straw — branded the full 200 mm length and sealed at one end.' },
+        material:'Paper / PLA', moq:'10,000 pcs', kld:'straws.pdf', svg:'straws.svg', photo:'prod-straws.webp',
+        note:'A printed sleeve for a 6 mmØ straw — branded the full length and sealed at one end.' },
     ];
 
-    const cards = PRODUCTS.map(p => ({
-      name: p.name, form: p.form, material: p.material, moq: p.moq, note: p.note, photo: p.photo, kld: p.kld || null,
-      dimLabel: p.custom ? 'Custom-cut' : (p.w + ' × ' + p.h + ' mm'),
-      kldLine: p.custom ? 'KLD · any size · flat keyline' : ('KLD · ' + p.w + ' × ' + p.h + ' mm · flat keyline'),
-      thumb: React.createElement('img', { src: p.photo, loading: 'lazy', alt: p.name, style: { width:'100%', height:'100%', objectFit:'cover', display:'block' } }),
-      diagram: this.buildDieline(p),
-    }));
+    const el = React.createElement;
+    const KLD_DIM = { cutlery:'158.70 × 60 mm', sachet:'≈ 108 × 65 mm', water:'≈ 190 × 60 mm', butter:'Custom-cut', wipes:'160 × 120 mm (open)', straws:'6 mmØ · 200 mm' };
+    const cards = PRODUCTS.map(p => {
+      const dim = KLD_DIM[p.key] || (p.w + ' × ' + p.h + ' mm');
+      const hasKld = !!p.svg;
+      const diagramEl = el('div', {
+          style: hasKld
+            ? { padding:'22px 20px', display:'flex', justifyContent:'center', alignItems:'center', minHeight:'236px' }
+            : { padding:0, background:'#fff', display:'block' }
+        },
+        el('img', {
+          src: p.svg || p.photo, loading:'lazy', alt: p.name + (hasKld ? ' — KLD keyline diagram' : ''),
+          style: hasKld
+            ? { width:'100%', maxWidth:'520px', height:'auto', display:'block' }
+            : { width:'100%', height:'auto', display:'block' }
+        })
+      );
+      return {
+        name: p.name, form: p.form, material: p.material, moq: p.moq, note: p.note, photo: p.photo, kld: p.kld || null,
+        dimLabel: dim,
+        kldLine: hasKld ? ('KLD · ' + dim + ' · flat keyline') : ('No die-line · ' + dim),
+        thumb: el('img', { src: p.photo, loading:'lazy', alt: p.name, style: { width:'100%', height:'100%', objectFit:'cover', display:'block' } }),
+        diagramEl,
+      };
+    });
 
     return { cards };
   }

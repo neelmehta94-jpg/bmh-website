@@ -22,6 +22,14 @@
     <text x="50" y="74" font-family="Arial, sans-serif" font-size="5.5" letter-spacing="1.5" fill="#bd9a63" text-anchor="middle">BRANDMYHORECA</text>
   </svg>
 </template>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0e2748"/>
+    <path d="M30 44 L50 30 L70 44" stroke="#bd9a63" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="50" y="62" font-family="Georgia, serif" font-size="20" font-weight="600" fill="#f3efe6" text-anchor="middle">BMH</text>
+    <text x="50" y="74" font-family="Arial, sans-serif" font-size="5.5" letter-spacing="1.5" fill="#bd9a63" text-anchor="middle">BRANDMYHORECA</text>
+  </svg>
+</template>
 <x-dc>
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +63,14 @@
     .bmh-unbox-card { opacity:0; transform:translateY(28px); transition:opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1); }
     .bmh-unbox-card.bmh-visible { opacity:1; transform:none; }
 
+    /* mobile-only swipeable collection carousel */
+    .bmh-mobile-only { display:none; }
+    .bmh-swipe-rail { display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:4px 20px 20px; margin:0 -20px; scrollbar-width:none; }
+    .bmh-swipe-rail::-webkit-scrollbar { display:none; }
+    .bmh-swipe-card { scroll-snap-align:center; }
+
     @media (max-width: 860px) {
+      .bmh-mobile-only { display:block !important; }
       header > div { padding-left: 20px !important; padding-right: 20px !important; gap: 14px !important; }
       .bmh-burger { display: flex !important; }
       .bmh-nav { display: none !important; position: absolute; top: 78px; left: 0; right: 0; flex-direction: column !important; align-items: stretch !important; gap: 0 !important; background: #091d38; border-top: 1px solid rgba(189,154,99,0.25); padding: 6px 0 !important; box-shadow: 0 18px 40px rgba(0,0,0,0.35); }
@@ -154,6 +169,14 @@
       .bmh-story-photo { min-height: 420px !important; }
       .bmh-story-quote { padding: 26px 22px !important; }
       .bmh-story-quote-text { font-size: 19px !important; line-height: 1.4 !important; margin-bottom: 14px !important; }
+      /* restored-on-mobile sections: stack cleanly */
+      .bmh-cutlery-feature { grid-template-columns: 1fr !important; gap: 26px !important; }
+      .bmh-cutlery-img { max-width: 300px !important; }
+      .bmh-quiz-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+      .bmh-quiz-grid button { padding: 20px 12px !important; }
+      .bmh-est-stats > div { padding: 24px 14px !important; }
+      .bmh-est-stats > div > div:first-child { font-size: 44px !important; }
+      #quiz .bmh-card-pad { padding: 30px 22px !important; }
     }
     @media (max-width: 520px) {
       section { padding-top: 36px !important; padding-bottom: 36px !important; }
@@ -168,6 +191,7 @@
       [style*="grid-template-columns: repeat(12, 1fr)"] { grid-template-columns: 1fr !important; }
       [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
       .bmh-intel-stats { grid-template-columns: 1fr 1fr !important; }
+      .bmh-est-stats { grid-template-columns: 1fr !important; }
       h1 { font-size: 38px !important; }
     }
   </style>
@@ -177,7 +201,7 @@
 
   <!-- ══ NAV ══ -->
   <header style="position:sticky; top:0; z-index:50; background:#091d38; border-bottom:1px solid rgba(189,154,99,0.25);">
-    <div style="max-width:1440px; margin:0 auto; padding:0 40px; height:78px; display:flex; align-items:center; justify-content:space-between; gap:32px;">
+    <div style="max-width:1840px; margin:0 auto; padding:0 24px; height:78px; display:flex; align-items:center; justify-content:space-between; gap:32px;">
       <a href="#top" style="display:flex; align-items:center; text-decoration:none;">
         <img loading="lazy" src="bmh-mark-cream.png" alt="BrandMyHoReCa" style="height:50px; width:auto; display:block;">
       </a>
@@ -217,7 +241,7 @@
     <div style="position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg, rgba(189,154,99,0) 0%, rgba(189,154,99,0.8) 25%, rgba(189,154,99,0.8) 75%, rgba(189,154,99,0) 100%);"></div>
 
     <!-- Content -->
-    <div style="position:relative; z-index:2; max-width:1440px; margin:0 auto; padding:64px 40px 100px; width:100%; box-sizing:border-box;">
+    <div style="position:relative; z-index:2; max-width:1840px; margin:0 auto; padding:48px 24px 60px; width:100%; box-sizing:border-box;">
       <div class="bmh-hero-content" style="max-width:600px;">
         <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-style:italic; font-weight:500; color:#bd9a63; margin:0 0 16px; animation:bmhBannerIn .7s cubic-bezier(.22,1,.36,1) both;">Great brands aren't just remembered. They're held.</div>
         <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; font-size:clamp(54px,5.6vw,88px); line-height:1.0; color:#f3efe6; margin:0 0 26px; letter-spacing:-0.5px; animation:bmhBannerIn .8s .08s cubic-bezier(.22,1,.36,1) both;">Every {{ bannerWordEl }}<br>carries your name</h1>
@@ -243,10 +267,10 @@
   <!-- ══ TRUST BAR ══ -->
   <sc-if value="{{ showTrustBar }}" hint-placeholder-val="{{ true }}">
   <div style="background:#bd9a63;">
-    <div class="bmh-trust-bar" style="max-width:1440px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+    <div class="bmh-trust-bar" style="max-width:1840px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
       <span class="bmh-trust-item" style="font-size:11.5px; font-weight:600; letter-spacing:1.4px; color:#091d38;">100% SUSTAINABLE PACKAGING</span>
       <span class="bmh-trust-dot" style="width:5px; height:5px; border-radius:50%; background:rgba(9,29,56,0.4);"></span>
-      <span class="bmh-trust-item" style="font-size:11.5px; font-weight:600; letter-spacing:1.4px; color:#091d38;">LOWEST MOQ IN ASIA · FROM 1,000 PCS</span>
+      <span class="bmh-trust-item" style="font-size:11.5px; font-weight:600; letter-spacing:1.4px; color:#091d38;">LOWEST MOQ IN THE MARKET · FROM 1,000 PCS</span>
       <span class="bmh-trust-dot" style="width:5px; height:5px; border-radius:50%; background:rgba(9,29,56,0.4);"></span>
       <span class="bmh-trust-item" style="font-size:11.5px; font-weight:600; letter-spacing:1.4px; color:#091d38;">QUICK TURNAROUND</span>
       <span class="bmh-trust-dot" style="width:5px; height:5px; border-radius:50%; background:rgba(9,29,56,0.4);"></span>
@@ -275,14 +299,14 @@
       </div>
 
       <!-- RIGHT — the real story -->
-      <div style="padding:80px 64px; display:flex; flex-direction:column; justify-content:center; background:#f3efe6;">
+      <div style="padding:48px 36px; display:flex; flex-direction:column; justify-content:center; background:#f3efe6;">
         <div style="font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:20px;">The Story</div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:44px; font-weight:600; color:#0e2748; margin:0 0 28px; line-height:1.06;">The lobby gets the budget. The sachet gets forgotten.</h2>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:44px; font-weight:600; color:#0e2748; margin:0 0 28px; line-height:1.06;">They'll remember the meal. Make sure they remember you.</h2>
         <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 20px; font-weight:300;">Now picture your version. Your logo on the sugar they stir in. Your name on the cutlery they unwrap. Your bottle on the table when they snap a photo for their Story. Nothing loud, nothing forced — just your brand, quietly repeated at every touch, until it's the thing they remember before the food even arrives.</p>
         <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 20px; font-weight:300;">Most owners want exactly this. Few ever chase it. Custom packaging had a reputation for six-figure minimums, confusing print specs, and suppliers who only picked up the phone for big chains. It was never unwanted — just out of reach.</p>
         <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 32px; font-weight:300;">We built BrandMyHoReCa to close that gap. One supplier, six essential products, the lowest MOQ in the market — and a process short enough to go from your logo to your doorstep in a single conversation.</p>
         <div style="border-left:2px solid #bd9a63; padding-left:22px; margin-bottom:32px;">
-          <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:21px; font-weight:500; font-style:italic; color:#0e2748; margin:0; line-height:1.5;">Your packaging deserves the same care as your cooking. We make that possible, at any scale.</p>
+          <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:21px; font-weight:500; font-style:italic; color:#0e2748; margin:0; line-height:1.5;">Your brand was never the signboard. It's the sachet in their hand, the bottle on their table, the wrapper they carry home &mdash; the small things they actually keep. That's where you're remembered, or forgotten.</p>
         </div>
         <div class="bmh-story-stats" style="display:flex; gap:32px;">
           <div>
@@ -309,8 +333,8 @@
   </section>
 
   <!-- ══ SOCIAL PROOF ══ -->
-  <section style="background:#0e2748; padding:64px 40px;">
-    <div style="max-width:1320px; margin:0 auto;">
+  <section style="background:#0e2748; padding:44px 24px;">
+    <div style="max-width:1840px; margin:0 auto;">
       <div class="bmh-proof-row" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(189,154,99,0.16);">
         <div style="background:#0e2748; padding:40px 26px; text-align:center;">
           <div style="width:26px; height:2px; background:#bd9a63; margin:0 auto 18px;"></div>
@@ -337,8 +361,8 @@
   </section>
 
   <!-- ══ PANTRY IN MOTION ══ -->
-  <section style="background:#0e2748; padding:60px 40px;">
-    <div style="max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+  <section style="background:#091d38; padding:44px 24px;">
+    <div style="max-width:1840px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div style="position:relative;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.45); margin:16px; pointer-events:none; z-index:2;"></div>
         <div style="position:relative; width:100%; max-width:480px; margin:0 auto; aspect-ratio:634/801; overflow:hidden; background:#000; box-shadow:0 40px 90px rgba(0,0,0,0.55);">
@@ -364,15 +388,15 @@
 
   <!-- ══ PRODUCT FEATURES ══ -->
   <section id="products" style="background:#fff;">
-    <div style="max-width:1440px; margin:0 auto; padding:20px 40px 0;">
-      <div style="text-align:center; padding:64px 0 40px;">
+    <div style="max-width:1840px; margin:0 auto; padding:16px 24px 0;">
+      <div style="text-align:center; padding:44px 0 32px;">
         <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Our Products</div>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:600; color:#0e2748; margin:0;">The Branded Range</h2>
       </div>
     </div>
 
     <!-- Cutlery Kit -->
-    <div class="bmh-card-pad" style="max-width:1440px; margin:0 auto; padding:40px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div class="bmh-card-pad" style="max-width:1840px; margin:0 auto; padding:40px 40px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div style="position:relative; background:#f3efe6;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
         <img loading="lazy" src="prod-cutlery.webp" alt="Branded cutlery kit" style="width:100%; aspect-ratio:1024/1280; object-fit:cover; object-position:center 22%; display:block;">
@@ -384,7 +408,8 @@
 
         <div style="display:grid; grid-template-columns:max-content 1fr; gap:9px 20px; margin:0 0 22px; font-size:13px; line-height:1.4;">
           <span style="color:#5f7686; font-weight:500;">Contents</span><span style="color:#0e2748; font-weight:500;">Fork · Spoon · Knife · Tissue · Mouth Freshener</span>
-          <span style="color:#5f7686; font-weight:500;">Sachet size</span><span style="color:#0e2748; font-weight:500;">211 × 70 mm</span>
+          <span style="color:#5f7686; font-weight:500;">Standard size</span><span style="color:#0e2748; font-weight:500;">211 × 70 mm</span>
+          <span style="color:#5f7686; font-weight:500;">Compact size</span><span style="color:#0e2748; font-weight:500;">158.70 × 60 mm</span>
           <span style="color:#5f7686; font-weight:500;">Material</span><span style="color:#0e2748; font-weight:500;">Chromo Poly or Kraft Poly</span>
           <span style="color:#5f7686; font-weight:500;">Min order</span><span style="color:#0e2748; font-weight:500;">1,000 pcs</span>
         </div>
@@ -401,6 +426,7 @@
         <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-style:italic; line-height:1.45; color:#0e2748; margin:0 0 22px;">The first thing your guest touches. The last thing they forget.</p>
 
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:28px;">
+          <div style="display:flex; gap:10px; align-items:center; font-size:13.5px; color:#5a7080;"><span style="width:5px; height:5px; border-radius:50%; background:#bd9a63;"></span>Two kit sizes — standard for a full set, compact for lighter kits</div>
           <div style="display:flex; gap:10px; align-items:center; font-size:13.5px; color:#5a7080;"><span style="width:5px; height:5px; border-radius:50%; background:#bd9a63;"></span>Customise print colours, finish &amp; sachet material to your brand</div>
         </div>
         <button onClick="{{ enquireCutlery }}" style="background:#0e2748; color:#f3efe6; font-family:'Jost',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 30px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#091d38;">Enquire on WhatsApp</button>
@@ -409,12 +435,12 @@
 
     <!-- Sachets -->
     <div style="background:#f3efe6;">
-    <div style="max-width:1440px; margin:0 auto; padding:64px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div style="max-width:1840px; margin:0 auto; padding:44px 24px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div>
         <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#0e2748; margin:0 0 14px;">Branded Sachets</h3>
-        <p style="font-size:15px; line-height:1.7; color:#5a7080; margin:0 0 24px; font-weight:300;">Single-serve condiment and freshener sachets, each fully custom printed in your identity. Six variants let you brand every small moment on the table — from the first coffee to the after-meal mint.</p>
+        <p style="font-size:15px; line-height:1.7; color:#5a7080; margin:0 0 24px; font-weight:300;">Single-serve condiment and freshener sachets, each fully custom printed in your identity. Eight variants let you brand every small moment on the table — from the first coffee to the after-meal mint.</p>
 
-        <div style="font-size:10.5px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#5f7686; margin-bottom:10px;">Six variants</div>
+        <div style="font-size:10.5px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#5f7686; margin-bottom:10px;">Eight variants</div>
         <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:24px;">
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">White Sugar</span>
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Demerara Sugar</span>
@@ -448,18 +474,18 @@
         </div>
         <button onClick="{{ enquireSachets }}" style="background:#0e2748; color:#f3efe6; font-family:'Jost',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 30px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#091d38;">Enquire on WhatsApp</button>
       </div>
-      <div class="bmh-prod-media" style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
-        <div style="background:#fff; box-shadow:0 16px 40px rgba(14,39,72,0.1);"><img loading="lazy" src="prod-demerara.webp" alt="Demerara sugar sachet" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"></div>
-        <div style="background:#fff; box-shadow:0 16px 40px rgba(14,39,72,0.1); margin-top:36px;"><img loading="lazy" src="prod-sugar.webp" alt="White sugar sachet" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;"></div>
+      <div class="bmh-prod-media" style="position:relative; background:#fff;">
+        <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none; z-index:1;"></div>
+        <img loading="lazy" src="prod-demerara.webp" alt="Branded demerara brown sugar sachet" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
       </div>
     </div>
     </div>
 
     <!-- Water -->
-    <div style="max-width:1440px; margin:0 auto; padding:64px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div style="max-width:1840px; margin:0 auto; padding:44px 24px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div style="position:relative; background:#0e2748; display:flex; justify-content:center;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
-        <img loading="lazy" src="prod-water.webp" alt="Custom branded water bottle" style="width:100%; max-width:340px; aspect-ratio:787/1100; object-fit:cover; object-position:center 30%; display:block;">
+        <img loading="lazy" src="prod-water.webp" alt="Custom branded water bottle — 200ml, 500ml and 1 litre" style="width:100%; aspect-ratio:1600/868; object-fit:cover; object-position:center; display:block;">
       </div>
       <div>
         <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#0e2748; margin:0 0 14px;">Custom Branded Water</h3>
@@ -496,10 +522,10 @@
 
     <!-- Butter Paper -->
     <div style="background:#f3efe6;">
-    <div style="max-width:1440px; margin:0 auto; padding:64px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div style="max-width:1840px; margin:0 auto; padding:44px 24px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div>
         <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#0e2748; margin:0 0 14px;">Branded Butter Paper</h3>
-        <p style="font-size:15px; line-height:1.7; color:#5a7080; margin:0 0 24px; font-weight:300;">The sheet your food rests on is the last canvas before the first bite. We print it edge-to-edge with your identity — in two weights crafted for two worlds.</p>
+        <p style="font-size:15px; line-height:1.7; color:#5a7080; margin:0 0 24px; font-weight:300;">The sheet your food rests on gets seen with every order. We print it edge-to-edge in your brand — in two weights, one for everyday service and one for fine dining.</p>
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:22px;">
           <div style="display:flex; gap:10px; align-items:center; font-size:13.5px; color:#5a7080;"><span style="width:5px; height:5px; border-radius:50%; background:#bd9a63;"></span><strong style="color:#0e2748; font-weight:600;">40 GSM</strong>&nbsp;— light, supple, made for cafés, QSRs &amp; cloud kitchens</div>
           <div style="display:flex; gap:10px; align-items:center; font-size:13.5px; color:#5a7080;"><span style="width:5px; height:5px; border-radius:50%; background:#bd9a63;"></span><strong style="color:#0e2748; font-weight:600;">60 GSM</strong>&nbsp;— thicker, refined, built for fine-dine presentation</div>
@@ -534,7 +560,7 @@
     </div>
 
     <!-- Wet Wipes -->
-    <div style="max-width:1440px; margin:0 auto; padding:64px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div style="max-width:1840px; margin:0 auto; padding:44px 24px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div style="position:relative; background:#0e2748;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
         <img loading="lazy" src="mk-wetwipes.webp" alt="Branded wet wipes" style="width:100%; aspect-ratio:3/2; object-fit:cover; object-position:50% 35%; display:block;">
@@ -544,7 +570,7 @@
         <p style="font-size:15px; line-height:1.7; color:#5a7080; margin:0 0 24px; font-weight:300;">The finishing touch after every meal. Individually sealed, custom-printed sachets that carry your brand identity right into your guest’s hands.</p>
 
         <div style="display:grid; grid-template-columns:max-content 1fr; gap:9px 20px; margin:0 0 22px; font-size:13px; line-height:1.4;">
-          <span style="color:#5f7686; font-weight:500;">Sachet size</span><span style="color:#0e2748; font-weight:500;">160 × 120 mm</span>
+          <span style="color:#5f7686; font-weight:500;">Sachet size</span><span style="color:#0e2748; font-weight:500;">160 × 120 mm (open)</span>
           <span style="color:#5f7686; font-weight:500;">Film</span><span style="color:#0e2748; font-weight:500;">Pearl Film or Matte Film</span>
           <span style="color:#5f7686; font-weight:500;">Format</span><span style="color:#0e2748; font-weight:500;">Individually sealed single-serve</span>
           <span style="color:#5f7686; font-weight:500;">Min order</span><span style="color:#0e2748; font-weight:500;">5,000 pcs</span>
@@ -559,7 +585,7 @@
           <span style="font-size:11px; font-weight:500; color:#0e2748; background:rgba(189,154,99,0.18); padding:5px 12px; border-radius:20px;">Airlines &amp; rail</span>
         </div>
 
-        <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-style:italic; line-height:1.45; color:#0e2748; margin:0 0 22px;">The closing impression of every meal — in your name.</p>
+        <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-style:italic; line-height:1.45; color:#0e2748; margin:0 0 22px;">The last thing they use before they leave. Put your name on it.</p>
 
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:28px;">
           <div style="display:flex; gap:10px; align-items:center; font-size:13.5px; color:#5a7080;"><span style="width:5px; height:5px; border-radius:50%; background:#bd9a63;"></span>Choose film finish &amp; print colours; sealed for hygiene</div>
@@ -570,7 +596,7 @@
 
     <!-- Compostable Straws -->
     <div style="background:#f3efe6;">
-    <div style="max-width:1440px; margin:0 auto; padding:64px 40px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div style="max-width:1840px; margin:0 auto; padding:44px 24px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div>
         <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#0e2748; margin:0 0 14px;">Compostable Straws</h3>
         <p style="font-size:15px; line-height:1.7; color:#5a7080; margin:0 0 24px; font-weight:300;">Sustainable, branded and made to break down — not linger. Custom-printed paper or PLA wraps that put your name on the most visible accessory at the table.</p>
@@ -604,21 +630,21 @@
       </div>
       <div class="bmh-prod-media" style="position:relative; background:#fff;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none;"></div>
-        <img loading="lazy" src="prod-straws.webp" alt="Compostable straws" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
+        <img loading="lazy" src="prod-straws.webp" alt="Compostable branded straw" style="width:100%; aspect-ratio:2/3; object-fit:cover; object-position:center; display:block;">
       </div>
     </div>
     </div>
   </section>
   <!-- ══ THE COLLECTION (interactive explorer) ══ -->
-  <section id="range" class="bmh-mobile-hide" style="background:#fff; padding:64px 40px;">
-    <div style="max-width:1440px; margin:0 auto;">
+  <section id="range" class="bmh-mobile-hide" style="background:#f3efe6; padding:44px 24px;">
+    <div style="max-width:1840px; margin:0 auto;">
       <div style="text-align:center; margin-bottom:40px;">
         <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">The Collection</div>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:600; color:#0e2748; margin:0 0 14px;">Every touchpoint, in your brand</h2>
         <p style="font-size:16px; line-height:1.7; color:#5a7080; margin:0 auto; max-width:560px; font-weight:300;">Sweeteners, seasonings, cutlery and care, each printed edge-to-edge in your identity. Tap any item to see it on the stand.</p>
       </div>
 
-      <div class="bmh-explorer" style="display:grid; grid-template-columns:0.82fr 1.18fr; gap:60px; align-items:center;">
+      <div class="bmh-explorer" style="display:grid; grid-template-columns:0.82fr 1.18fr; gap:36px; align-items:center;">
         <!-- LEFT — grouped product index -->
         <div class="bmh-explorer-list">
           <sc-for list="{{ explorer.groups }}" as="g" hint-placeholder-count="4">
@@ -662,6 +688,40 @@
     </div>
   </section>
 
+  <!-- ══ THE COLLECTION — MOBILE SWIPE ══ -->
+  <section class="bmh-mobile-only" style="background:#f3efe6; padding:64px 0;">
+    <div style="padding:0 20px; margin-bottom:24px;">
+      <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:12px;">The Collection</div>
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:30px; font-weight:600; color:#0e2748; margin:0 0 10px; line-height:1.1;">Every touchpoint, in your brand</h2>
+      <p style="font-size:15px; line-height:1.65; color:#5a7080; margin:0; font-weight:300;">Swipe through the range &mdash; each printed edge-to-edge in your identity.</p>
+    </div>
+    <div class="bmh-swipe-rail">
+      <sc-for list="{{ explorer.cards }}" as="c" hint-placeholder-count="6">
+        <div class="bmh-swipe-card" style="flex:0 0 78%; max-width:300px; background:#fff; box-shadow:0 16px 40px rgba(14,39,72,0.1); display:flex; flex-direction:column;">
+          <div style="position:relative; aspect-ratio:1/1; background:linear-gradient(155deg,#f7f2e7 0%,#ede4d2 100%); overflow:hidden;">
+            <div style="position:absolute; inset:11px; border:1px solid rgba(189,154,99,0.4); pointer-events:none; z-index:2;"></div>
+            <img loading="lazy" src="{{ c.img }}" alt="{{ c.name }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:11%; box-sizing:border-box;">
+            <div style="position:absolute; top:12px; right:14px; z-index:3; font-size:11px; letter-spacing:1.5px; color:#0e2748; opacity:0.45; font-weight:600;">{{ c.num }}</div>
+            <div style="position:absolute; top:12px; left:14px; z-index:3; font-size:9.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#bd9a63;">{{ c.cat }}</div>
+          </div>
+          <div style="padding:18px 18px 20px; display:flex; flex-direction:column; flex:1;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;">
+              <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:23px; font-weight:600; color:#0e2748; margin:0; line-height:1.1;">{{ c.name }}</h3>
+              <span style="flex:none; font-size:10px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; color:#bd9a63;">{{ c.tag }}</span>
+            </div>
+            <sc-if value="{{ c.hasSpec }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:11px; color:#bd9a63; letter-spacing:.4px; margin-top:5px;">{{ c.spec }}</div>
+            </sc-if>
+            <p style="font-size:13.5px; line-height:1.6; color:#5a7080; margin:9px 0 16px; font-weight:300; flex:1;">{{ c.desc }}</p>
+            <a href="#contact" style="align-self:flex-start; display:inline-flex; align-items:center; gap:8px; background:#0e2748; color:#f3efe6; font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:12px 20px; text-decoration:none; border-radius:2px;">Brand this
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f3efe6" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"/><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
   <!-- ══ INDUSTRY INTEL ══ -->
   <section style="background:#091d38;">
 
@@ -669,7 +729,7 @@
     <div style="position:relative; height:420px; overflow:hidden;">
       <img loading="lazy" src="hero-cafe.webp" alt="Branded hospitality essentials in a real café" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; image-rendering:auto;">
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,29,56,0.15) 0%, rgba(9,29,56,0.3) 45%, rgba(9,29,56,0.92) 100%);" data-comment-anchor="42a4f22e-div"></div>
-      <div class="bmh-card-pad" style="position:absolute; bottom:0; left:0; right:0; max-width:1260px; margin:0 auto; padding:48px 40px; box-sizing:border-box; display:flex; align-items:flex-end; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+      <div class="bmh-card-pad" style="position:absolute; bottom:0; left:0; right:0; max-width:1840px; margin:0 auto; padding:44px 24px; box-sizing:border-box; display:flex; align-items:flex-end; justify-content:space-between; gap:32px; flex-wrap:wrap;">
         <div>
           <div style="font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Industry Pulse</div>
           <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:52px; font-weight:600; color:#f3efe6; margin:0; line-height:1.02;">The numbers moving HoReCa<br>right now.</h2>
@@ -678,7 +738,7 @@
       </div>
     </div>
 
-    <div class="bmh-intel-body" style="max-width:1380px; margin:0 auto; padding:0 40px 88px;">
+    <div class="bmh-intel-body" style="max-width:1840px; margin:0 auto; padding:0 24px 72px;">
 
       <div class="bmh-intel-stats" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(189,154,99,0.1);">
 
@@ -723,8 +783,8 @@
   </section>
 
   <!-- ══ SIGNATURE — CUTLERY FEATURE ══ -->
-  <section class="bmh-mobile-hide" style="background:#091d38; padding:62px 40px; border-top:1px solid rgba(189,154,99,0.18);">
-    <div style="max-width:1380px; margin:0 auto; display:grid; grid-template-columns:0.82fr 1.18fr; gap:64px; align-items:center;" class="bmh-cutlery-feature">
+  <section style="background:#091d38; padding:44px 24px; border-top:1px solid rgba(189,154,99,0.18);">
+    <div style="max-width:1840px; margin:0 auto; display:grid; grid-template-columns:0.82fr 1.18fr; gap:36px; align-items:center;" class="bmh-cutlery-feature">
       <div style="position:relative; max-width:360px; margin:0 auto; width:100%;" class="bmh-cutlery-img">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.45); margin:13px; pointer-events:none; z-index:2;"></div>
         <img loading="lazy" src="mk-cutlery.webp" alt="BMH custom-printed disposable cutlery kit sachet" style="width:100%; height:auto; display:block; box-shadow:0 30px 70px rgba(0,0,0,0.45);">
@@ -744,9 +804,9 @@
   </section>
 
   <!-- ══ PRINT TEMPLATE CTA ══ -->
-  <section id="templates" style="background:#0e2748; padding:66px 40px; position:relative; overflow:hidden;">
+  <section id="templates" style="background:#0e2748; padding:44px 24px; position:relative; overflow:hidden;">
     <div style="position:absolute; top:-90px; right:-70px; width:260px; height:260px; border-radius:50%; background:rgba(189,154,99,0.07);"></div>
-    <div style="max-width:1380px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; position:relative; z-index:2;">
+    <div style="max-width:1840px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; position:relative; z-index:2;">
       <div style="max-width:640px;">
         <div style="display:inline-flex; align-items:center; gap:9px; font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:16px;">
           <span style="width:26px; height:1px; background:#bd9a63;"></span>Free with every order
@@ -758,7 +818,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"></line><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
       </a>
     </div>
-    <div class="bmh-kld-strip" style="max-width:1380px; margin:34px auto 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; position:relative; z-index:2;">
+    <div class="bmh-kld-strip" style="max-width:1840px; margin:34px auto 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; position:relative; z-index:2;">
       <a href="print-template.html" style="position:relative; display:block; aspect-ratio:4/3; border-radius:6px; overflow:hidden; border:1px solid rgba(189,154,99,0.25); text-decoration:none;" style-hover="border-color:#bd9a63;"><img loading="lazy" src="prod-cutlery.webp" alt="Cutlery Kit print template" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"><div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(9,29,56,0) 38%,rgba(9,29,56,0.9) 100%);"></div><div style="position:absolute; bottom:9px; left:11px; right:9px; font-size:10.5px; font-weight:600; letter-spacing:0.4px; color:#f3efe6;">Cutlery Kit</div></a>
       <a href="print-template.html" style="position:relative; display:block; aspect-ratio:4/3; border-radius:6px; overflow:hidden; border:1px solid rgba(189,154,99,0.25); text-decoration:none;" style-hover="border-color:#bd9a63;"><img loading="lazy" src="sachet-sugar.webp" alt="Sachet print template" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"><div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(9,29,56,0) 38%,rgba(9,29,56,0.9) 100%);"></div><div style="position:absolute; bottom:9px; left:11px; right:9px; font-size:10.5px; font-weight:600; letter-spacing:0.4px; color:#f3efe6;">Sachets</div></a>
       <a href="print-template.html" style="position:relative; display:block; aspect-ratio:4/3; border-radius:6px; overflow:hidden; border:1px solid rgba(189,154,99,0.25); text-decoration:none;" style-hover="border-color:#bd9a63;"><img loading="lazy" src="prod-water.webp" alt="Branded water label print template" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%;"><div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(9,29,56,0) 38%,rgba(9,29,56,0.9) 100%);"></div><div style="position:absolute; bottom:9px; left:11px; right:9px; font-size:10.5px; font-weight:600; letter-spacing:0.4px; color:#f3efe6;">Water Label</div></a>
@@ -769,8 +829,8 @@
   </section>
 
   <!-- ══ PANTRY ESTIMATOR ══ -->
-  <section class="bmh-mobile-hide" style="background:#f3efe6; padding:60px 40px;">
-    <div style="max-width:1240px; margin:0 auto; text-align:center;">
+  <section style="background:#f3efe6; padding:44px 24px;">
+    <div style="max-width:1840px; margin:0 auto; text-align:center;">
       <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">The Opportunity</div>
       <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:600; color:#0e2748; margin:0 0 14px; line-height:1.05;">You're already using all of these.<br>You're just not branding them.</h2>
       <p style="font-size:16px; line-height:1.7; color:#5a7080; margin:0 auto 30px; max-width:560px; font-weight:300;">Every cover you serve gets a sachet, a cutlery kit, a napkin. Drag the slider to your daily count — see the exact number of guest moments you could stamp with your name, every single year.</p>
@@ -780,7 +840,7 @@
         <input type="range" min="20" max="2000" step="10" value="{{ pantry.covers }}" onInput="{{ pantry.onCovers }}" style="width:100%; max-width:500px; accent-color:#bd9a63; cursor:pointer; height:3px;">
         <div style="display:flex; justify-content:space-between; max-width:500px; margin:8px auto 0; font-size:11px; color:#a99f88;"><span>20</span><span>1,000</span><span>2,000+</span></div>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#e6e0d2; margin-bottom:40px; box-shadow:0 24px 60px rgba(14,39,72,0.14);">
+      <div class="bmh-est-stats" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:#e6e0d2; margin-bottom:40px; box-shadow:0 24px 60px rgba(14,39,72,0.14);">
         <div style="background:#0e2748; padding:32px 20px;">
           <div style="font-family:'Cormorant Garamond',serif; font-size:56px; font-weight:600; color:#f3efe6; line-height:1; margin-bottom:6px;">{{ pantry.sachetsYear }}</div>
           <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#bd9a63;">Sachets / year</div>
@@ -802,12 +862,12 @@
   </section>
 
   <!-- ══ VENUE QUIZ ══ -->
-  <section id="quiz" class="bmh-mobile-hide" style="background:#f3efe6; padding:62px 40px;">
-    <div style="max-width:1320px; margin:0 auto; text-align:center;">
+  <section id="quiz" style="background:#091d38; padding:44px 24px;">
+    <div style="max-width:1840px; margin:0 auto; text-align:center;">
       <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Find your kit</div>
-      <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:48px; font-weight:600; color:#0e2748; margin:0 0 14px; line-height:1.05;">What type of venue are you?</h2>
-      <p style="font-size:16px; line-height:1.7; color:#5a7080; margin:0 auto 30px; max-width:480px; font-weight:300;">Get a curated starter kit &mdash; then send it to us on WhatsApp in one tap.</p>
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:32px;">
+      <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:48px; font-weight:600; color:#f3efe6; margin:0 0 14px; line-height:1.05;">What type of venue are you?</h2>
+      <p style="font-size:16px; line-height:1.7; color:rgba(243,239,230,0.72); margin:0 auto 30px; max-width:480px; font-weight:300;">Get a curated starter kit &mdash; then send it to us on WhatsApp in one tap.</p>
+      <div class="bmh-quiz-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:32px;">
         <button onClick="{{ quiz.setHotel }}" style="{{ quiz.hotelStyle }}">
           <div style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; margin-bottom:6px;">Hotel</div>
           <div style="font-size:11px; opacity:.7; font-weight:400;">Full-service properties</div>
@@ -826,7 +886,7 @@
         </button>
       </div>
       <sc-if value="{{ quiz.hasVenue }}" hint-placeholder-val="{{ false }}">
-        <div class="bmh-card-pad" style="background:#0e2748; padding:44px; text-align:left; animation:bmhBannerIn .5s cubic-bezier(.22,1,.36,1) both;">
+        <div class="bmh-card-pad" style="background:#0e2748; border:1px solid rgba(189,154,99,0.25); padding:44px; text-align:left; animation:bmhBannerIn .5s cubic-bezier(.22,1,.36,1) both;">
           <div style="flex:1; min-width:280px;">
             <div style="font-size:10.5px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#bd9a63; margin-bottom:10px;">Recommended starter kit</div>
             <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:32px; font-weight:600; color:#f3efe6; margin:0 0 12px; line-height:1.1;">{{ quiz.kitTitle }}</h3>
@@ -846,8 +906,8 @@
   </section>
 
   <!-- ══ COSTING CALCULATOR ══ -->
-  <section id="calculator" style="background:#f3efe6; padding:64px 40px; border-top:1px solid #e6e0d2;">
-    <div style="max-width:1380px; margin:0 auto;">
+  <section id="calculator" style="background:#f3efe6; padding:44px 24px; border-top:1px solid #e6e0d2;">
+    <div style="max-width:1840px; margin:0 auto;">
       <div style="text-align:center; margin-bottom:48px;">
         <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Build Your Order</div>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:600; color:#0e2748; margin:0 0 14px;">Configure it, we'll quote it</h2>
@@ -986,8 +1046,8 @@
   </section>
 
   <!-- ══ CONTACT ══ -->
-  <section id="contact" style="background:#f3efe6; padding:62px 40px;">
-    <div style="max-width:1380px; margin:0 auto;">
+  <section id="contact" style="background:#f3efe6; padding:44px 24px;">
+    <div style="max-width:1840px; margin:0 auto;">
       <div style="text-align:center; margin-bottom:38px;">
         <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:16px;">Get in touch</div>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:54px; font-weight:600; color:#0e2748; margin:0 0 14px; line-height:1.05;">Let's brand your pantry</h2>
@@ -1070,12 +1130,12 @@
 
   <!-- ══ FOOTER ══ -->
   <footer class="bmh-card-pad" style="background:#091d38; padding:56px 40px 36px;">
-    <div style="max-width:1440px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:34px; border-bottom:1px solid rgba(243,239,230,0.12);">
+    <div style="max-width:1840px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:34px; border-bottom:1px solid rgba(243,239,230,0.12);">
       <div style="max-width:300px;">
         <img loading="lazy" src="bmh-logo-cream.png" alt="BrandMyHoReCa" style="height:92px; width:auto; display:block; margin-bottom:18px;">
         <p style="font-size:13px; line-height:1.7; color:rgba(243,239,230,0.75); margin:0; font-weight:300;">Custom-printed packaging essentials for Hotels, Restaurants, Cafes &amp; Cloud Kitchens across India.</p>
       </div>
-      <div style="display:flex; gap:64px; flex-wrap:wrap;">
+      <div style="display:flex; gap:36px; flex-wrap:wrap;">
         <div>
           <div style="font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#bd9a63; margin-bottom:16px;">Products</div>
           <div style="display:flex; flex-direction:column; gap:10px;">
@@ -1103,7 +1163,7 @@
         </div>
       </div>
     </div>
-    <div style="max-width:1440px; margin:24px auto 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+    <div style="max-width:1840px; margin:24px auto 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
       <span style="font-size:11px; color:rgba(243,239,230,0.55);">© 2026 BrandMyHoReCa · All rights reserved</span>
       <span style="font-size:11px; color:rgba(243,239,230,0.55);">All pricing shared on quote · Freight at actual</span>
     </div>
@@ -1366,6 +1426,7 @@ class Component extends DCLogic {
       { key:'pizza',      cat:'Seasonings',   name:'Pizza Seasoning',    img:'sachet-pizzaseasoning.webp',tag:'5g', desc:'A blended pizza seasoning that finishes every slice.' },
       { key:'wipes',      cat:'Table & Care', name:'Wet Wipes',          img:'mk-wetwipes.webp',          tag:'Sealed', desc:'A refreshing, hygienic wet wipe in a branded sleeve.' },
       { key:'straws',     cat:'Table & Care', name:'Compostable Straws', img:'prod-straws.webp',          tag:'Eco', desc:'Compostable straws with a printed paper sleeve.' },
+      { key:'freshener',  cat:'Table & Care', name:'Mouth Freshener',    img:'sachet-mouthfreshener.webp',tag:'Pure Veg', desc:'A cooling after-meal mouth freshener, sealed in your branding.' },
       { key:'water',      cat:'Table & Care', name:'Branded Water',      img:'prod-water.webp',           tag:'Custom label', desc:'Custom-label bottled water for rooms, tables and events.' },
       { key:'butter',     cat:'Table & Care', name:'Butter Paper',       img:'prod-butter-paper.webp',    tag:'Food-grade', desc:'Food-grade printed butter paper and wraps.' },
     ];
@@ -1395,6 +1456,11 @@ class Component extends DCLogic {
       groups: exCats, stage: exStage,
       activeName: exActive.name, activeDesc: exActive.desc, activeSpec: exActive.spec || null,
       counter: String(exIdx + 1).padStart(2, '0') + ' / ' + String(EXPLORE.length).padStart(2, '0'),
+      cards: EXPLORE.map((p, i) => ({
+        name: p.name, tag: p.tag, desc: p.desc, img: p.img,
+        spec: p.spec || '', hasSpec: !!p.spec,
+        cat: p.cat, num: String(i + 1).padStart(2, '0') + ' / ' + String(EXPLORE.length).padStart(2, '0'),
+      })),
     };
 
     // ── Rotating banner word + taglines (fun, on-brand) ──
@@ -1517,7 +1583,7 @@ class Component extends DCLogic {
     };
     const qv = this.state.quizVenue;
     const qkit = qv ? KITS[qv] : null;
-    const quizBtnStyle = (v) => { const a = qv === v; return 'font-family:Jost,sans-serif; cursor:pointer; padding:28px 16px; border-radius:3px; text-align:center; transition:all .2s; border:1px solid ' + (a ? '#0e2748' : '#e6e0d2') + '; background:' + (a ? '#0e2748' : '#fff') + '; color:' + (a ? '#f3efe6' : '#0e2748') + '; width:100%;'; };
+    const quizBtnStyle = (v) => { const a = qv === v; return 'font-family:Jost,sans-serif; cursor:pointer; padding:28px 16px; border-radius:3px; text-align:center; transition:all .2s; border:1px solid ' + (a ? '#bd9a63' : 'rgba(243,239,230,0.18)') + '; background:' + (a ? '#0e2748' : 'rgba(243,239,230,0.06)') + '; color:#f3efe6; width:100%;'; };
     const quiz = {
       hasVenue: !!qv,
       hotelStyle: quizBtnStyle('hotel'), restaurantStyle: quizBtnStyle('restaurant'),
