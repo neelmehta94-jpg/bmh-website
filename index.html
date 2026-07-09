@@ -1208,6 +1208,29 @@ class Component extends DCLogic {
       }
     } catch (e) {}
   }
+  // ── Lead capture → Google Sheet (via Google Form). Fill in IDs once; all lead
+  //    actions site-wide then log a row with timestamp, even if WhatsApp is abandoned.
+  //    SETUP: create a Google Form with 6 short-answer questions in THIS order:
+  //    Name · Business · Phone · Product · Quantity · Details (none required).
+  //    ⋮ → "Get pre-filled link" → fill dummy answers → copy link → paste the
+  //    entry.XXXX ids + form id below. Responses → link to a Google Sheet.
+  static GFORM = {
+    action: 'https://docs.google.com/forms/d/e/1FAIpQLSe0yKtVujrOBrWJdrppnZWWYP25TnhqlmkWrUH2cc6Nn2ck7A/formResponse',
+    fields: { name:'entry.464810096', phone:'entry.1893145866', product:'entry.1829865729', qty:'entry.534457712', message:'entry.1317927709' },
+  };
+  logLead(data) {
+    const GF = Component.GFORM;
+    if (GF.action.indexOf('REPLACE') > -1) return; // not configured yet
+    try {
+      const d = data || {};
+      // No separate Business field on the form — fold it into Details
+      const message = [d.brand ? ('Business: ' + d.brand) : '', d.message || ''].filter(Boolean).join(' — ');
+      const vals = { name: d.name, phone: d.phone, product: d.product, qty: d.qty, message: message };
+      const fd = new FormData();
+      Object.keys(GF.fields).forEach((k) => fd.append(GF.fields[k], vals[k] || ''));
+      fetch(GF.action, { method: 'POST', mode: 'no-cors', body: fd });
+    } catch (e) {}
+  }
   // Classify a wa.me URL by its prefilled text so we know WHY someone messaged
   waKindFromText(rawHref) {
     try {
@@ -1254,8 +1277,12 @@ class Component extends DCLogic {
       const src = sectionOf(a);
       const label = (a.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 48);
       if (/wa\.me|api\.whatsapp|wa\.link|whatsapp\.com/i.test(href)) {
-        self.track('whatsapp_click', { source: src, kind: self.waKindFromText(href) });
+        const kind = self.waKindFromText(href);
+        self.track('whatsapp_click', { source: src, kind: kind });
         self.track('generate_lead', { method: 'whatsapp', source: src });
+        if (kind === 'direct' || kind === 'venue_quiz') {
+          self.logLead({ message: '[source: WhatsApp tap — ' + src + (kind === 'venue_quiz' ? ' / venue quiz kit' : '') + '] contact details arrive on WhatsApp' });
+        }
       } else if (/^tel:/i.test(href)) {
         self.track('phone_click', { source: src });
         self.track('generate_lead', { method: 'phone', source: src });
@@ -1338,6 +1365,7 @@ class Component extends DCLogic {
       toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
     }));
     const enquireProduct = (productName) => {
+      this.logLead({ product: productName, message: '[source: product enquiry button — contact details arrive on WhatsApp]' });
       this.track('product_enquiry', { product: productName });
       this.track('generate_lead', { method: 'whatsapp', source: 'product' });
       const lines = ['Product enquiry — BrandMyHoReCa', 'Product: ' + productName, 'I would like to know more about availability and samples.'];
@@ -1360,27 +1388,7 @@ class Component extends DCLogic {
         g('qty') && ('Est. quantity: ' + g('qty')),
         g('message') && ('Details: ' + g('message')),
       ].filter(Boolean);
-      // ── Google Form lead capture (records every enquiry, even if WhatsApp is abandoned) ──
-      // SETUP: 1) Make a Google Form with 6 short-answer questions in THIS order:
-      //           Name · Business · Phone · Product · Quantity · Details
-      //        2) Form ⋮ menu → "Get pre-filled link", fill dummy text, "Get link", copy it.
-      //        3) From that URL read each entry.XXXXXX id and paste below, plus your form id.
-      const GFORM = {
-        action: 'https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/formResponse',
-        fields: { name:'entry.REPLACE1', brand:'entry.REPLACE2', phone:'entry.REPLACE3', product:'entry.REPLACE4', qty:'entry.REPLACE5', message:'entry.REPLACE6' },
-      };
-      if (GFORM.action.indexOf('REPLACE') === -1) {
-        try {
-          const fd = new FormData();
-          fd.append(GFORM.fields.name, g('name'));
-          fd.append(GFORM.fields.brand, g('brand'));
-          fd.append(GFORM.fields.phone, g('phone'));
-          fd.append(GFORM.fields.product, g('product'));
-          fd.append(GFORM.fields.qty, g('qty'));
-          fd.append(GFORM.fields.message, g('message'));
-          fetch(GFORM.action, { method: 'POST', mode: 'no-cors', body: fd });
-        } catch (err) { /* lead still reaches us via WhatsApp below */ }
-      }
+      this.logLead({ name: g('name'), brand: g('brand'), phone: g('phone'), product: g('product'), qty: g('qty'), message: (g('message') || '') + ' [source: contact form]' });
       this.track('contact_form_submit', { product: g('product') || 'unspecified' });
       this.track('generate_lead', { method: 'contact_form', source: 'contact' });
       const text = encodeURIComponent(lines.join('\n'));
@@ -1457,6 +1465,7 @@ class Component extends DCLogic {
         select: () => setCalc({ mat:i }) };
     });
     const waQuote = () => {
+      this.logLead({ product: cp.name, qty: String(qty), message: '[source: calculator] colours: ' + colours + ', order type: ' + (c.first ? 'first' : 'repeat') });
       this.track('calculator_quote', { product: cp.name, quantity: qty, colours: colours, order_type: (c.first ? 'first' : 'repeat') });
       this.track('generate_lead', { method: 'whatsapp', source: 'calculator' });
       const lines = ['Quote request — BrandMyHoReCa',
