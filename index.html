@@ -754,16 +754,16 @@
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,29,56,0.15) 0%, rgba(9,29,56,0.3) 45%, rgba(9,29,56,0.92) 100%);" data-comment-anchor="42a4f22e-div"></div>
       <div class="bmh-card-pad" style="position:absolute; bottom:0; left:0; right:0; max-width:1840px; margin:0 auto; padding:32px 24px; box-sizing:border-box; display:flex; align-items:flex-end; justify-content:space-between; gap:32px; flex-wrap:wrap;">
         <div>
-          <div style="font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Industry Pulse</div>
+          <div style="font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Industry Pulse &middot; Updated weekly</div>
           <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:52px; font-weight:600; color:#f3efe6; margin:0; line-height:1.02;">The numbers moving HoReCa<br>right now.</h2>
         </div>
-        <p style="font-size:15px; line-height:1.7; color:rgba(243,239,230,0.65); max-width:360px; font-weight:300; margin:0;">Six real numbers from the delivery and hospitality world today — sourced, not invented.</p>
+        <p style="font-size:15px; line-height:1.7; color:rgba(243,239,230,0.65); max-width:360px; font-weight:300; margin:0;">Six real numbers from the delivery and hospitality world — a fresh set every week, sourced not invented.</p>
       </div>
     </div>
 
     <div class="bmh-intel-body" style="max-width:1840px; margin:0 auto; padding:0 24px 44px;">
 
-      <div class="bmh-intel-stats" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(189,154,99,0.1);">
+      <div id="bmhPulseGrid" class="bmh-intel-stats" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(189,154,99,0.1);">
 
         <div style="background:#091d38; padding:26px 28px; border-bottom:1px solid rgba(189,154,99,0.1);">
           <div style="font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:600; color:#bd9a63; line-height:1; margin-bottom:8px;">90%</div>
@@ -1753,6 +1753,69 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+<!-- ══ INDUSTRY PULSE — weekly auto-rotating stats (progressive enhancement; static 6 above are the no-JS fallback) ══ -->
+<script>
+(function () {
+  "use strict";
+  // Pool of real, sourced HoReCa numbers. Shown 6 at a time; the set rotates each
+  // ISO week (3 sets of 6). Set A === the six baked into the HTML above, so no-JS
+  // visitors and week-A visitors see identical content. Add more (in 6s) to lengthen the cycle.
+  var POOL = [
+    // ── Set A ──
+    { n:'90%', p:'of off-premises diners say they&rsquo;d order <strong style="color:#f3efe6; font-weight:500;">more, more often</strong> if takeout packaging held up to dine-in quality &mdash; sachets, cutlery and wraps included.', s:'National Restaurant Association, 2025' },
+    { n:'60%', p:'of Gen Z and millennial diners &mdash; <strong style="color:#f3efe6; font-weight:500;">the customer every QSR and D2C brand is chasing</strong> &mdash; will pay extra for takeout when the packaging keeps its quality.', s:'National Restaurant Association, 2025' },
+    { n:'$61.8B', p:'is what India&rsquo;s <strong style="color:#f3efe6; font-weight:500;">online food delivery market</strong> is projected to hit in 2026. Every one of those orders arrives in someone&rsquo;s hands.', s:'Statista, 2026' },
+    { n:'20,000+', p:'<strong style="color:#f3efe6; font-weight:500;">cloud kitchens</strong> now run across urban India &mdash; and that number is expected to double within a couple of years. Every one is a brand fighting to be remembered in a bag.', s:'Industry estimate, 2024&ndash;25' },
+    { n:'117%', p:'growth in Swiggy&rsquo;s <strong style="color:#f3efe6; font-weight:500;">Food on Train</strong> network in a single year (70 &rarr; 152 stations). Delivery formats keep multiplying &mdash; so do the touchpoints for your name.', s:'Swiggy network data, Feb 2026' },
+    { n:'&#8377;0.80', p:'is the average cost difference between a <strong style="color:#f3efe6; font-weight:500;">generic sachet</strong> and a fully custom-printed one at scale &mdash; less than the cost of a single printed menu page.', s:'BrandMyHoReCa pricing data' },
+    // ── Set B — the scale of the table ──
+    { n:'&#8377;5.7L cr', p:'is the size of India&rsquo;s <strong style="color:#f3efe6; font-weight:500;">food-services industry</strong> in FY24 &mdash; on track to be the world&rsquo;s third largest by 2028, ahead of Japan.', s:'NRAI India Food Services Report, 2024' },
+    { n:'13.2%', p:'a year &mdash; the pace at which India&rsquo;s <strong style="color:#f3efe6; font-weight:500;">organised, branded restaurant business</strong> is growing to 2028, outrunning the market overall.', s:'NRAI India Food Services Report, 2024' },
+    { n:'7.8M', p:'<strong style="color:#f3efe6; font-weight:500;">quick-commerce orders a day</strong> now move across India (Jan 2026), roughly double a year earlier. Every bag is a doorstep impression.', s:'Industry data, 2026' },
+    { n:'&#8377;64,000 cr', p:'is India&rsquo;s <strong style="color:#f3efe6; font-weight:500;">quick-commerce order value</strong> in FY25 &mdash; more than double the year before. A new shelf of branded touchpoints, delivered in minutes.', s:'Datum Intelligence, 2025' },
+    { n:'43%', p:'of shoppers say they&rsquo;ll <strong style="color:#f3efe6; font-weight:500;">pay extra for sustainable packaging</strong> &mdash; branded and responsible is no longer a trade-off.', s:'Shorr Packaging Consumer Report, 2025' },
+    { n:'49%', p:'of <strong style="color:#f3efe6; font-weight:500;">Gen Z</strong> will pay more for eco-friendly packaging &mdash; the youngest diners reward brands that look and feel considered.', s:'Shorr Packaging Consumer Report, 2025' },
+    // ── Set C — reach &amp; touchpoints ──
+    { n:'90%', p:'of India&rsquo;s food delivery runs through <strong style="color:#f3efe6; font-weight:500;">just two apps</strong> &mdash; a duopoly of moments where your packaging is the only thing that&rsquo;s truly yours.', s:'Industry analysis, 2025' },
+    { n:'2.09 cr', p:'customers order on <strong style="color:#f3efe6; font-weight:500;">Zomato every month</strong> &mdash; an audience the size of a metro city, each handed a package that could carry your name.', s:'Company filings, FY25' },
+    { n:'1,100+', p:'<strong style="color:#f3efe6; font-weight:500;">dark stores</strong> now feed Swiggy Instamart across 100+ cities &mdash; branded-delivery infrastructure multiplying faster than most brands can print.', s:'Company data, 2025' },
+    { n:'$3.7B', p:'is where India&rsquo;s <strong style="color:#f3efe6; font-weight:500;">cloud-kitchen market</strong> is headed by the early 2030s, up from ~$1.2B in 2025. Delivery-first brands live or die by the unboxing.', s:'Industry forecast, 2025' },
+    { n:'85 lakh', p:'people are <strong style="color:#f3efe6; font-weight:500;">employed by India&rsquo;s food-services industry</strong> &mdash; one of the country&rsquo;s largest job engines, and a lot of hands on a lot of packaging.', s:'NRAI India Food Services Report, 2024' },
+    { n:'8.1%', p:'annual growth for India&rsquo;s <strong style="color:#f3efe6; font-weight:500;">entire food-services sector</strong> to 2028 &mdash; steady, broad-based demand for everything served and delivered.', s:'NRAI India Food Services Report, 2024' }
+  ];
+
+  function card(item, idx) {
+    var border = idx < 3 ? ' border-bottom:1px solid rgba(189,154,99,0.1);' : '';
+    return '<div style="background:#091d38; padding:26px 28px;' + border + '">' +
+      '<div style="font-family:\'Cormorant Garamond\',serif; font-size:46px; font-weight:600; color:#bd9a63; line-height:1; margin-bottom:8px;">' + item.n + '</div>' +
+      '<p style="font-size:14px; line-height:1.7; color:rgba(243,239,230,0.75); margin:0 0 10px; font-weight:300;">' + item.p + '</p>' +
+      '<div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(189,154,99,0.45);">' + item.s + '</div>' +
+      '</div>';
+  }
+  function isoWeek(d) {
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    var day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - day);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  }
+  function render() {
+    var grid = document.getElementById('bmhPulseGrid');
+    if (!grid) return;
+    var sets = Math.floor(POOL.length / 6);
+    if (sets < 1) return;
+    var base = (isoWeek(new Date()) % sets) * 6;
+    var html = '';
+    for (var i = 0; i < 6; i++) { html += card(POOL[base + i], i); }
+    grid.innerHTML = html;
+  }
+  if (document.readyState === 'complete') { render(); }
+  else {
+    document.addEventListener('DOMContentLoaded', render);
+    window.addEventListener('load', render); // re-apply after any late hydration
+  }
+})();
 </script>
 </body>
 </html>
