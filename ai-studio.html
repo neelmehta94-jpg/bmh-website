@@ -186,11 +186,14 @@
     var font = FONTS.filter(function(f){return f.id===state.font;})[0];
     var len = displayName().length;
     var shrink = Math.min(1, 8.5 / Math.max(len,1));
-    var scriptBoost = state.font==='script' ? 1.25 : 1;
+    // Script (Great Vibes) is wider & taller per glyph — its boost tapers as the
+    // name gets longer so long names no longer overflow or clip the label panel.
+    var scriptBoost = state.font==='script' ? Math.max(0.82, 1.25 - Math.max(0, len-8)*0.035) : 1;
     var modernShrink = state.font==='modern' ? 0.8 : 1;
     var size = Math.round(px * shrink * scriptBoost * modernShrink);
+    var lh = state.font==='script' ? 1.22 : 1.05; // extra vertical room for script ascenders/descenders
     return 'font-family:'+font.family+'; font-weight:'+font.weight+'; letter-spacing:'+font.spacing+
-      '; text-transform:'+font.transform+'; color:'+state.ink+'; mix-blend-mode:multiply; line-height:1.05;'+
+      '; text-transform:'+font.transform+'; color:'+state.ink+'; mix-blend-mode:multiply; line-height:'+lh+';'+
       ' text-align:center; font-size:'+size+'px; max-width:100%;'+
       (nowrap ? ' white-space:nowrap; overflow:hidden; text-overflow:ellipsis;' : ' overflow:hidden;');
   }
