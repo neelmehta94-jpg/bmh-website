@@ -259,36 +259,36 @@
     renderStatus();
     var mount = document.getElementById('previewMount');
     var dn = esc(displayName());
-    var sub = 'font-family:\'Jost\',sans-serif; letter-spacing:2.5px; color:'+state.ink+'; mix-blend-mode:multiply; opacity:0.85; white-space:nowrap;';
+    var sub = 'font-family:\'Jost\',sans-serif; letter-spacing:2.5px; color:'+state.ink+'; mix-blend-mode:multiply; opacity:0.85; text-align:center; max-width:100%;';
     var html='';
     if (state.product==='sachet'){
       html='<div style="position:relative; aspect-ratio:3/2; overflow:hidden; box-shadow:0 30px 70px rgba(14,39,72,0.18); animation:bmhIn .4s ease both;">'+
         '<img src="prod-demerara.webp" alt="Kraft sachet" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">'+
-        '<div style="position:absolute; left:33%; top:22.5%; width:34.5%; height:54.5%; background:rgba(196,153,102,0.5); backdrop-filter:blur(20px) saturate(1.05); border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; padding:10px 8px;">'+
+        '<div style="position:absolute; left:33%; top:22.5%; width:34.5%; height:54.5%; background:rgba(196,153,102,0.5); backdrop-filter:blur(20px) saturate(1.05); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; padding:10px 8px;">'+
           '<div style="'+nameStyle(42,false)+'">'+dn+'</div>'+
           '<div style="'+ruleStyle(44)+'"></div>'+
           '<div style="'+sub+' font-size:9px;">FINE FOODS &middot; PREMIUM</div>'+
-          '<div style="font-family:\'Jost\',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:2px; color:'+state.ink+'; mix-blend-mode:multiply; opacity:0.9; white-space:nowrap; margin-top:14px; border-top:1px solid rgba(43,43,43,0.25); padding-top:12px;">DEMERARA SUGAR &middot; 5g</div>'+
+          '<div style="font-family:\'Jost\',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:2px; color:'+state.ink+'; mix-blend-mode:multiply; opacity:0.9; text-align:center; max-width:100%; margin-top:14px; border-top:1px solid rgba(43,43,43,0.25); padding-top:12px;">DEMERARA SUGAR &middot; 5g</div>'+
         '</div>'+ badge('LIVE RENDER &middot; DEMERARA SUGAR SACHET &middot; KRAFT POLY') +'</div>';
     } else if (state.product==='cutlery'){
       html='<div style="position:relative; aspect-ratio:4/3; overflow:hidden; box-shadow:0 30px 70px rgba(14,39,72,0.18); background:#e9e2d4; animation:bmhIn .4s ease both;">'+
         '<img src="prod-cutlery.webp" alt="Cutlery kit" style="position:absolute; left:50%; top:50%; height:104%; width:auto; transform:translate(-50%,-50%);">'+
-        '<div style="position:absolute; left:39%; top:19.5%; width:22.5%; height:18%; background:rgba(251,249,244,0.97); backdrop-filter:blur(10px); border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:6px;">'+
+        '<div style="position:absolute; left:39%; top:19.5%; width:22.5%; height:18%; background:rgba(251,249,244,0.5); backdrop-filter:blur(16px) saturate(1.05); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:6px;">'+
           '<div style="'+nameStyle(24,true)+'">'+dn+'</div>'+
           '<div style="'+ruleStyle(34)+'"></div>'+
           '<div style="'+sub+' font-size:7.5px; letter-spacing:2px;">CUTLERY KIT</div>'+
         '</div>'+ badge('LIVE RENDER &middot; CUTLERY KIT 211×70 &middot; CHROMO POLY') +'</div>';
     } else {
-      var panelBg='linear-gradient(90deg, rgba(222,216,204,0.97) 0%, rgba(250,247,240,0.98) 18%, rgba(252,249,243,0.98) 50%, rgba(250,247,240,0.98) 82%, rgba(220,214,202,0.97) 100%)';
+      var panelBg='linear-gradient(90deg, rgba(222,216,204,0.62) 0%, rgba(250,247,240,0.5) 18%, rgba(252,249,243,0.5) 50%, rgba(250,247,240,0.5) 82%, rgba(220,214,202,0.62) 100%)';
       var sizeStyle='font-family:\'IBM Plex Mono\',monospace; letter-spacing:1.5px; color:'+state.ink+'; mix-blend-mode:multiply; opacity:0.75; white-space:nowrap; margin-top:2px; font-size:7.5px;';
       var subW='font-family:\'Jost\',sans-serif; font-size:5.5px; letter-spacing:0.6px; color:'+state.ink+'; mix-blend-mode:multiply; opacity:0.85; white-space:nowrap;';
       html='<div style="position:relative; aspect-ratio:1863/1005; overflow:hidden; box-shadow:0 30px 70px rgba(14,39,72,0.18); animation:bmhIn .4s ease both;">'+
         '<img src="prod-water.webp" alt="Branded water bottles" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">'+
-        '<div style="position:absolute; left:39.7%; top:39%; width:14.9%; height:48.6%; background:'+panelBg+'; backdrop-filter:blur(8px); border-radius:10px; box-shadow:inset 0 -6px 12px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px 4px; overflow:hidden;">'+
+        '<div style="position:absolute; left:39.7%; top:39%; width:14.9%; height:48.6%; background:'+panelBg+'; backdrop-filter:blur(14px) saturate(1.05); border-radius:10px; box-shadow:inset 0 -6px 12px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px 4px; overflow:hidden;">'+
           '<div style="'+nameStyle(17,true)+'">'+dn+'</div><div style="'+ruleStyle(34)+'"></div><div style="'+subW+'">DRINKING WATER</div><div style="'+sizeStyle+'">500 ML</div></div>'+
-        '<div style="position:absolute; left:59.7%; top:38%; width:16%; height:48.8%; background:'+panelBg+'; backdrop-filter:blur(8px); border-radius:10px; box-shadow:inset 0 -6px 12px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px 4px; overflow:hidden;">'+
+        '<div style="position:absolute; left:59.7%; top:38%; width:16%; height:48.8%; background:'+panelBg+'; backdrop-filter:blur(14px) saturate(1.05); border-radius:10px; box-shadow:inset 0 -6px 12px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px 4px; overflow:hidden;">'+
           '<div style="'+nameStyle(19,true)+'">'+dn+'</div><div style="'+ruleStyle(34)+'"></div><div style="'+subW+'">DRINKING WATER</div><div style="'+sizeStyle+'">1 LTR</div></div>'+
-        '<div style="position:absolute; left:23.6%; top:59.4%; width:10.2%; height:28.2%; background:'+panelBg+'; backdrop-filter:blur(8px); border-radius:7px; box-shadow:inset 0 -4px 8px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:5px 3px; overflow:hidden;">'+
+        '<div style="position:absolute; left:23.6%; top:59.4%; width:10.2%; height:28.2%; background:'+panelBg+'; backdrop-filter:blur(14px) saturate(1.05); border-radius:7px; box-shadow:inset 0 -4px 8px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:5px 3px; overflow:hidden;">'+
           '<div style="'+nameStyle(11,true)+'">'+dn+'</div><div style="'+sizeStyle+'">200 ML</div></div>'+
         badge('LIVE RENDER &middot; 500ML &amp; 1L &middot; BOPP LABEL') +'</div>';
     }

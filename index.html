@@ -142,9 +142,7 @@
       #products [style*="letter-spacing: 2px"],
       #products [style*="flex-direction: column"][style*="gap: 10px"] { display: none !important; }
       #products p { margin-bottom: 22px !important; }
-      /* shrink tall product photos on mobile */
-      #products img { aspect-ratio: 4 / 3 !important; }
-      .bmh-prod-media img { object-fit: cover !important; padding: 0 !important; }
+      /* product photos: full product always visible (blur-fill in markup) */
       /* trim Industry Intel: 4 stats, 2-up, tighter */
       .bmh-intel-stats { grid-template-columns: 1fr 1fr !important; }
       .bmh-intel-stats > div { padding: 22px 16px !important; }
@@ -207,9 +205,8 @@
         <a href="#top" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:#f3efe6; text-decoration:none;" style-hover="color:#bd9a63;">Home</a>
         <a href="#story" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:rgba(243,239,230,0.78); text-decoration:none;" style-hover="color:#bd9a63;">About</a>
         <a href="#products" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:rgba(243,239,230,0.78); text-decoration:none;" style-hover="color:#bd9a63;">Products</a>
-        <a href="#calculator" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:rgba(243,239,230,0.78); text-decoration:none;" style-hover="color:#bd9a63;">Order</a>
+        <a href="#quiz" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:rgba(243,239,230,0.78); text-decoration:none;" style-hover="color:#bd9a63;">Find Your Kit</a>
         <a href="ai-studio.html" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:#bd9a63; text-decoration:none; white-space:nowrap;" style-hover="color:#cdab78;">Studio ✦</a>
-        <a href="app/" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:#bd9a63; text-decoration:none; white-space:nowrap;" style-hover="color:#cdab78;">Order Hub ▸</a>
         <a href="#range" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:rgba(243,239,230,0.78); text-decoration:none;" style-hover="color:#bd9a63;">Range</a>
         <a href="#contact" style="font-size:12.5px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:rgba(243,239,230,0.78); text-decoration:none;" style-hover="color:#bd9a63;">Contact</a>
       </nav>
@@ -398,7 +395,7 @@
     <div class="bmh-card-pad" style="max-width:1840px; margin:0 auto; padding:28px 40px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div class="bmh-prod-media" style="position:relative; background:#f6f2ea; align-self:stretch; min-height:430px;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none; z-index:1;"></div>
-        <img loading="lazy" src="prod-cutlery.webp" alt="Branded cutlery kit" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+        <img loading="lazy" src="prod-cutlery.webp" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(32px) saturate(1.05); transform:scale(1.18); opacity:0.85;"><img loading="lazy" src="prod-cutlery.webp" alt="Branded cutlery kit" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:20px; box-sizing:border-box;">
       </div>
       <div>
         <div style="display:inline-block; font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#091d38; background:#bd9a63; padding:5px 12px; margin-bottom:18px;">Bestseller</div>
@@ -578,7 +575,7 @@
     <div style="max-width:1840px; margin:0 auto; padding:32px 24px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;">
       <div class="bmh-prod-media" style="position:relative; background:#f6f2ea; align-self:stretch; min-height:430px;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none; z-index:1;"></div>
-        <img loading="lazy" src="mk-wetwipes.webp" alt="Branded wet wipes" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+        <img loading="lazy" src="mk-wetwipes.webp" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(32px) saturate(1.05); transform:scale(1.18); opacity:0.85;"><img loading="lazy" src="mk-wetwipes.webp" alt="Branded wet wipes" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:20px; box-sizing:border-box;">
       </div>
       <div>
         <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:38px; font-weight:600; color:#0e2748; margin:0 0 14px;">Branded Wet Wipes</h3>
@@ -653,7 +650,7 @@
       </div>
       <div class="bmh-prod-media" style="position:relative; background:#f6f2ea; align-self:stretch; min-height:430px;">
         <div style="position:absolute; inset:0; border:1px solid rgba(189,154,99,0.35); margin:16px; pointer-events:none; z-index:1;"></div>
-        <img loading="lazy" src="prod-straws.webp" alt="Compostable branded straw" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+        <img loading="lazy" src="prod-straws.webp" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(32px) saturate(1.05); transform:scale(1.18); opacity:0.85;"><img loading="lazy" src="prod-straws.webp" alt="Compostable branded straw" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:20px; box-sizing:border-box;">
       </div>
     </div>
     </div>
@@ -857,7 +854,7 @@
         </div>
       </div>
       <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:#42505c; margin:0 0 20px; line-height:1.5;">All of these leave your venue every day. The only question is whose name they carry.</p>
-      <a href="#calculator" style="display:inline-flex; align-items:center; gap:9px; background:#bd9a63; color:#091d38; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 28px; text-decoration:none; border-radius:2px;" style-hover="background:#cdab78;">Calculate the cost
+      <a href="#quiz" style="display:inline-flex; align-items:center; gap:9px; background:#bd9a63; color:#091d38; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 28px; text-decoration:none; border-radius:2px;" style-hover="background:#cdab78;">Build my starter kit
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"/><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -908,7 +905,7 @@
   </section>
 
   <!-- ══ COSTING CALCULATOR ══ -->
-  <section id="calculator" style="background:#f3efe6; padding:32px 24px; border-top:1px solid #e6e0d2;">
+  <section id="calculator" style="display:none; background:#f3efe6; padding:32px 24px; border-top:1px solid #e6e0d2;">
     <div style="max-width:1840px; margin:0 auto;">
       <div style="text-align:center; margin-bottom:30px;">
         <div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">Build Your Order</div>
@@ -1815,6 +1812,53 @@ class Component extends DCLogic {
     document.addEventListener('DOMContentLoaded', render);
     window.addEventListener('load', render); // re-apply after any late hydration
   }
+})();
+</script>
+<script>
+/* BMH out-of-band sections (same post-hydration technique as the weekly Pulse script).
+   These are injected AFTER the page runtime wires its events, so they never disturb it.
+   A Claude Design re-sync of the homepage would wipe this block - re-add it if that happens. */
+(function(){
+  function inject(){
+    var products = document.getElementById('products');
+    if (products && !document.getElementById('bmhKitBand')) {
+      products.insertAdjacentHTML('afterend',
+        '<section id="bmhKitBand" style="background:#bd9a63;">' +
+          '<a href="#quiz" style="display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap: wrap; max-width:1840px; margin:0 auto; padding: 26px 24px; text-decoration:none;">' +
+            '<span style="font-family:Cormorant Garamond,Georgia,serif; font-size:26px; font-weight:600; color:#091d38;">Not sure where to start?</span>' +
+            '<span style="display:inline-flex; align-items:center; gap:9px; background:#091d38; color:#f3efe6; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:13px 24px; border-radius:2px;">Find your kit in 20 seconds' +
+              '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f3efe6" stroke-width="2"><line x1="4" y1="12" x2="19" y2="12" stroke-linecap="round"/><polyline points="13 6 19 12 13 18" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            '</span>' +
+          '</a>' +
+        '</section>');
+    }
+    var pulse = document.getElementById('bmhPulseGrid');
+    if (pulse && !document.getElementById('bmhStudioTeaser')) {
+      var intelSec = pulse.closest('section');
+      intelSec.insertAdjacentHTML('beforebegin',
+        '<section id="bmhStudioTeaser" style="background:#0e2748; padding:32px 24px;">' +
+          '<div style="max-width:1840px; margin:0 auto; padding: 64px 40px; display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:center;">' +
+            '<div>' +
+              '<div style="font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:14px;">BMH Studio</div>' +
+              '<h2 style="font-family:Cormorant Garamond,Georgia,serif; font-size:46px; font-weight:600; color:#f3efe6; margin:0 0 16px; line-height:1.12;">Type your name.<br>See it on the shelf.</h2>' +
+              '<p style="font-size:16px; line-height:1.75; color:rgba(243,239,230,0.72); font-weight:300; margin:0 0 28px; max-width:520px;">Our live Studio prints your brand onto a sachet, a cutlery kit and bottled water &mdash; right on your screen. Pick your ink, pick your lettering, then send the kit you like to us in one tap.</p>' +
+              '<a href="ai-studio.html" style="display:inline-flex; align-items:center; gap:9px; background:#bd9a63; color:#091d38; font-size:12.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 28px; text-decoration:none; border-radius:2px;">Open the Studio &#10022;</a>' +
+            '</div>' +
+            '<div style="position:relative; aspect-ratio:3/2; overflow:hidden; box-shadow:0 30px 70px rgba(0,0,0,0.35);">' +
+              '<img loading="lazy" src="prod-demerara.webp" alt="BMH Studio - live brand mockup on a kraft sachet" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">' +
+              '<div style="position:absolute; left:33%; top:22.5%; width:34.5%; height:54.5%; background:rgba(196,153,102,0.5); backdrop-filter:blur(20px) saturate(1.05); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; padding:10px 8px;">' +
+                '<div style="font-family:Cormorant Garamond,Georgia,serif; font-size:clamp(20px,2.4vw,36px); font-weight:600; color:#2b2b2b; mix-blend-mode:multiply; text-align:center; line-height:1.1;">Your Brand</div>' +
+                '<div style="width:44px; height:1px; background:rgba(43,43,43,0.4);"></div>' +
+                '<div style="font-family:Jost,sans-serif; font-size:9px; letter-spacing:2.5px; color:#2b2b2b; mix-blend-mode:multiply; opacity:0.85; text-align:center;">FINE FOODS &middot; PREMIUM</div>' +
+              '</div>' +
+              '<div style="position:absolute; left:18px; bottom:16px; font-family:IBM Plex Mono,monospace; font-size:9.5px; letter-spacing:1.5px; color:rgba(255,255,255,0.85); background:rgba(9,29,56,0.55); padding:6px 12px; border-radius:16px;">LIVE RENDER &middot; TYPE YOURS IN THE STUDIO</div>' +
+            '</div>' +
+          '</div>' +
+        '</section>');
+    }
+  }
+  if (document.readyState === 'complete') { setTimeout(inject, 600); }
+  else { window.addEventListener('load', function(){ setTimeout(inject, 600); }); }
 })();
 </script>
 </body>
