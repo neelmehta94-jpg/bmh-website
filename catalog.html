@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSL322YC9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2YSL322YC9');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Catalog — BrandMyHoReCa</title>
+  <meta name="description" content="Browse every BrandMyHoReCa SKU by venue: cutlery kits, sachets, branded water, wet wipes, compostable straws and butter paper. Build an enquiry list and send it on WhatsApp.">
+  <link rel="icon" type="image/png" href="bmh-mark-navy.png">
+  <meta name="theme-color" content="#091d38">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin:0; padding:0; background:#f3efe6; overflow-x:hidden; }
+    *, *::before, *::after { box-sizing:border-box; }
+    a { color:#0e2748; } a:hover { color:#bd9a63; }
+    .cat-layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:28px; }
+    .cat-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(210px, 1fr)); gap:14px; }
+    .cat-strip { display:flex; gap:18px; overflow-x:auto; padding-bottom:6px; scrollbar-width:none; }
+    .cat-strip::-webkit-scrollbar { display:none; }
+    .cat-rail { position:sticky; top:88px; align-self:start; }
+    @media (max-width: 860px) {
+      .cat-layout { grid-template-columns:1fr; gap:18px; }
+      .cat-rail { position:static; display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; }
+      .cat-rail button { white-space:nowrap; border-bottom:none !important; border:1px solid #d9d2c3 !important; border-radius:20px !important; padding:9px 14px !important; }
+      .cat-grid { grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
+      .cat-pad { padding-left:16px !important; padding-right:16px !important; }
+    }
+  </style>
+</helmet>
+
+<div data-screen-label="BMH Catalog" style="font-family:'Jost',system-ui,sans-serif; color:#2c3744; background:#f3efe6; min-height:100vh; padding-bottom:96px;">
+
+  <header style="position:sticky; top:0; z-index:50; background:#091d38;">
+    <div class="cat-pad" style="max-width:1600px; margin:0 auto; padding:0 28px; height:72px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+      <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;"><img src="bmh-mark-cream.png" alt="BrandMyHoReCa" style="height:44px; width:auto; display:block;"><span style="font-size:13px; color:rgba(243,239,230,0.7);">Catalog</span></a>
+      <div style="flex:1; max-width:520px; position:relative;">
+        <input type="search" placeholder="Search sugar, cutlery, 200 ml…" value="{{ q }}" onChange="{{ onSearch }}" style="width:100%; padding:11px 14px 11px 40px; border:1px solid rgba(243,239,230,0.2); border-radius:3px; background:rgba(243,239,230,0.08); color:#f3efe6; font-family:'Jost',sans-serif; font-size:14px; outline:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(243,239,230,0.6)" stroke-width="2" style="position:absolute; left:14px; top:13px;"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke-linecap="round"/></svg>
+      </div>
+      <a href="index.html" style="font-size:13px; color:rgba(243,239,230,0.8); text-decoration:none; white-space:nowrap;" style-hover="color:#bd9a63;">← Back to site</a>
+    </div>
+  </header>
+
+  <div class="cat-pad" style="max-width:1600px; margin:0 auto; padding:28px 28px 0;">
+    <div style="font-size:12px; color:#7a8794; margin-bottom:18px;">Home · Catalog · <span style="color:#0e2748;">{{ crumb }}</span></div>
+
+    <div class="cat-layout">
+      <!-- LEFT RAIL: by venue -->
+      <aside class="cat-rail">
+        <div style="font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:#7a8794; margin-bottom:10px;">Shop by venue</div>
+        <sc-for list="{{ venues }}" as="v" hint-placeholder-count="7">
+          <button onClick="{{ v.select }}" style="{{ v.style }}">{{ v.label }}<span style="font-size:11px; color:#9aa5ae; margin-left:8px;">{{ v.count }}</span></button>
+        </sc-for>
+      </aside>
+
+      <main style="min-width:0;">
+        <!-- SUB-CATEGORY STRIP -->
+        <div class="cat-strip" style="margin-bottom:18px;">
+          <sc-for list="{{ types }}" as="t" hint-placeholder-count="7">
+            <button onClick="{{ t.select }}" style="{{ t.style }}">
+              <span style="{{ t.ringStyle }}"><img src="{{ t.img }}" alt="" style="width:100%; height:100%; object-fit:contain; display:block; border-radius:50%; background:#f6f2ea;"></span>
+              <span style="font-size:12px; line-height:1.3; text-align:center; max-width:84px;">{{ t.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <!-- FILTER CHIPS -->
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:18px;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+            <button onClick="{{ c.toggle }}" style="{{ c.style }}">{{ c.label }}</button>
+          </sc-for>
+          <span style="font-size:13px; color:#7a8794; margin-left:auto;">{{ resultLabel }}</span>
+        </div>
+
+        <sc-if value="{{ venueNote }}" hint-placeholder-val="{{ false }}">
+          <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:22px; color:#0e2748; margin:0 0 18px; line-height:1.35;">{{ venueNote }}</p>
+        </sc-if>
+
+        <!-- CARDS -->
+        <div class="cat-grid">
+          <sc-for list="{{ items }}" as="p" hint-placeholder-count="12">
+            <div style="background:#fff; border:1px solid #e6e0d2; display:flex; flex-direction:column;">
+              <div style="position:relative; aspect-ratio:1; background:#f6f2ea; overflow:hidden;">
+                <img loading="lazy" decoding="async" src="{{ p.img }}" alt="{{ p.name }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; padding:6%;">
+                <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; top:10px; left:10px; font-size:10px; font-weight:600; letter-spacing:.6px; text-transform:uppercase; background:#bd9a63; color:#091d38; padding:4px 8px;">{{ p.badge }}</span></sc-if>
+                <button onClick="{{ p.add }}" style="{{ p.addStyle }}">{{ p.addLabel }}</button>
+              </div>
+              <div style="padding:12px 14px 14px; display:flex; flex-direction:column; gap:6px; flex:1;">
+                <div style="font-size:14.5px; font-weight:500; color:#0e2748; line-height:1.3;">{{ p.name }}</div>
+                <div style="font-size:12px; color:#7a8794; line-height:1.45;">{{ p.spec }}</div>
+                <div style="display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-top:auto; padding-top:6px;">
+                  <span style="font-size:15px; font-weight:600; color:#0e2748;">{{ p.price }}</span>
+                  <span style="font-size:11px; color:#9aa5ae;">MOQ {{ p.moq }}</span>
+                </div>
+                <a href="{{ p.wa }}" target="_blank" style="font-size:12px; color:#0e2748; text-decoration:underline; text-underline-offset:3px;">Ask on WhatsApp</a>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+          <p style="font-size:15px; color:#7a8794; padding:40px 0; text-align:center;">Nothing matches. Clear a filter or search differently.</p>
+        </sc-if>
+      </main>
+    </div>
+  </div>
+
+  <!-- ENQUIRY BAR -->
+  <sc-if value="{{ hasList }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; left:0; right:0; bottom:0; z-index:60; background:#091d38; color:#f3efe6; box-shadow:0 -10px 30px rgba(9,29,56,0.25);">
+      <div class="cat-pad" style="max-width:1600px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; min-width:0;">
+          <span style="font-size:14px; font-weight:500;">{{ listLabel }}</span>
+          <span style="font-size:13px; color:rgba(243,239,230,0.65); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:520px;">{{ listNames }}</span>
+          <button onClick="{{ clearList }}" style="background:none; border:none; color:rgba(243,239,230,0.6); font-family:'Jost',sans-serif; font-size:12px; cursor:pointer; text-decoration:underline;">Clear</button>
+        </div>
+        <a href="{{ listWa }}" target="_blank" style="display:inline-flex; align-items:center; gap:10px; background:#bd9a63; color:#091d38; font-size:13px; font-weight:600; padding:13px 22px; text-decoration:none; border-radius:2px; white-space:nowrap;" style-hover="background:#cdab78;">Send enquiry on WhatsApp</a>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { venue: 'all', type: 'all', chips: {}, q: '', list: [] };
+  static LS = 'bmh-enquiry-list';
+  componentDidMount() {
+    try { const s = JSON.parse(localStorage.getItem(Component.LS) || '[]'); if (Array.isArray(s)) this.setState({ list: s }); } catch (e) {}
+    try { const h = (location.hash || '').replace('#', ''); if (h) this.setState({ venue: h }); } catch (e) {}
+  }
+  saveList(list) { this.setState({ list }); try { localStorage.setItem(Component.LS, JSON.stringify(list)); } catch (e) {} }
+  renderVals() {
+    const WA = 'https://wa.me/918980009697?text=';
+    const VENUES = [
+      { key:'all', label:'All venues' },
+      { key:'cloud', label:'Cloud kitchen', note:'The bag is your only touchpoint. Kits and seasonings that travel well.' },
+      { key:'restaurant', label:'Restaurant', note:'Water, sugar and wrapped cutlery: what sits on the table before the food.' },
+      { key:'cafe', label:'Café', note:'Every cup leaves with a sachet. Sweeteners first, then straws and cake forks.' },
+      { key:'hotel', label:'Hotel', note:'Room trays, banquets and breakfast service under one identity.' },
+      { key:'caterer', label:'Caterer', note:'Sealed kits move faster on the line and read as hygienic at scale.' },
+      { key:'travel', label:'Airline & corporate', note:'Compact, individually sealed, tray-sized.' },
+    ];
+    const TYPES = [
+      { key:'all', label:'All', img:'product-flatlay.webp' },
+      { key:'cutlery', label:'Cutlery kits', img:'photo-cutlery-kraft.webp' },
+      { key:'sachet', label:'Sachets', img:'photo-brownsugar-wood.webp' },
+      { key:'water', label:'Water', img:'prod-water.webp' },
+      { key:'wipes', label:'Wet wipes', img:'life-wetwipes-hand.webp' },
+      { key:'straws', label:'Straws', img:'prod-straws.webp' },
+      { key:'paper', label:'Butter paper', img:'prod-butter-paper.webp' },
+    ];
+    const CHIPS = [ { key:'kraft', label:'Kraft' }, { key:'chromo', label:'Chromo / white' }, { key:'lowmoq', label:'MOQ ≤ 2,000' }, { key:'eco', label:'Compostable' } ];
+    const S = (v) => v; // venues shorthand
+    const SKUS = [
+      { id:'kit-full', type:'cutlery', name:'Full cutlery kit', spec:'Knife, fork, spoon, tissue, salt, pepper · 230×80 or 240×90 mm', moq:1000, price:'from ₹4/pc', img:'kit-full.webp', pos:'42% 50%', venues:['hotel','caterer','travel','restaurant'], tags:['kraft','chromo'], badge:'Most complete' },
+      { id:'kit-kf', type:'cutlery', name:'Knife + fork kit', spec:'With tissue · 200×70 or 220×80 mm', moq:1000, price:'from ₹4/pc', img:'kit-knife-fork.webp', pos:'42% 50%', venues:['restaurant','hotel'], tags:['kraft','chromo'] },
+      { id:'kit-sf', type:'cutlery', name:'Spoon + fork kit', spec:'With tissue · 200×70 mm · rice, noodles, fast food', moq:1000, price:'from ₹4/pc', img:'kit-spoon-fork.webp', pos:'42% 50%', venues:['cloud'], tags:['kraft','chromo'], badge:'Cloud kitchen pick' },
+      { id:'kit-st', type:'cutlery', name:'Spoon + tissue kit', spec:'Salt / pepper optional · 180×60 or 190×70 mm', moq:1000, price:'from ₹4/pc', img:'kit-spoon-tissue.webp', pos:'42% 50%', venues:['travel','caterer'], tags:['kraft','chromo'] },
+      { id:'kit-f', type:'cutlery', name:'Fork + tissue kit', spec:'Fork 150–170 mm · pouch 180×60 mm · salads, pasta, cakes', moq:1000, price:'from ₹4/pc', img:'kit-fork.webp', pos:'42% 50%', venues:['cafe'], tags:['kraft','chromo'] },
+      { id:'s-sugar', type:'sachet', name:'White sugar sachet', spec:'5g · 57.25×100 mm open width', moq:2000, price:'from ₹2/pc', img:'sachet-sugar.webp', pos:'center', venues:['cafe','restaurant','hotel'], tags:['chromo','kraft','lowmoq'], badge:'Bestseller' },
+      { id:'s-dem', type:'sachet', name:'Demerara sachet', spec:'5g raw cane · kraft or chromo', moq:2000, price:'from ₹2/pc', img:'photo-demerara-kraft.webp', pos:'center', venues:['cafe','restaurant','hotel'], tags:['kraft','chromo','lowmoq'] },
+      { id:'s-jag', type:'sachet', name:'Jaggery powder sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'sachet-jaggery.webp', pos:'center', venues:['cafe','hotel'], tags:['chromo','kraft','lowmoq'] },
+      { id:'s-monk', type:'sachet', name:'Monk fruit sachet', spec:'5g · zero calorie', moq:2000, price:'from ₹2/pc', img:'sachet-monkfruit.webp', pos:'center', venues:['cafe','hotel'], tags:['chromo','lowmoq'] },
+      { id:'s-salt', type:'sachet', name:'Iodized salt stick', spec:'3g', moq:2000, price:'from ₹2/pc', img:'sachet-salt.webp', pos:'center', venues:['cloud','restaurant','caterer'], tags:['chromo','lowmoq'] },
+      { id:'s-pep', type:'sachet', name:'Black pepper stick', spec:'3g ground', moq:2000, price:'from ₹2/pc', img:'photo-pepper-wood.webp', pos:'center 40%', venues:['cloud','restaurant','caterer'], tags:['chromo','lowmoq'] },
+      { id:'s-chilli', type:'sachet', name:'Chilli flakes sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'sachet-chilliflakes.webp', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
+      { id:'s-oreg', type:'sachet', name:'Oregano sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'photo-oregano-wood.webp', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
+      { id:'s-pizza', type:'sachet', name:'Pizza seasoning sachet', spec:'5g blend', moq:2000, price:'from ₹2/pc', img:'sachet-pizzaseasoning.webp', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
+      { id:'s-fresh', type:'sachet', name:'Mouth freshener stick', spec:'Saunf mukhwas · pure veg', moq:2000, price:'from ₹2/pc', img:'sachet-mouthfreshener.webp', pos:'center', venues:['caterer','travel','restaurant'], tags:['chromo','lowmoq'] },
+      { id:'w-200', type:'water', name:'Branded water 200 ml', spec:'Custom sticker label · rooms, trays, meetings', moq:1000, price:'On quote', img:'prod-water.webp', pos:'center', venues:['hotel','caterer','travel'], tags:['lowmoq'] },
+      { id:'w-500', type:'water', name:'Branded water 500 ml', spec:'Table standard · custom sticker label', moq:1000, price:'On quote', img:'story-water.webp', pos:'center 30%', venues:['restaurant','cafe'], tags:['lowmoq'] },
+      { id:'w-1l', type:'water', name:'Branded water 1 litre', spec:'Fine dining, banquets, events', moq:1000, price:'On quote', img:'life-table-kit.webp', pos:'center 45%', venues:['hotel','restaurant'], tags:['lowmoq'] },
+      { id:'wipe', type:'wipes', name:'Wet wipe sachet', spec:'Single wipe · pearl or matte film · ≈165×130 mm', moq:5000, price:'from ₹5/pc', img:'life-wetwipes-hand.webp', pos:'center 70%', venues:['cloud','restaurant','hotel','caterer','travel'], tags:[] },
+      { id:'straw', type:'straws', name:'Compostable straw, sleeved', spec:'6 mm Ø · printed paper wrap · PLA or paper', moq:10000, price:'from ₹2.5/pc', img:'prod-straws.webp', pos:'center', venues:['cafe','cloud'], tags:['eco'] },
+      { id:'butter', type:'paper', name:'Printed butter paper', spec:'Food-grade · natural kraft or white MG · custom size', moq:5000, price:'On quote', img:'prod-butter-paper.webp', pos:'center', venues:['restaurant','hotel','cafe'], tags:['kraft'] },
+    ];
+    const st = this.state;
+    const q = (st.q || '').toLowerCase().trim();
+    const activeChips = Object.keys(st.chips).filter((k) => st.chips[k]);
+    const match = (p) => (st.venue === 'all' || p.venues.indexOf(st.venue) > -1)
+      && (st.type === 'all' || p.type === st.type)
+      && activeChips.every((c) => p.tags.indexOf(c) > -1)
+      && (!q || (p.name + ' ' + p.spec).toLowerCase().indexOf(q) > -1);
+    const filtered = SKUS.filter(match);
+    const inList = (id) => st.list.indexOf(id) > -1;
+    const btn = (a, extra) => 'font-family:Jost,sans-serif; cursor:pointer; ' + extra + (a ? '' : '');
+    const venues = VENUES.map((v) => ({ label: v.label, count: v.key === 'all' ? SKUS.length : SKUS.filter((p) => p.venues.indexOf(v.key) > -1).length,
+      select: () => this.setState({ venue: v.key }),
+      style: btn(v.key === st.venue, 'display:flex; align-items:center; width:100%; text-align:left; background:none; border:none; border-left:2px solid ' + (v.key === st.venue ? '#bd9a63' : 'transparent') + '; padding:10px 12px; font-size:14px; color:' + (v.key === st.venue ? '#0e2748' : '#5f6f7c') + '; font-weight:' + (v.key === st.venue ? '500' : '400') + ';') }));
+    const types = TYPES.map((t) => ({ label: t.label, img: t.img, select: () => this.setState({ type: t.key }),
+      style: 'display:flex; flex-direction:column; align-items:center; gap:8px; background:none; border:none; padding:4px; cursor:pointer; font-family:Jost,sans-serif; color:' + (t.key === st.type ? '#0e2748' : '#6a7784') + '; font-weight:' + (t.key === st.type ? '500' : '400') + '; flex:none;',
+      ringStyle: 'width:72px; height:72px; border-radius:50%; padding:3px; border:2px solid ' + (t.key === st.type ? '#bd9a63' : '#e6e0d2') + '; display:block; background:#fff;' }));
+    const chips = CHIPS.map((c) => { const a = !!st.chips[c.key]; return { label: c.label, toggle: () => this.setState((s) => ({ chips: Object.assign({}, s.chips, { [c.key]: !s.chips[c.key] }) })),
+      style: 'font-family:Jost,sans-serif; font-size:12.5px; padding:7px 14px; border-radius:20px; cursor:pointer; border:1px solid ' + (a ? '#0e2748' : '#d9d2c3') + '; background:' + (a ? '#0e2748' : '#fff') + '; color:' + (a ? '#f3efe6' : '#3d4b58') + ';' }; });
+    const items = filtered.map((p) => { const a = inList(p.id); return {
+      name: p.name, spec: p.spec, img: p.img, pos: p.pos, fit: (p.type === 'cutlery' || p.type === 'wipes') ? 'contain' : 'cover', badge: p.badge || null, price: p.price, moq: p.moq.toLocaleString('en-IN'),
+      wa: WA + encodeURIComponent('Product enquiry — BrandMyHoReCa\nProduct: ' + p.name + '\nPlease share pricing, MOQ and a mockup.'),
+      addLabel: a ? '✓ Added' : '+ Add',
+      add: () => this.saveList(a ? st.list.filter((x) => x !== p.id) : st.list.concat(p.id)),
+      addStyle: 'position:absolute; right:10px; bottom:10px; font-family:Jost,sans-serif; font-size:12px; font-weight:600; padding:8px 14px; border-radius:2px; cursor:pointer; border:1px solid ' + (a ? '#0e2748' : '#bd9a63') + '; background:' + (a ? '#0e2748' : '#fff') + '; color:' + (a ? '#f3efe6' : '#0e2748') + '; box-shadow:0 4px 12px rgba(14,39,72,0.12);' }; });
+    const listSkus = st.list.map((id) => SKUS.find((p) => p.id === id)).filter(Boolean);
+    const vAct = VENUES.find((v) => v.key === st.venue) || VENUES[0];
+    const tAct = TYPES.find((t) => t.key === st.type) || TYPES[0];
+    return {
+      venues, types, chips, items,
+      q: st.q, onSearch: (e) => this.setState({ q: e.target.value }),
+      crumb: (vAct.key === 'all' ? '' : vAct.label + ' · ') + tAct.label,
+      venueNote: vAct.note || null,
+      resultLabel: filtered.length + ' of ' + SKUS.length + ' items',
+      empty: filtered.length === 0,
+      hasList: listSkus.length > 0,
+      listLabel: listSkus.length + (listSkus.length === 1 ? ' item' : ' items') + ' in your enquiry',
+      listNames: listSkus.map((p) => p.name).join(' · '),
+      listWa: WA + encodeURIComponent('Kit enquiry — BrandMyHoReCa\n' + (vAct.key !== 'all' ? 'Venue: ' + vAct.label + '\n' : '') + listSkus.map((p) => '• ' + p.name + ' (MOQ ' + p.moq.toLocaleString('en-IN') + ')').join('\n') + '\nPlease share pricing and mockups.'),
+      clearList: () => this.saveList([]),
+    };
+  }
+}
+</script>
+</body>
+</html>
