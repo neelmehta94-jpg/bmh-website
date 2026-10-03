@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSL322YC9"></script>
 <script>
@@ -11,7 +12,7 @@
   gtag('config', 'G-2YSL322YC9');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="./support.js?v=20261004"></script>
 </head>
 <body>
 <x-dc>
@@ -20,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Print Templates (KLD) — BrandMyHoReCa</title>
   <meta name="description" content="Free keyline diagrams (KLD) for every BrandMyHoReCa product — cutlery kits, sachets, water labels, butter paper, wet wipes and straw wraps. See the exact print area, safe zone and sealed edges before you order.">
-  <link rel="icon" type="image/png" href="bmh-mark-navy.png">
+  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=20261004">
   <link rel="canonical" href="https://brandmyhoreca.com/print-template.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BrandMyHoReCa">
@@ -132,22 +133,22 @@ class Component extends DCLogic {
   renderVals() {
     const PRODUCTS = [
       { key:'cutlery', name:'Cutlery Kit',      form:'Pouch', type:'pouch', w:211, h:70,  seal:9,  notch:true,
-        material:'Chromo / Kraft Poly', moq:'1,000 pcs', kld:'cutlery-kit.pdf', svg:'cutlery-kit.svg', photo:'mk-cutlery.webp',
+        material:'Chromo / Kraft Poly', moq:'1,000 pcs', kld:'cutlery-kit.pdf', svg:'cutlery-kit.svg?v=20261004', photo:'mk-cutlery.webp?v=20261004',
         note:'Fork, spoon, knife, tissue & freshener seal inside. Vertical fin-seals down both sides; opens at a tear-notch. Shown here as the compact kit (158.70 × 60 mm) — also made at the standard 211 × 70 mm.' },
       { key:'sachet', name:'Condiment Sachet',  form:'Pouch', type:'pouch', w:100, h:50,  seal:7,  notch:true,
-        material:'Chromo / Kraft Poly', moq:'2,000 / variant', kld:'sachet.pdf', svg:'sachet.svg', photo:'sachet-sugar.webp',
+        material:'Chromo / Kraft Poly', moq:'2,000 / variant', kld:'sachet.pdf', svg:'sachet.svg?v=20261004', photo:'sachet-sugar.webp?v=20261004',
         note:'Single-serve sugar, salt, seasoning or freshener — printed edge-to-edge in your identity.' },
       { key:'water', name:'Branded Water Label', form:'Wrap label', type:'label', w:190, h:60,
-        material:'BOPP / Paper', moq:'On enquiry', photo:'prod-water.webp',
+        material:'BOPP / Paper', moq:'On enquiry', photo:'prod-water.webp?v=20261004',
         note:'A full wrap-around bottle label. Artwork runs the whole circumference; the trailing edge tucks under as a glue lap. Cut to your bottle — no fixed die.' },
       { key:'butter', name:'Butter Paper',      form:'Sheet', type:'sheet', w:300, h:300, custom:true,
-        material:'Natural Kraft / White MG', moq:'On quote', photo:'prod-butter-paper.webp',
+        material:'Natural Kraft / White MG', moq:'On quote', photo:'prod-butter-paper.webp?v=20261004',
         note:'Food-grade sheet, custom-cut to your size. Full-surface print, edge to edge — a plain rectangle, so no die-line is needed.' },
       { key:'wipes', name:'Wet Wipe Sachet',    form:'Pouch', type:'pouch', w:160, h:120, seal:10, notch:false, fold:true, folded:'70 × 120 mm',
-        material:'Pearl / Matte Film', moq:'5,000 pcs', kld:'wet-wipes.pdf', svg:'wet-wipes.svg', photo:'wetwipes-hero.webp',
+        material:'Pearl / Matte Film', moq:'5,000 pcs', kld:'wet-wipes.pdf', svg:'wet-wipes.svg?v=20261004', photo:'wetwipes-hero.webp?v=20261004',
         note:'Printed flat, then folded and sealed down to a closed sachet. The KLD shows the flat sheet before folding.' },
       { key:'straws', name:'Straw Wrap',        form:'Sleeve', type:'wrap', w:200, h:24, endseal:true,
-        material:'Paper / PLA', moq:'10,000 pcs', kld:'straws.pdf', svg:'straws.svg', photo:'prod-straws.webp',
+        material:'Paper / PLA', moq:'10,000 pcs', kld:'straws.pdf', svg:'straws.svg?v=20261004', photo:'prod-straws.webp?v=20261004',
         note:'A printed sleeve for a 6 mmØ straw — branded the full length and sealed at one end.' },
     ];
 
