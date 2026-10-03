@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<script>(function(){var V='2026100502';try{fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(t&&t!==V&&sessionStorage.getItem('bmh_rl')!==t){sessionStorage.setItem('bmh_rl',t);fetch(location.href,{cache:'reload'}).finally(function(){location.reload();});}}).catch(function(){});}catch(e){}})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSL322YC9"></script>
 <script>
@@ -12,14 +13,14 @@
   gtag('config', 'G-2YSL322YC9');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261005"></script>
+<script src="./support.js?v=2026100502"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
   <title>BMH Studio — See your brand on the product</title>
   <meta name="description" content="Type your brand name or upload your logo and see it on BrandMyHoReCa sachets, cutlery kits, wet wipes and water bottles. Get a free proof on WhatsApp.">
-  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=20261005">
+  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=2026100502">
   <meta name="theme-color" content="#091d38">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +30,31 @@
     *, *::before, *::after { box-sizing:border-box; }
     a { color:#0e2748; } a:hover { color:#bd9a63; }
     input, button { font-family:'Jost',sans-serif; }
+    .hd { background:#091d38; transition: background .35s ease, box-shadow .35s ease; }
+    .hd-in { height:68px; transition: height .35s cubic-bezier(.2,.7,.2,1); }
+    .hd-logo img { height:40px; transition: height .35s cubic-bezier(.2,.7,.2,1), transform .5s cubic-bezier(.3,1.6,.5,1); }
+    .hd-logo:hover img { transform: rotate(-6deg) scale(1.06); }
+    .hd.hd-s { background: rgba(9,29,56,0.82); -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); box-shadow: 0 8px 30px rgba(9,29,56,0.25); }
+    .hd.hd-s .hd-in { height:58px; } .hd.hd-s .hd-logo img { height:34px; }
+    .nv { position:relative; padding:6px 0; transition: color .25s ease; }
+    .nv::after { content:''; position:absolute; left:0; right:0; bottom:0; height:1.5px; background:#bd9a63; transform:scaleX(0); transform-origin:right; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+    .nv:hover { color:#f3efe6 !important; } .nv:hover::after { transform:scaleX(1); transform-origin:left; }
+    .wa-dot { position:relative; width:8px; height:8px; border-radius:50%; background:#1f8a4c; flex:none; }
+    .wa-dot::after { content:''; position:absolute; inset:0; border-radius:50%; background:#1f8a4c; animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite; }
+    @keyframes ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }
+    .wa-btn { position:relative; overflow:hidden; transition: background .25s ease, transform .25s ease, box-shadow .25s ease; }
+    .wa-btn:hover { background:#cdab78 !important; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(189,154,99,0.35); }
+    .wa-btn::before { content:''; position:absolute; top:0; bottom:0; width:40%; left:-60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent); transform: skewX(-20deg); animation: shine 4.5s ease-in-out infinite; }
+    @keyframes shine { 0%, 70% { left:-60%; } 100% { left:130%; } }
+    .rv { opacity:0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+    .rv.in { opacity:1; transform:none; }
+    .rv-stagger > * { opacity:0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+    .rv-stagger.in > * { opacity:1; transform:none; }
+    .rv-stagger.in > *:nth-child(2) { transition-delay:.12s; } .rv-stagger.in > *:nth-child(3) { transition-delay:.24s; }
+    .st-thumbs button { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+    .st-thumbs button:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(14,39,72,0.12); }
+    .st-cta { transition: background .25s ease, color .25s ease, transform .25s ease; }
+    .st-cta:hover { transform: translateY(-1px); }
     @keyframes stIn { from { opacity:0; transform:scale(.985); } to { opacity:1; transform:none; } }
     .st-grid { display:grid; grid-template-columns:minmax(300px,380px) minmax(0,1fr); gap:28px; align-items:start; }
     .st-set { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; }
@@ -49,16 +75,16 @@
 
 <div data-screen-label="BMH Studio" style="font-family:'Jost',system-ui,sans-serif; color:#2c3744; background:#f3efe6; min-height:100vh;">
 
-  <header style="position:sticky; top:0; z-index:50; background:#091d38;">
-    <div class="st-pad" style="max-width:1600px; margin:0 auto; padding:0 28px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
-      <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
-        <img src="bmh-mark-cream.png?v=20261005" alt="BrandMyHoReCa" style="height:40px; width:auto; display:block;">
+  <header class="hd {{ headerClass }}" style="position:sticky; top:0; z-index:50;">
+    <div class="st-pad hd-in" style="max-width:1600px; margin:0 auto; padding:0 28px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+      <a href="index.html" class="hd-logo" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
+        <img src="bmh-mark-cream.png?v=2026100502" alt="BrandMyHoReCa" style="width:auto; display:block;">
         <span style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#bd9a63; border-left:1px solid rgba(189,154,99,0.4); padding-left:14px;">Studio</span>
       </a>
       <nav style="display:flex; align-items:center; gap:26px;">
-        <a class="st-hide-m" href="index.html" style="font-size:13px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Home</a>
-        <a class="st-hide-m" href="catalog.html" style="font-size:13px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Catalog</a>
-        <a href="https://wa.me/918980009697" target="_blank" style="background:#bd9a63; color:#091d38; font-size:12px; font-weight:600; letter-spacing:.6px; padding:10px 16px; border-radius:2px; text-decoration:none; white-space:nowrap;" style-hover="background:#cdab78;">WhatsApp us</a>
+        <a class="st-hide-m nv" href="index.html" style="font-size:13px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Home</a>
+        <a class="st-hide-m nv" href="catalog.html" style="font-size:13px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Catalog</a>
+        <a href="https://wa.me/918980009697" target="_blank" class="wa-btn" style="display:inline-flex; align-items:center; gap:9px; background:#bd9a63; color:#091d38; font-size:12px; font-weight:600; letter-spacing:.6px; padding:10px 16px; border-radius:2px; text-decoration:none; white-space:nowrap;"><span class="wa-dot"></span>WhatsApp us</a>
       </nav>
     </div>
   </header>
@@ -80,7 +106,7 @@
   <section class="st-pad" style="max-width:1600px; margin:0 auto; padding:12px 28px 64px;">
     <div class="st-grid">
 
-      <aside class="st-panel" style="position:sticky; top:88px; background:#fff; border:1px solid #e6e0d2; padding:26px 24px; display:flex; flex-direction:column; gap:22px;">
+      <aside class="st-panel rv in" style="position:sticky; top:88px; background:#fff; border:1px solid #e6e0d2; padding:26px 24px; display:flex; flex-direction:column; gap:22px;">
         <label style="display:flex; flex-direction:column; gap:8px;">
           <span style="font-size:12px; font-weight:600; color:#0e2748;">Brand name</span>
           <input type="text" value="{{ name }}" onInput="{{ onName }}" placeholder="e.g. Azure Bistro" maxLength="28" style="width:100%; border:1px solid #d9d2c3; border-radius:3px; background:#fbfaf6; padding:12px 14px; font-family:'Cormorant Garamond',Georgia,serif; font-size:24px; font-weight:600; color:#0e2748; outline:none;">
@@ -130,7 +156,7 @@
         </div>
 
         <div style="display:flex; flex-direction:column; gap:10px; padding-top:18px; border-top:1px solid #eee7d8;">
-          <button onClick="{{ sendWa }}" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#0e2748; color:#f3efe6; font-size:14px; font-weight:500; padding:15px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#bd9a63; color:#091d38;">Send this design for a free proof</button>
+          <button onClick="{{ sendWa }}" class="st-cta" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#0e2748; color:#f3efe6; font-size:14px; font-weight:500; padding:15px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#bd9a63; color:#091d38;">Send this design for a free proof</button>
           <p style="font-size:12px; line-height:1.55; color:#7a8794; margin:0;">Opens WhatsApp with your choices filled in. Attach your logo file in the chat. Our team sends a print-ready proof within 48 hours.</p>
         </div>
       </aside>
@@ -192,7 +218,7 @@
 
   <section class="st-pad" style="background:#091d38; padding:56px 28px;">
     <div style="max-width:1600px; margin:0 auto;">
-      <div class="st-steps" style="background:rgba(243,239,230,0.14); border:1px solid rgba(243,239,230,0.14);">
+      <div class="st-steps rv-stagger" style="background:rgba(243,239,230,0.14); border:1px solid rgba(243,239,230,0.14);">
         <div style="background:#091d38; padding:26px 24px; display:flex; flex-direction:column; gap:8px;">
           <span style="font-size:12px; letter-spacing:1.4px; color:#bd9a63;">01</span>
           <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; font-weight:600; color:#f3efe6;">Design it here</span>
@@ -217,9 +243,15 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   static LS = 'bmh-studio-v2';
-  state = { name: '', tagline: '', logo: '', withName: true, font: 'classic', ink: '#14365c', product: 'white', view: 'single' };
+  state = { scrolled: false, name: '', tagline: '', logo: '', withName: true, font: 'classic', ink: '#14365c', product: 'white', view: 'single' };
 
+  componentWillUnmount() { document.removeEventListener('scroll', this._onSc, true); }
   componentDidMount() {
+    let tick = false;
+    this._onSc = () => { if (tick) return; tick = true; requestAnimationFrame(() => { tick = false; const root = document.querySelector('[data-screen-label]'); const y = root ? Math.max(0, -root.getBoundingClientRect().top) : 0; const sc = y > 30; if (sc !== this.state.scrolled) this.setState({ scrolled: sc }); }); };
+    document.addEventListener('scroll', this._onSc, { passive: true, capture: true });
+    const arm = () => { const els = document.querySelectorAll('.rv:not(.in), .rv-stagger:not(.in)'); if (!els.length) return; const ro = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }), { threshold: 0.15 }); els.forEach((el) => ro.observe(el)); };
+    setTimeout(arm, 50); setTimeout(arm, 800);
     try { const s = JSON.parse(localStorage.getItem(Component.LS) || 'null'); if (s) this.setState(s); } catch (e) {}
   }
   save(patch) {
@@ -256,15 +288,15 @@ class Component extends DCLogic {
       { name: 'Forest', hex: '#2e5339' }, { name: 'Maroon', hex: '#6b1f2e' }, { name: 'Gold', hex: '#8f6a2c' },
     ];
     const P = [
-      { id: 'white', label: 'Sachet · white', img: 'studio-sachet-white.webp?v=20261005', w: 1254, h: 1254, spec: '57.25 × 100 mm open width · from 2,000 pcs',
+      { id: 'white', label: 'Sachet · white', img: 'studio-sachet-white.webp?v=2026100502', w: 1254, h: 1254, spec: '57.25 × 100 mm open width · from 2,000 pcs',
         areas: [{ l: 33.5, t: 19.5, w: 34.3, h: 40.3, size: 6.6, sub: 'SUGAR · 5g' }] },
-      { id: 'kraft', label: 'Sachet · kraft', img: 'studio-sachet-kraft.webp?v=20261005', w: 1536, h: 1024, spec: '57.25 × 100 mm · kraft stock · from 2,000 pcs',
+      { id: 'kraft', label: 'Sachet · kraft', img: 'studio-sachet-kraft.webp?v=2026100502', w: 1536, h: 1024, spec: '57.25 × 100 mm · kraft stock · from 2,000 pcs',
         areas: [{ l: 36.5, t: 25.6, w: 27, h: 48, size: 5.2, sub: 'DEMERARA SUGAR' }] },
-      { id: 'cutlery', label: 'Cutlery kit', img: 'studio-cutlery.webp?v=20261005', w: 1086, h: 1448, spec: '211 × 70 or 158.7 × 60 mm sleeve · from 1,000 pcs',
+      { id: 'cutlery', label: 'Cutlery kit', img: 'studio-cutlery.webp?v=2026100502', w: 1086, h: 1448, spec: '211 × 70 or 158.7 × 60 mm sleeve · from 1,000 pcs',
         areas: [{ l: 36.8, t: 20.7, w: 27.8, h: 16.6, size: 5.6 }] },
-      { id: 'wipes', label: 'Wet wipes', img: 'studio-wipes.webp?v=20261005', w: 1536, h: 1720, spec: 'Single wipe, sealed sleeve · from 5,000 pcs',
+      { id: 'wipes', label: 'Wet wipes', img: 'studio-wipes.webp?v=2026100502', w: 1536, h: 1720, spec: 'Single wipe, sealed sleeve · from 5,000 pcs',
         areas: [{ l: 23.4, t: 34, w: 32.2, h: 30, size: 5.6, sub: 'WET WIPES · REFRESHING' }] },
-      { id: 'water', label: 'Water', img: 'studio-water.webp?v=20261005', w: 1600, h: 868, spec: '200 ml · 500 ml · 1 L · custom sticker label · on quote',
+      { id: 'water', label: 'Water', img: 'studio-water.webp?v=2026100502', w: 1600, h: 868, spec: '200 ml · 500 ml · 1 L · custom sticker label · on quote',
         areas: [
           { l: 23.8, t: 58.2, w: 9.7, h: 28.9, size: 1.9, sub: '200 ML' },
           { l: 41, t: 39.7, w: 12.8, h: 43.5, size: 2.6, sub: '500 ML' },
@@ -303,6 +335,7 @@ class Component extends DCLogic {
     const btn = (on) => 'padding:9px 16px; font-size:12.5px; font-weight:500; border:none; border-radius:2px; cursor:pointer; background:' + (on ? '#0e2748' : 'transparent') + '; color:' + (on ? '#f3efe6' : '#3d4b58') + ';';
 
     return {
+      headerClass: s.scrolled ? 'hd-s' : '',
       name: s.name, tagline: s.tagline, hasLogo,
       logoThumbStyle: 'width:48px; height:48px; flex:none; background:#f6f2ea url(' + JSON.stringify(s.logo || '') + ') center / contain no-repeat;', noLogo: !hasLogo, withName: s.withName,
       onName: (e) => this.save({ name: e.target.value }),
