@@ -12,14 +12,14 @@
   gtag('config', 'G-2YSL322YC9');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261004"></script>
+<script src="./support.js?v=20261005"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
   <title>Catalog — BrandMyHoReCa</title>
   <meta name="description" content="Browse every BrandMyHoReCa SKU by venue: cutlery kits, sachets, branded water, wet wipes, compostable straws and butter paper. Build an enquiry list and send it on WhatsApp.">
-  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=20261004">
+  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=20261005">
   <meta name="theme-color" content="#091d38">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -45,7 +45,7 @@
 
   <header style="position:sticky; top:0; z-index:50; background:#091d38;">
     <div class="cat-pad" style="max-width:1600px; margin:0 auto; padding:0 28px; height:72px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
-      <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;"><img src="bmh-mark-cream.png?v=20261004" alt="BrandMyHoReCa" style="height:44px; width:auto; display:block;"><span style="font-size:13px; color:rgba(243,239,230,0.7);">Catalog</span></a>
+      <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;"><img src="bmh-mark-cream.png?v=20261005" alt="BrandMyHoReCa" style="height:44px; width:auto; display:block;"><span style="font-size:13px; color:rgba(243,239,230,0.7);">Catalog</span></a>
       <div style="flex:1; max-width:520px; position:relative;">
         <input type="search" placeholder="Search sugar, cutlery, 200 ml…" value="{{ q }}" onChange="{{ onSearch }}" style="width:100%; padding:11px 14px 11px 40px; border:1px solid rgba(243,239,230,0.2); border-radius:3px; background:rgba(243,239,230,0.08); color:#f3efe6; font-family:'Jost',sans-serif; font-size:14px; outline:none;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(243,239,230,0.6)" stroke-width="2" style="position:absolute; left:14px; top:13px;"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke-linecap="round"/></svg>
@@ -138,7 +138,7 @@ class Component extends DCLogic {
   static LS = 'bmh-enquiry-list';
   componentDidMount() {
     try { const s = JSON.parse(localStorage.getItem(Component.LS) || '[]'); if (Array.isArray(s)) this.setState({ list: s }); } catch (e) {}
-    try { const h = (location.hash || '').replace('#', ''); if (h) this.setState({ venue: h }); } catch (e) {}
+    try { const h = (location.hash || '').replace('#', ''); if (['cloud','restaurant','cafe','hotel','caterer','travel'].indexOf(h) > -1) this.setState({ venue: h }); } catch (e) {}
   }
   saveList(list) { this.setState({ list }); try { localStorage.setItem(Component.LS, JSON.stringify(list)); } catch (e) {} }
   renderVals() {
@@ -153,38 +153,38 @@ class Component extends DCLogic {
       { key:'travel', label:'Airline & corporate', note:'Compact, individually sealed, tray-sized.' },
     ];
     const TYPES = [
-      { key:'all', label:'All', img:'product-flatlay.webp?v=20261004' },
-      { key:'cutlery', label:'Cutlery kits', img:'photo-cutlery-kraft.webp?v=20261004' },
-      { key:'sachet', label:'Sachets', img:'photo-brownsugar-wood.webp?v=20261004' },
-      { key:'water', label:'Water', img:'prod-water.webp?v=20261004' },
-      { key:'wipes', label:'Wet wipes', img:'life-wetwipes-hand.webp?v=20261004' },
-      { key:'straws', label:'Straws', img:'prod-straws.webp?v=20261004' },
-      { key:'paper', label:'Butter paper', img:'prod-butter-paper.webp?v=20261004' },
+      { key:'all', label:'All', img:'product-flatlay.webp?v=20261005' },
+      { key:'cutlery', label:'Cutlery kits', img:'photo-cutlery-kraft.webp?v=20261005' },
+      { key:'sachet', label:'Sachets', img:'photo-brownsugar-wood.webp?v=20261005' },
+      { key:'water', label:'Water', img:'prod-water.webp?v=20261005' },
+      { key:'wipes', label:'Wet wipes', img:'life-wetwipes-hand.webp?v=20261005' },
+      { key:'straws', label:'Straws', img:'prod-straws.webp?v=20261005' },
+      { key:'paper', label:'Butter paper', img:'prod-butter-paper.webp?v=20261005' },
     ];
     const CHIPS = [ { key:'kraft', label:'Kraft' }, { key:'chromo', label:'Chromo / white' }, { key:'lowmoq', label:'MOQ ≤ 2,000' }, { key:'eco', label:'Compostable' } ];
     const S = (v) => v; // venues shorthand
     const SKUS = [
-      { id:'kit-full', type:'cutlery', name:'Full cutlery kit', spec:'Knife, fork, spoon, tissue, salt, pepper · 230×80 or 240×90 mm', moq:1000, price:'from ₹4/pc', img:'kit-full.webp?v=20261004', pos:'42% 50%', venues:['hotel','caterer','travel','restaurant'], tags:['kraft','chromo'], badge:'Most complete' },
-      { id:'kit-kf', type:'cutlery', name:'Knife + fork kit', spec:'With tissue · 200×70 or 220×80 mm', moq:1000, price:'from ₹4/pc', img:'kit-knife-fork.webp?v=20261004', pos:'42% 50%', venues:['restaurant','hotel'], tags:['kraft','chromo'] },
-      { id:'kit-sf', type:'cutlery', name:'Spoon + fork kit', spec:'With tissue · 200×70 mm · rice, noodles, fast food', moq:1000, price:'from ₹4/pc', img:'kit-spoon-fork.webp?v=20261004', pos:'42% 50%', venues:['cloud'], tags:['kraft','chromo'], badge:'Cloud kitchen pick' },
-      { id:'kit-st', type:'cutlery', name:'Spoon + tissue kit', spec:'Salt / pepper optional · 180×60 or 190×70 mm', moq:1000, price:'from ₹4/pc', img:'kit-spoon-tissue.webp?v=20261004', pos:'42% 50%', venues:['travel','caterer'], tags:['kraft','chromo'] },
-      { id:'kit-f', type:'cutlery', name:'Fork + tissue kit', spec:'Fork 150–170 mm · pouch 180×60 mm · salads, pasta, cakes', moq:1000, price:'from ₹4/pc', img:'kit-fork.webp?v=20261004', pos:'42% 50%', venues:['cafe'], tags:['kraft','chromo'] },
-      { id:'s-sugar', type:'sachet', name:'White sugar sachet', spec:'5g · 57.25×100 mm open width', moq:2000, price:'from ₹2/pc', img:'sachet-sugar.webp?v=20261004', pos:'center', venues:['cafe','restaurant','hotel'], tags:['chromo','kraft','lowmoq'], badge:'Bestseller' },
-      { id:'s-dem', type:'sachet', name:'Demerara sachet', spec:'5g raw cane · kraft or chromo', moq:2000, price:'from ₹2/pc', img:'photo-demerara-kraft.webp?v=20261004', pos:'center', venues:['cafe','restaurant','hotel'], tags:['kraft','chromo','lowmoq'] },
-      { id:'s-jag', type:'sachet', name:'Jaggery powder sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'sachet-jaggery.webp?v=20261004', pos:'center', venues:['cafe','hotel'], tags:['chromo','kraft','lowmoq'] },
-      { id:'s-monk', type:'sachet', name:'Monk fruit sachet', spec:'5g · zero calorie', moq:2000, price:'from ₹2/pc', img:'sachet-monkfruit.webp?v=20261004', pos:'center', venues:['cafe','hotel'], tags:['chromo','lowmoq'] },
-      { id:'s-salt', type:'sachet', name:'Iodized salt stick', spec:'3g', moq:2000, price:'from ₹2/pc', img:'sachet-salt.webp?v=20261004', pos:'center', venues:['cloud','restaurant','caterer'], tags:['chromo','lowmoq'] },
-      { id:'s-pep', type:'sachet', name:'Black pepper stick', spec:'3g ground', moq:2000, price:'from ₹2/pc', img:'photo-pepper-wood.webp?v=20261004', pos:'center 40%', venues:['cloud','restaurant','caterer'], tags:['chromo','lowmoq'] },
-      { id:'s-chilli', type:'sachet', name:'Chilli flakes sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'sachet-chilliflakes.webp?v=20261004', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
-      { id:'s-oreg', type:'sachet', name:'Oregano sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'photo-oregano-wood.webp?v=20261004', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
-      { id:'s-pizza', type:'sachet', name:'Pizza seasoning sachet', spec:'5g blend', moq:2000, price:'from ₹2/pc', img:'sachet-pizzaseasoning.webp?v=20261004', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
-      { id:'s-fresh', type:'sachet', name:'Mouth freshener stick', spec:'Saunf mukhwas · pure veg', moq:2000, price:'from ₹2/pc', img:'sachet-mouthfreshener.webp?v=20261004', pos:'center', venues:['caterer','travel','restaurant'], tags:['chromo','lowmoq'] },
-      { id:'w-200', type:'water', name:'Branded water 200 ml', spec:'Custom sticker label · rooms, trays, meetings', moq:1000, price:'On quote', img:'prod-water.webp?v=20261004', pos:'center', venues:['hotel','caterer','travel'], tags:['lowmoq'] },
-      { id:'w-500', type:'water', name:'Branded water 500 ml', spec:'Table standard · custom sticker label', moq:1000, price:'On quote', img:'story-water.webp?v=20261004', pos:'center 30%', venues:['restaurant','cafe'], tags:['lowmoq'] },
-      { id:'w-1l', type:'water', name:'Branded water 1 litre', spec:'Fine dining, banquets, events', moq:1000, price:'On quote', img:'life-table-kit.webp?v=20261004', pos:'center 45%', venues:['hotel','restaurant'], tags:['lowmoq'] },
-      { id:'wipe', type:'wipes', name:'Wet wipe sachet', spec:'Single wipe · pearl or matte film · ≈165×130 mm', moq:5000, price:'from ₹5/pc', img:'life-wetwipes-hand.webp?v=20261004', pos:'center 70%', venues:['cloud','restaurant','hotel','caterer','travel'], tags:[] },
-      { id:'straw', type:'straws', name:'Compostable straw, sleeved', spec:'6 mm Ø · printed paper wrap · PLA or paper', moq:10000, price:'from ₹2.5/pc', img:'prod-straws.webp?v=20261004', pos:'center', venues:['cafe','cloud'], tags:['eco'] },
-      { id:'butter', type:'paper', name:'Printed butter paper', spec:'Food-grade · natural kraft or white MG · custom size', moq:5000, price:'On quote', img:'prod-butter-paper.webp?v=20261004', pos:'center', venues:['restaurant','hotel','cafe'], tags:['kraft'] },
+      { id:'kit-full', type:'cutlery', name:'Full cutlery kit', spec:'Knife, fork, spoon, tissue, salt, pepper · 230×80 or 240×90 mm', moq:1000, price:'from ₹4/pc', img:'kit-full.webp?v=20261005', pos:'42% 50%', venues:['hotel','caterer','travel','restaurant'], tags:['kraft','chromo'], badge:'Most complete' },
+      { id:'kit-kf', type:'cutlery', name:'Knife + fork kit', spec:'With tissue · 200×70 or 220×80 mm', moq:1000, price:'from ₹4/pc', img:'kit-knife-fork.webp?v=20261005', pos:'42% 50%', venues:['restaurant','hotel'], tags:['kraft','chromo'] },
+      { id:'kit-sf', type:'cutlery', name:'Spoon + fork kit', spec:'With tissue · 200×70 mm · rice, noodles, fast food', moq:1000, price:'from ₹4/pc', img:'kit-spoon-fork.webp?v=20261005', pos:'42% 50%', venues:['cloud'], tags:['kraft','chromo'], badge:'Cloud kitchen pick' },
+      { id:'kit-st', type:'cutlery', name:'Spoon + tissue kit', spec:'Salt / pepper optional · 180×60 or 190×70 mm', moq:1000, price:'from ₹4/pc', img:'kit-spoon-tissue.webp?v=20261005', pos:'42% 50%', venues:['travel','caterer'], tags:['kraft','chromo'] },
+      { id:'kit-f', type:'cutlery', name:'Fork + tissue kit', spec:'Fork 150–170 mm · pouch 180×60 mm · salads, pasta, cakes', moq:1000, price:'from ₹4/pc', img:'kit-fork.webp?v=20261005', pos:'42% 50%', venues:['cafe'], tags:['kraft','chromo'] },
+      { id:'s-sugar', type:'sachet', name:'White sugar sachet', spec:'5g · 57.25×100 mm open width', moq:2000, price:'from ₹2/pc', img:'sachet-sugar.webp?v=20261005', pos:'center', venues:['cafe','restaurant','hotel'], tags:['chromo','kraft','lowmoq'], badge:'Bestseller' },
+      { id:'s-dem', type:'sachet', name:'Demerara sachet', spec:'5g raw cane · kraft or chromo', moq:2000, price:'from ₹2/pc', img:'photo-demerara-kraft.webp?v=20261005', pos:'center', venues:['cafe','restaurant','hotel'], tags:['kraft','chromo','lowmoq'] },
+      { id:'s-jag', type:'sachet', name:'Jaggery powder sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'sachet-jaggery.webp?v=20261005', pos:'center', venues:['cafe','hotel'], tags:['chromo','kraft','lowmoq'] },
+      { id:'s-monk', type:'sachet', name:'Monk fruit sachet', spec:'5g · zero calorie', moq:2000, price:'from ₹2/pc', img:'sachet-monkfruit.webp?v=20261005', pos:'center', venues:['cafe','hotel'], tags:['chromo','lowmoq'] },
+      { id:'s-salt', type:'sachet', name:'Iodized salt stick', spec:'3g', moq:2000, price:'from ₹2/pc', img:'sachet-salt.webp?v=20261005', pos:'center', venues:['cloud','restaurant','caterer'], tags:['chromo','lowmoq'] },
+      { id:'s-pep', type:'sachet', name:'Black pepper stick', spec:'3g ground', moq:2000, price:'from ₹2/pc', img:'photo-pepper-wood.webp?v=20261005', pos:'center 40%', venues:['cloud','restaurant','caterer'], tags:['chromo','lowmoq'] },
+      { id:'s-chilli', type:'sachet', name:'Chilli flakes sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'sachet-chilliflakes.webp?v=20261005', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
+      { id:'s-oreg', type:'sachet', name:'Oregano sachet', spec:'5g', moq:2000, price:'from ₹2/pc', img:'photo-oregano-wood.webp?v=20261005', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
+      { id:'s-pizza', type:'sachet', name:'Pizza seasoning sachet', spec:'5g blend', moq:2000, price:'from ₹2/pc', img:'sachet-pizzaseasoning.webp?v=20261005', pos:'center', venues:['cloud'], tags:['chromo','lowmoq'] },
+      { id:'s-fresh', type:'sachet', name:'Mouth freshener stick', spec:'Saunf mukhwas · pure veg', moq:2000, price:'from ₹2/pc', img:'sachet-mouthfreshener.webp?v=20261005', pos:'center', venues:['caterer','travel','restaurant'], tags:['chromo','lowmoq'] },
+      { id:'w-200', type:'water', name:'Branded water 200 ml', spec:'Custom sticker label · rooms, trays, meetings', moq:1000, price:'On quote', img:'prod-water.webp?v=20261005', pos:'center', venues:['hotel','caterer','travel'], tags:['lowmoq'] },
+      { id:'w-500', type:'water', name:'Branded water 500 ml', spec:'Table standard · custom sticker label', moq:1000, price:'On quote', img:'story-water.webp?v=20261005', pos:'center 30%', venues:['restaurant','cafe'], tags:['lowmoq'] },
+      { id:'w-1l', type:'water', name:'Branded water 1 litre', spec:'Fine dining, banquets, events', moq:1000, price:'On quote', img:'life-table-kit.webp?v=20261005', pos:'center 45%', venues:['hotel','restaurant'], tags:['lowmoq'] },
+      { id:'wipe', type:'wipes', name:'Wet wipe sachet', spec:'Single wipe · pearl or matte film · ≈165×130 mm', moq:5000, price:'from ₹5/pc', img:'life-wetwipes-hand.webp?v=20261005', pos:'center 70%', venues:['cloud','restaurant','hotel','caterer','travel'], tags:[] },
+      { id:'straw', type:'straws', name:'Compostable straw, sleeved', spec:'6 mm Ø · printed paper wrap · PLA or paper', moq:10000, price:'from ₹2.5/pc', img:'prod-straws.webp?v=20261005', pos:'center', venues:['cafe','cloud'], tags:['eco'] },
+      { id:'butter', type:'paper', name:'Printed butter paper', spec:'Food-grade · natural kraft or white MG · custom size', moq:5000, price:'On quote', img:'prod-butter-paper.webp?v=20261005', pos:'center', venues:['restaurant','hotel','cafe'], tags:['kraft'] },
     ];
     const st = this.state;
     const q = (st.q || '').toLowerCase().trim();

@@ -12,447 +12,327 @@
   gtag('config', 'G-2YSL322YC9');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261004"></script>
+<script src="./support.js?v=20261005"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-  <title>BMH Studio — See your brand, for real</title>
+  <title>BMH Studio — See your brand on the product</title>
+  <meta name="description" content="Type your brand name or upload your logo and see it on BrandMyHoReCa sachets, cutlery kits, wet wipes and water bottles. Get a free proof on WhatsApp.">
+  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=20261005">
+  <meta name="theme-color" content="#091d38">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior:smooth; }
-    html, body { margin:0; padding:0; background:#f3efe6; }
+    html, body { margin:0; padding:0; background:#f3efe6; overflow-x:hidden; }
     *, *::before, *::after { box-sizing:border-box; }
     a { color:#0e2748; } a:hover { color:#bd9a63; }
     input, button { font-family:'Jost',sans-serif; }
-    @keyframes bmhPulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-    @keyframes bmhIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes bmhTypeDot { 0%,100% { opacity:0.25; } 50% { opacity:1; } }
+    @keyframes stIn { from { opacity:0; transform:scale(.985); } to { opacity:1; transform:none; } }
+    .st-grid { display:grid; grid-template-columns:minmax(300px,380px) minmax(0,1fr); gap:28px; align-items:start; }
+    .st-set { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; }
+    .st-thumbs { display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:10px; }
+    .st-steps { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; }
     @media (max-width: 900px) {
-      .studio-grid { grid-template-columns: 1fr !important; }
-      .studio-controls { order: 2; }
-      .studio-preview { order: 1; }
-      section { padding-left: 20px !important; padding-right: 20px !important; }
-      h1 { font-size: 40px !important; }
+      .st-grid { grid-template-columns:1fr; }
+      .st-panel { position:static !important; order:2; }
+      .st-set { grid-template-columns:repeat(2, minmax(0,1fr)); }
+      .st-steps { grid-template-columns:1fr; }
+      .st-pad { padding-left:18px !important; padding-right:18px !important; }
+      .st-hide-m { display:none !important; }
+      h1 { font-size:36px !important; }
     }
-    @media (max-width: 560px) {
-      .engine-status { display: none !important; }
-    }
+    @media (max-width: 520px) { .st-thumbs { grid-template-columns:repeat(5, 76px); overflow-x:auto; } }
   </style>
 </helmet>
 
-<div data-screen-label="BMH AI Studio" style="font-family:'Jost',sans-serif; color:#2c3744; background:#f3efe6;">
+<div data-screen-label="BMH Studio" style="font-family:'Jost',system-ui,sans-serif; color:#2c3744; background:#f3efe6; min-height:100vh;">
 
-  <!-- ══ MINI NAV ══ -->
-  <header style="position:sticky; top:0; z-index:50; background:#091d38; border-bottom:1px solid rgba(189,154,99,0.25);">
-    <div style="max-width:1440px; margin:0 auto; padding:0 24px; height:70px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+  <header style="position:sticky; top:0; z-index:50; background:#091d38;">
+    <div class="st-pad" style="max-width:1600px; margin:0 auto; padding:0 28px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
       <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
-        <img src="bmh-mark-cream.png?v=20261004" alt="BrandMyHoReCa" style="height:44px; width:auto; display:block;">
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2.5px; color:#bd9a63; border-left:1px solid rgba(189,154,99,0.4); padding-left:14px;">STUDIO</span>
+        <img src="bmh-mark-cream.png?v=20261005" alt="BrandMyHoReCa" style="height:40px; width:auto; display:block;">
+        <span style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#bd9a63; border-left:1px solid rgba(189,154,99,0.4); padding-left:14px;">Studio</span>
       </a>
-      <div style="display:flex; align-items:center; gap:20px;">
-        <span class="engine-status" style="display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; color:rgba(243,239,230,0.6); white-space:nowrap;">
-          <span style="width:6px; height:6px; border-radius:50%; background:#7ec9a3; animation:bmhPulse 2.2s infinite;"></span>ENGINE ONLINE
-        </span>
-        <a href="index.html" style="font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(243,239,230,0.8); text-decoration:none; white-space:nowrap;" style-hover="color:#bd9a63;">← Main site</a>
-      </div>
+      <nav style="display:flex; align-items:center; gap:26px;">
+        <a class="st-hide-m" href="index.html" style="font-size:13px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Home</a>
+        <a class="st-hide-m" href="catalog.html" style="font-size:13px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Catalog</a>
+        <a href="https://wa.me/918980009697" target="_blank" style="background:#bd9a63; color:#091d38; font-size:12px; font-weight:600; letter-spacing:.6px; padding:10px 16px; border-radius:2px; text-decoration:none; white-space:nowrap;" style-hover="background:#cdab78;">WhatsApp us</a>
+      </nav>
     </div>
   </header>
 
-  <!-- ══ DESIGN STUDIO ══ -->
-  <section style="padding:56px 40px 72px;">
-    <div style="max-width:1440px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:40px;">
-        <div style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2.5px; color:#bd9a63; margin-bottom:18px;">
-          <span style="width:7px; height:7px; border-radius:50%; background:#bd9a63; animation:bmhPulse 2.4s infinite;"></span>BMH·STUDIO — DESIGN ENGINE
-        </div>
-        <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(40px,4.6vw,62px); font-weight:600; color:#0e2748; margin:0 0 14px; line-height:1.02;">Your brand, on the table,<br>before you finish typing</h1>
-        <p style="font-size:16px; line-height:1.7; color:#5a7080; font-weight:300; max-width:520px; margin:0 auto;">No designer. No brief. No wait. Type your name — the studio prints it onto the real products, live.</p>
+  <section class="st-pad" style="max-width:1600px; margin:0 auto; padding:44px 28px 20px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;">
+      <div style="max-width:680px;">
+        <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:52px; font-weight:600; color:#0e2748; margin:0 0 12px; line-height:1.02;">See your brand on the product.</h1>
+        <p style="font-size:16px; line-height:1.65; color:#5a6a78; margin:0; text-wrap:pretty;">Type your name or upload your logo. Switch between products to see how it prints, then send it to us for a free, print-ready proof.</p>
       </div>
-
-      <div class="studio-grid" style="display:grid; grid-template-columns:minmax(320px,0.72fr) 1.28fr; gap:32px; align-items:start;">
-
-        <!-- ── CONTROLS ── -->
-        <div class="studio-controls" style="background:#fff; border:1px solid #e6e0d2; padding:32px 30px; position:sticky; top:94px;">
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; color:#5f7686; margin-bottom:10px;">01 · YOUR BRAND NAME</div>
-          <input type="text" value="{{ brandName }}" onInput="{{ onName }}" placeholder="e.g. Azure Bistro" maxLength="24"
-            style="width:100%; border:none; border-bottom:2px solid #bd9a63; background:transparent; padding:10px 2px; font-family:'Cormorant Garamond',Georgia,serif; font-size:30px; font-weight:600; color:#0e2748; outline:none;">
-
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; color:#5f7686; margin:30px 0 12px;">02 · LOGO STYLE</div>
-          <div style="display:flex; gap:10px;">
-            <sc-for list="{{ fontOptions }}" as="f" hint-placeholder-count="3">
-              <button onClick="{{ f.select }}" style="{{ f.style }}">
-                <span style="{{ f.aaStyle }}">Aa</span>
-                <span style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#5f7686;">{{ f.label }}</span>
-              </button>
-            </sc-for>
-          </div>
-
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; color:#5f7686; margin:30px 0 12px;">03 · INK</div>
-          <div style="display:flex; gap:12px;">
-            <sc-for list="{{ inkOptions }}" as="k" hint-placeholder-count="4">
-              <button onClick="{{ k.select }}" title="{{ k.name }}" style="{{ k.style }}"></button>
-            </sc-for>
-          </div>
-
-          <div style="height:1px; background:#eee6d6; margin:28px 0;"></div>
-
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#bd9a63; line-height:1.9;">{{ statusLine }}</div>
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#5f7686; line-height:1.9; margin-top:12px;">{{ specLine1 }}<br>{{ specLine2 }}</div>
-
-          <button onClick="{{ waStudio }}" style="width:100%; margin-top:26px; display:flex; align-items:center; justify-content:center; gap:10px; background:#bd9a63; color:#091d38; font-size:12px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:16px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#cdab78;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="1.8"><path d="M5 4 H9 L11 9 L8.5 11 C9.5 13.5 11 15 13 16 L15 13.5 L20 15.5 V19 C20 20 19 21 18 21 C10 20.5 4 14 3.5 6 C3.5 5 4 4 5 4 Z" stroke-linejoin="round"></path></svg>
-            Get this exact mockup — WhatsApp
-          </button>
-          <p style="font-size:11px; line-height:1.6; color:#a99f88; margin:12px 0 0; text-align:center;">Live preview is indicative · final artwork proofed by our team before print.</p>
-        </div>
-
-        <!-- ── PREVIEW ── -->
-        <div class="studio-preview">
-          <div style="display:flex; gap:8px; margin-bottom:14px;">
-            <sc-for list="{{ productTabs }}" as="p" hint-placeholder-count="3">
-              <button onClick="{{ p.select }}" style="{{ p.style }}">{{ p.label }}</button>
-            </sc-for>
-          </div>
-
-          <!-- SACHET -->
-          <sc-if value="{{ showSachet }}" hint-placeholder-val="{{ true }}">
-            <div style="position:relative; aspect-ratio:3/2; overflow:hidden; box-shadow:0 30px 70px rgba(14,39,72,0.18); animation:bmhIn .4s ease both;">
-              <img src="prod-demerara.webp?v=20261004" alt="Kraft sachet" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
-              <div style="position:absolute; left:33%; top:22.5%; width:34.5%; height:54.5%; background:rgba(196,153,102,0.5); backdrop-filter:blur(20px) saturate(1.05); border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; padding:10px 8px;">
-                <div style="{{ sachetNameStyle }}">{{ displayName }}</div>
-                <div style="{{ sachetRuleStyle }}"></div>
-                <div style="{{ sachetSubStyle }}">FINE FOODS · SINCE {{ estYear }}</div>
-                <div style="{{ sachetProdStyle }}">DEMERARA SUGAR · 5g</div>
-              </div>
-              <div style="position:absolute; left:18px; bottom:16px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.5px; color:rgba(255,255,255,0.85); background:rgba(9,29,56,0.55); backdrop-filter:blur(4px); padding:6px 12px; border-radius:16px;">LIVE RENDER · DEMERARA SUGAR SACHET · KRAFT POLY</div>
-            </div>
-          </sc-if>
-
-          <!-- CUTLERY -->
-          <sc-if value="{{ showCutlery }}" hint-placeholder-val="{{ false }}">
-            <div style="position:relative; aspect-ratio:4/3; overflow:hidden; box-shadow:0 30px 70px rgba(14,39,72,0.18); background:#e9e2d4; animation:bmhIn .4s ease both;">
-              <img src="prod-cutlery.webp?v=20261004" alt="Cutlery kit" style="position:absolute; left:50%; top:50%; height:104%; width:auto; transform:translate(-50%,-50%);">
-              <div style="position:absolute; left:39%; top:19.5%; width:22.5%; height:18%; background:rgba(251,249,244,0.97); backdrop-filter:blur(10px); border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:6px;">
-                <div style="{{ cutleryNameStyle }}">{{ displayName }}</div>
-                <div style="{{ waterRuleStyle }}"></div>
-                <div style="{{ cutlerySubStyle }}">CUTLERY KIT</div>
-              </div>
-              <div style="position:absolute; left:18px; bottom:16px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.5px; color:rgba(255,255,255,0.85); background:rgba(9,29,56,0.55); backdrop-filter:blur(4px); padding:6px 12px; border-radius:16px;">LIVE RENDER · CUTLERY KIT 211×70 · CHROMO POLY</div>
-            </div>
-          </sc-if>
-
-          <!-- WATER -->
-          <sc-if value="{{ showWater }}" hint-placeholder-val="{{ false }}">
-            <div style="position:relative; aspect-ratio:1863/1005; overflow:hidden; box-shadow:0 30px 70px rgba(14,39,72,0.18); animation:bmhIn .4s ease both;">
-              <img src="prod-water.webp?v=20261004" alt="Branded water bottles" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
-              <div style="position:absolute; left:39.7%; top:39%; width:14.9%; height:48.6%; background:linear-gradient(90deg, rgba(222,216,204,0.97) 0%, rgba(250,247,240,0.98) 18%, rgba(252,249,243,0.98) 50%, rgba(250,247,240,0.98) 82%, rgba(220,214,202,0.97) 100%); backdrop-filter:blur(8px); border-radius:10px; box-shadow:inset 0 -6px 12px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px 4px; overflow:hidden;">
-                <div style="{{ waterNameStyle }}">{{ displayName }}</div>
-                <div style="{{ waterRuleStyle }}"></div>
-                <div style="{{ waterSubStyle }}">DRINKING WATER</div>
-                <div style="{{ waterSizeStyle }}">500 ML</div>
-              </div>
-              <div style="position:absolute; left:59.7%; top:38%; width:16%; height:48.8%; background:linear-gradient(90deg, rgba(222,216,204,0.97) 0%, rgba(250,247,240,0.98) 18%, rgba(252,249,243,0.98) 50%, rgba(250,247,240,0.98) 82%, rgba(220,214,202,0.97) 100%); backdrop-filter:blur(8px); border-radius:10px; box-shadow:inset 0 -6px 12px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:8px 4px; overflow:hidden;">
-                <div style="{{ waterNameStyle2 }}">{{ displayName }}</div>
-                <div style="{{ waterRuleStyle }}"></div>
-                <div style="{{ waterSubStyle }}">DRINKING WATER</div>
-                <div style="{{ waterSizeStyle }}">1 LTR</div>
-              </div>
-              <div style="position:absolute; left:23.6%; top:59.4%; width:10.2%; height:28.2%; background:linear-gradient(90deg, rgba(222,216,204,0.97) 0%, rgba(250,247,240,0.98) 20%, rgba(252,249,243,0.98) 50%, rgba(250,247,240,0.98) 80%, rgba(220,214,202,0.97) 100%); backdrop-filter:blur(8px); border-radius:7px; box-shadow:inset 0 -4px 8px rgba(14,39,72,0.08), 0 1px 3px rgba(14,39,72,0.12); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; padding:5px 3px; overflow:hidden;">
-                <div style="{{ waterNameStyle3 }}">{{ displayName }}</div>
-                <div style="{{ waterSizeStyle }}">200 ML</div>
-              </div>
-              <div style="position:absolute; left:18px; bottom:16px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.5px; color:rgba(255,255,255,0.85); background:rgba(9,29,56,0.55); backdrop-filter:blur(4px); padding:6px 12px; border-radius:16px;">LIVE RENDER · 500ML &amp; 1L · BOPP LABEL</div>
-            </div>
-          </sc-if>
-
-        </div>
+      <div style="display:flex; gap:6px; background:#e9e3d6; padding:4px; border-radius:3px;">
+        <sc-for list="{{ views }}" as="v" hint-placeholder-count="2">
+          <button onClick="{{ v.select }}" style="{{ v.style }}">{{ v.label }}</button>
+        </sc-for>
       </div>
     </div>
   </section>
 
-  <!-- ══ CONCIERGE / QUOTE AGENT ══ -->
-  <section id="concierge" style="background:#091d38; padding:64px 40px 80px;">
-    <div style="max-width:840px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:34px;">
-        <div style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2.5px; color:#bd9a63; margin-bottom:18px;">
-          <span style="width:7px; height:7px; border-radius:50%; background:#7ec9a3; animation:bmhPulse 2.2s infinite;"></span>BMH·CONCIERGE — QUOTE ENGINE
-        </div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(34px,3.6vw,48px); font-weight:600; color:#f3efe6; margin:0 0 12px; line-height:1.05;">Tell it what you run.<br>It builds your order.</h2>
-        <p style="font-size:15.5px; line-height:1.7; color:rgba(243,239,230,0.65); font-weight:300; max-width:460px; margin:0 auto;">Three taps from venue to a complete branded-pantry spec — sent to a human on WhatsApp, priced within the hour.</p>
-      </div>
+  <section class="st-pad" style="max-width:1600px; margin:0 auto; padding:12px 28px 64px;">
+    <div class="st-grid">
 
-      <div style="background:#0e2748; border:1px solid rgba(189,154,99,0.25); padding:30px 30px 26px; box-shadow:0 30px 80px rgba(0,0,0,0.35);">
-        <div style="display:flex; flex-direction:column; gap:14px; min-height:220px;">
-          <sc-for list="{{ chatMessages }}" as="m" hint-placeholder-count="1">
-            <div style="{{ m.rowStyle }}">
-              <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
-            </div>
-          </sc-for>
-          <sc-if value="{{ isTyping }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex; justify-content:flex-start;">
-              <div style="background:rgba(243,239,230,0.08); border-radius:14px 14px 14px 3px; padding:14px 18px; display:flex; gap:5px;">
-                <span style="width:6px; height:6px; border-radius:50%; background:#bd9a63; animation:bmhTypeDot 1s 0s infinite;"></span>
-                <span style="width:6px; height:6px; border-radius:50%; background:#bd9a63; animation:bmhTypeDot 1s .2s infinite;"></span>
-                <span style="width:6px; height:6px; border-radius:50%; background:#bd9a63; animation:bmhTypeDot 1s .4s infinite;"></span>
-              </div>
+      <aside class="st-panel" style="position:sticky; top:88px; background:#fff; border:1px solid #e6e0d2; padding:26px 24px; display:flex; flex-direction:column; gap:22px;">
+        <label style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; font-weight:600; color:#0e2748;">Brand name</span>
+          <input type="text" value="{{ name }}" onInput="{{ onName }}" placeholder="e.g. Azure Bistro" maxLength="28" style="width:100%; border:1px solid #d9d2c3; border-radius:3px; background:#fbfaf6; padding:12px 14px; font-family:'Cormorant Garamond',Georgia,serif; font-size:24px; font-weight:600; color:#0e2748; outline:none;">
+        </label>
+
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; font-weight:600; color:#0e2748;">Logo <span style="font-weight:400; color:#8a96a1;">(optional)</span></span>
+          <sc-if value="{{ noLogo }}" hint-placeholder-val="{{ true }}">
+            <label style="display:flex; align-items:center; justify-content:center; gap:10px; border:1px dashed #c9bfa9; border-radius:3px; padding:16px; cursor:pointer; font-size:13px; color:#0e2748; background:#fbfaf6;" style-hover="border-color:#bd9a63; background:#f6f1e6;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0e2748" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+              Upload PNG or JPG
+              <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" onChange="{{ onLogo }}" style="display:none;">
+            </label>
+          </sc-if>
+          <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:12px; border:1px solid #e6e0d2; border-radius:3px; padding:10px 12px;">
+              <div role="img" aria-label="Your logo" style="{{ logoThumbStyle }}"></div>
+              <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#3d4b58; cursor:pointer; flex:1;">
+                <input type="checkbox" checked="{{ withName }}" onChange="{{ toggleName }}">Show name too
+              </label>
+              <button onClick="{{ removeLogo }}" style="background:none; border:none; font-size:12px; color:#8a3b28; cursor:pointer; text-decoration:underline;">Remove</button>
             </div>
           </sc-if>
         </div>
 
-        <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
-            <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
-              <button onClick="{{ c.pick }}" style="background:rgba(189,154,99,0.12); border:1px solid rgba(189,154,99,0.45); color:#f3efe6; font-size:13px; font-weight:500; padding:11px 20px; border-radius:22px; cursor:pointer; white-space:nowrap;" style-hover="background:rgba(189,154,99,0.28);">{{ c.label }}</button>
+        <label style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; font-weight:600; color:#0e2748;">Line under the name <span style="font-weight:400; color:#8a96a1;">(optional)</span></span>
+          <input type="text" value="{{ tagline }}" onInput="{{ onTagline }}" placeholder="e.g. Café · Ahmedabad" maxLength="32" style="width:100%; border:1px solid #d9d2c3; border-radius:3px; background:#fbfaf6; padding:11px 14px; font-size:14px; color:#0e2748; outline:none;">
+        </label>
+
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; font-weight:600; color:#0e2748;">Lettering</span>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
+            <sc-for list="{{ fonts }}" as="f" hint-placeholder-count="3">
+              <button onClick="{{ f.select }}" style="{{ f.style }}"><span style="{{ f.aa }}">Aa</span><span style="font-size:11px; color:#6a7784;">{{ f.label }}</span></button>
             </sc-for>
           </div>
-        </sc-if>
+        </div>
 
-        <sc-if value="{{ showKit }}" hint-placeholder-val="{{ false }}">
-          <div style="margin-top:24px; border:1px solid rgba(189,154,99,0.35); background:rgba(189,154,99,0.07); padding:26px 26px 24px; animation:bmhIn .5s ease both;">
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; color:#bd9a63; margin-bottom:12px;">ORDER SPEC · DRAFTED {{ kitTime }}</div>
-            <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; font-weight:600; color:#f3efe6; margin-bottom:14px; line-height:1.15;">{{ kitTitle }}</div>
-            <div style="display:flex; flex-direction:column; gap:9px; margin-bottom:20px;">
-              <sc-for list="{{ kitLines }}" as="kl" hint-placeholder-count="4">
-                <div style="display:flex; justify-content:space-between; gap:14px; font-size:13.5px; border-bottom:1px dashed rgba(243,239,230,0.14); padding-bottom:9px;">
-                  <span style="color:rgba(243,239,230,0.85);">{{ kl.name }}</span>
-                  <span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#bd9a63; white-space:nowrap;">{{ kl.qty }}</span>
-                </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; font-weight:600; color:#0e2748;">Print colour · <span style="font-weight:400; color:#6a7784;">{{ inkName }}</span></span>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <sc-for list="{{ inks }}" as="k" hint-placeholder-count="6">
+              <button onClick="{{ k.select }}" title="{{ k.name }}" aria-label="{{ k.name }}" style="{{ k.style }}"></button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px; padding-top:18px; border-top:1px solid #eee7d8;">
+          <button onClick="{{ sendWa }}" style="display:flex; align-items:center; justify-content:center; gap:10px; background:#0e2748; color:#f3efe6; font-size:14px; font-weight:500; padding:15px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#bd9a63; color:#091d38;">Send this design for a free proof</button>
+          <p style="font-size:12px; line-height:1.55; color:#7a8794; margin:0;">Opens WhatsApp with your choices filled in. Attach your logo file in the chat. Our team sends a print-ready proof within 48 hours.</p>
+        </div>
+      </aside>
+
+      <main style="min-width:0; display:flex; flex-direction:column; gap:16px;">
+        <sc-if value="{{ isSingle }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <sc-for list="{{ single }}" as="p" hint-placeholder-count="1">
+              <div style="{{ p.boxStyle }}">
+                <div role="img" aria-label="{{ p.label }} with your brand" style="{{ p.imgStyle }}"></div>
+                <sc-for list="{{ p.areas }}" as="a" hint-placeholder-count="1">
+                  <div style="{{ a.style }}">
+                    <sc-if value="{{ a.logo }}" hint-placeholder-val="{{ false }}"><div style="{{ a.logoStyle }}"></div></sc-if>
+                    <sc-if value="{{ a.showName }}" hint-placeholder-val="{{ true }}"><div style="{{ a.nameStyle }}">{{ a.name }}</div></sc-if>
+                    <sc-if value="{{ a.tagline }}" hint-placeholder-val="{{ false }}"><div style="{{ a.tagStyle }}">{{ a.tagline }}</div></sc-if>
+                    <sc-if value="{{ a.sub }}" hint-placeholder-val="{{ false }}"><div style="{{ a.subStyle }}">{{ a.sub }}</div></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;">
+              <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; font-weight:600; color:#0e2748;">{{ activeLabel }}</span>
+              <span style="font-size:13px; color:#6a7784;">{{ activeSpec }}</span>
+            </div>
+            <div class="st-thumbs">
+              <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.select }}" style="{{ t.style }}">
+                  <span style="position:relative; display:block; aspect-ratio:1; background:#fff; overflow:hidden;"><span style="{{ t.imgStyle }}"></span></span>
+                  <span style="display:block; padding:8px 4px; font-size:12px; color:#0e2748; text-align:center;">{{ t.label }}</span>
+                </button>
               </sc-for>
             </div>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <button onClick="{{ waConcierge }}" style="flex:1; min-width:220px; display:flex; align-items:center; justify-content:center; gap:10px; background:#bd9a63; color:#091d38; font-size:12px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px; border:none; border-radius:2px; cursor:pointer;" style-hover="background:#cdab78;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#091d38" stroke-width="1.8"><path d="M5 4 H9 L11 9 L8.5 11 C9.5 13.5 11 15 13 16 L15 13.5 L20 15.5 V19 C20 20 19 21 18 21 C10 20.5 4 14 3.5 6 C3.5 5 4 4 5 4 Z" stroke-linejoin="round"></path></svg>
-                Send spec — get exact pricing
-              </button>
-              <button onClick="{{ restartChat }}" style="background:transparent; border:1px solid rgba(243,239,230,0.3); color:rgba(243,239,230,0.75); font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; padding:15px 20px; border-radius:2px; cursor:pointer;" style-hover="border-color:#bd9a63; color:#bd9a63;">Start over</button>
-            </div>
-            <p style="font-size:10.5px; line-height:1.6; color:rgba(243,239,230,0.4); margin:14px 0 0;">Indicative quantities only — a human confirms exact pricing, GST &amp; freight on WhatsApp.</p>
           </div>
         </sc-if>
-      </div>
 
-      <p style="text-align:center; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:1.5px; color:rgba(243,239,230,0.35); margin:22px 0 0;">DRAFTED BY THE BMH ENGINE · EVERY ORDER SUPERVISED BY A HUMAN</p>
+        <sc-if value="{{ isSet }}" hint-placeholder-val="{{ false }}">
+          <div class="st-set">
+            <sc-for list="{{ set }}" as="p" hint-placeholder-count="5">
+              <figure style="margin:0; display:flex; flex-direction:column; gap:8px;">
+                <div style="{{ p.boxStyle }}">
+                  <div role="img" aria-label="{{ p.label }} with your brand" style="{{ p.imgStyle }}"></div>
+                  <sc-for list="{{ p.areas }}" as="a" hint-placeholder-count="1">
+                    <div style="{{ a.style }}">
+                      <sc-if value="{{ a.logo }}" hint-placeholder-val="{{ false }}"><div style="{{ a.logoStyle }}"></div></sc-if>
+                      <sc-if value="{{ a.showName }}" hint-placeholder-val="{{ true }}"><div style="{{ a.nameStyle }}">{{ a.name }}</div></sc-if>
+                      <sc-if value="{{ a.tagline }}" hint-placeholder-val="{{ false }}"><div style="{{ a.tagStyle }}">{{ a.tagline }}</div></sc-if>
+                      <sc-if value="{{ a.sub }}" hint-placeholder-val="{{ false }}"><div style="{{ a.subStyle }}">{{ a.sub }}</div></sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+                <figcaption style="font-size:13px; color:#0e2748;">{{ p.label }}</figcaption>
+              </figure>
+            </sc-for>
+          </div>
+        </sc-if>
+      </main>
     </div>
   </section>
 
+  <section class="st-pad" style="background:#091d38; padding:56px 28px;">
+    <div style="max-width:1600px; margin:0 auto;">
+      <div class="st-steps" style="background:rgba(243,239,230,0.14); border:1px solid rgba(243,239,230,0.14);">
+        <div style="background:#091d38; padding:26px 24px; display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; letter-spacing:1.4px; color:#bd9a63;">01</span>
+          <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; font-weight:600; color:#f3efe6;">Design it here</span>
+          <span style="font-size:14px; line-height:1.55; color:rgba(243,239,230,0.75);">Name, logo, lettering and colour. Nothing is saved on our side until you send it.</span>
+        </div>
+        <div style="background:#091d38; padding:26px 24px; display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; letter-spacing:1.4px; color:#bd9a63;">02</span>
+          <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; font-weight:600; color:#f3efe6;">Proof in 48 hours</span>
+          <span style="font-size:14px; line-height:1.55; color:rgba(243,239,230,0.75);">Our team sets your artwork to the exact print size and sends a proof with pricing.</span>
+        </div>
+        <div style="background:#091d38; padding:26px 24px; display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; letter-spacing:1.4px; color:#bd9a63;">03</span>
+          <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; font-weight:600; color:#f3efe6;">Approve and we print</span>
+          <span style="font-size:14px; line-height:1.55; color:rgba(243,239,230,0.75);">Production and delivery across India. Minimums start at 1,000 pieces.</span>
+        </div>
+      </div>
+      <p style="font-size:12px; color:rgba(243,239,230,0.5); margin:18px 0 0;">Previews are indicative. Final colours and placement are confirmed on the proof before printing.</p>
+    </div>
+  </section>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = {
-    name: '',
-    font: 'serif',
-    ink: '#14365c',
-    product: 'sachet',
-    // concierge
-    step: 0,
-    typing: false,
-    messages: [{ who: 'ai', text: "Namaste — I'm the BMH concierge. I draft complete branded-pantry orders in about three taps. What kind of venue do you run?" }],
-    venue: null,
-    covers: null
-  };
+  static LS = 'bmh-studio-v2';
+  state = { name: '', tagline: '', logo: '', withName: true, font: 'classic', ink: '#14365c', product: 'white', view: 'single' };
 
-  FONTS = [
-    { id: 'serif',  label: 'Classic', family: "'Cormorant Garamond',Georgia,serif", weight: 600, spacing: '0px', transform: 'none' },
-    { id: 'modern', label: 'Modern',  family: "'Jost',sans-serif", weight: 600, spacing: '2.5px', transform: 'uppercase' },
-    { id: 'script', label: 'Script',  family: "'Great Vibes',cursive", weight: 400, spacing: '0px', transform: 'none' }
-  ];
-  INKS = [
-    { name: 'Navy', hex: '#14365c' },
-    { name: 'Terracotta', hex: '#7a3325' },
-    { name: 'Forest', hex: '#2e5339' },
-    { name: 'Charcoal', hex: '#2b2b2b' }
-  ];
-  PRODUCTS = [
-    { id: 'sachet',  label: 'Sachet',      spec1: 'kld 57.25×100mm · kraft poly', spec2: 'moq 2,000 pcs · est ₹0.42/pc' },
-    { id: 'cutlery', label: 'Cutlery Kit', spec1: 'kld 211×70mm · chromo poly',   spec2: 'moq 1,000 pcs · proof in 48h' },
-    { id: 'water',   label: 'Water',       spec1: 'bopp label 80×20mm',            spec2: 'moq on enquiry · 3 sizes' }
-  ];
-  VENUES = ['Hotel', 'Restaurant', 'Café', 'Cloud Kitchen'];
-  COVERS = ['Under 100 / day', '100–300 / day', '300–800 / day', '800+ / day'];
-
-  kitFor(venue, covers) {
-    var mult = covers === 0 ? 1 : covers === 1 ? 2.5 : covers === 2 ? 6 : 12;
-    var r = function (base) {
-      var n = Math.round(base * mult / 1000) * 1000;
-      return n.toLocaleString('en-IN') + ' pcs';
-    };
-    var kits = {
-      'Hotel': { title: 'The Full-Service Hotel Kit', lines: [
-        { name: 'Custom Branded Water (500ml)', qty: 'on quote' },
-        { name: 'Cutlery Kits — standard', qty: r(1000) },
-        { name: 'Sachets — sugar mix, 3 variants', qty: r(6000) },
-        { name: 'Wet Wipes — sealed', qty: r(5000) } ] },
-      'Restaurant': { title: 'The Dine-In Restaurant Kit', lines: [
-        { name: 'Sachets — sugar + seasoning, 4 variants', qty: r(8000) },
-        { name: 'Cutlery Kits — standard', qty: r(1000) },
-        { name: 'Custom Branded Water (500ml)', qty: 'on quote' },
-        { name: 'Wet Wipes — sealed', qty: r(5000) } ] },
-      'Café': { title: 'The Café & Bakery Kit', lines: [
-        { name: 'Sachets — white + demerara sugar', qty: r(6000) },
-        { name: 'Compostable Straws — printed wrap', qty: r(10000) },
-        { name: 'Butter Paper — 40 GSM', qty: 'on quote' },
-        { name: 'Wet Wipes — sealed', qty: r(5000) } ] },
-      'Cloud Kitchen': { title: 'The Delivery-First Kit', lines: [
-        { name: 'Cutlery Kits — compact', qty: r(2000) },
-        { name: 'Sachets — seasoning mix, 3 variants', qty: r(6000) },
-        { name: 'Butter Paper — 40 GSM', qty: 'on quote' },
-        { name: 'Wet Wipes — sealed', qty: r(5000) } ] }
-    };
-    return kits[venue] || kits['Restaurant'];
+  componentDidMount() {
+    try { const s = JSON.parse(localStorage.getItem(Component.LS) || 'null'); if (s) this.setState(s); } catch (e) {}
   }
-
-  aiReply(text, nextStep) {
-    var self = this;
-    this.setState({ typing: true });
-    setTimeout(function () {
-      self.setState(function (s) {
-        return { typing: false, step: nextStep, messages: s.messages.concat([{ who: 'ai', text: text }]) };
-      });
-    }, 700);
+  save(patch) {
+    this.setState(patch, () => { try { const s = this.state; localStorage.setItem(Component.LS, JSON.stringify({ name: s.name, tagline: s.tagline, logo: s.logo, withName: s.withName, font: s.font, ink: s.ink, product: s.product, view: s.view })); } catch (e) {} });
+  }
+  readLogo(file) {
+    if (!file) return;
+    const r = new FileReader();
+    r.onload = () => {
+      const src = r.result;
+      if (/svg/.test(file.type)) { this.save({ logo: src }); return; }
+      const im = new Image();
+      im.onload = () => {
+        const s = Math.min(1, 640 / Math.max(im.width, im.height));
+        const c = document.createElement('canvas'); c.width = Math.round(im.width * s); c.height = Math.round(im.height * s);
+        c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+        let out = src; try { out = c.toDataURL('image/png'); } catch (e) {}
+        this.save({ logo: out });
+      };
+      im.src = src;
+    };
+    r.readAsDataURL(file);
   }
 
   renderVals() {
-    var self = this;
-    var s = this.state;
-    var displayName = (s.name && s.name.trim()) ? s.name.trim() : 'Your Brand';
-    var font = this.FONTS.find(function (f) { return f.id === s.font; });
-    var ink = this.INKS.find(function (k) { return k.hex === s.ink; });
-    var len = displayName.length;
-    var shrink = Math.min(1, 8.5 / Math.max(len, 1));
-    var scriptBoost = s.font === 'script' ? 1.25 : 1;
-    var modernShrink = s.font === 'modern' ? 0.8 : 1;
+    const s = this.state;
+    const FONTS = [
+      { id: 'classic', label: 'Classic', family: "'Cormorant Garamond',Georgia,serif", weight: 600, ls: '0', tt: 'none', k: 1 },
+      { id: 'modern', label: 'Modern', family: "'Jost',sans-serif", weight: 600, ls: '0.12em', tt: 'uppercase', k: 0.72 },
+      { id: 'script', label: 'Script', family: "'Great Vibes',cursive", weight: 400, ls: '0', tt: 'none', k: 1.22 },
+    ];
+    const INKS = [
+      { name: 'Navy', hex: '#14365c' }, { name: 'Black', hex: '#1d1d1d' }, { name: 'Terracotta', hex: '#8a3b28' },
+      { name: 'Forest', hex: '#2e5339' }, { name: 'Maroon', hex: '#6b1f2e' }, { name: 'Gold', hex: '#8f6a2c' },
+    ];
+    const P = [
+      { id: 'white', label: 'Sachet · white', img: 'studio-sachet-white.webp?v=20261005', w: 1254, h: 1254, spec: '57.25 × 100 mm open width · from 2,000 pcs',
+        areas: [{ l: 33.5, t: 19.5, w: 34.3, h: 40.3, size: 6.6, sub: 'SUGAR · 5g' }] },
+      { id: 'kraft', label: 'Sachet · kraft', img: 'studio-sachet-kraft.webp?v=20261005', w: 1536, h: 1024, spec: '57.25 × 100 mm · kraft stock · from 2,000 pcs',
+        areas: [{ l: 36.5, t: 25.6, w: 27, h: 48, size: 5.2, sub: 'DEMERARA SUGAR' }] },
+      { id: 'cutlery', label: 'Cutlery kit', img: 'studio-cutlery.webp?v=20261005', w: 1086, h: 1448, spec: '211 × 70 or 158.7 × 60 mm sleeve · from 1,000 pcs',
+        areas: [{ l: 36.8, t: 20.7, w: 27.8, h: 16.6, size: 5.6 }] },
+      { id: 'wipes', label: 'Wet wipes', img: 'studio-wipes.webp?v=20261005', w: 1536, h: 1720, spec: 'Single wipe, sealed sleeve · from 5,000 pcs',
+        areas: [{ l: 23.4, t: 34, w: 32.2, h: 30, size: 5.6, sub: 'WET WIPES · REFRESHING' }] },
+      { id: 'water', label: 'Water', img: 'studio-water.webp?v=20261005', w: 1600, h: 868, spec: '200 ml · 500 ml · 1 L · custom sticker label · on quote',
+        areas: [
+          { l: 23.8, t: 58.2, w: 9.7, h: 28.9, size: 1.9, sub: '200 ML' },
+          { l: 41, t: 39.7, w: 12.8, h: 43.5, size: 2.6, sub: '500 ML' },
+          { l: 60.7, t: 34.8, w: 14.75, h: 47.8, size: 3.0, sub: '1 LITRE' } ] },
+    ];
+    const font = FONTS.find((f) => f.id === s.font) || FONTS[0];
+    const ink = INKS.find((k) => k.hex === s.ink) || INKS[0];
+    const name = (s.name || '').trim() || 'Your Brand';
+    const tagline = (s.tagline || '').trim();
+    const hasLogo = !!s.logo;
+    const showName = !hasLogo || s.withName;
+    
 
-    var nameBase = function (px, nowrap) {
-      return 'font-family:' + font.family + '; font-weight:' + font.weight + '; letter-spacing:' + font.spacing + '; text-transform:' + font.transform + '; color:' + s.ink + '; mix-blend-mode:multiply; line-height:1.05; text-align:center; font-size:' + Math.round(px * shrink * scriptBoost * modernShrink) + 'px; max-width:100%;' + (nowrap ? ' white-space:nowrap;' : ' overflow:hidden;');
-    };
-
-    // studio controls
-    var fontOptions = this.FONTS.map(function (f) {
-      var active = f.id === s.font;
-      return {
-        label: f.label,
-        select: function () { self.setState({ font: f.id }); },
-        style: 'flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 8px; background:' + (active ? 'rgba(189,154,99,0.12)' : '#faf9f5') + '; border:1px solid ' + (active ? '#bd9a63' : '#ded8c9') + '; border-radius:4px; cursor:pointer;',
-        aaStyle: 'font-family:' + f.family + '; font-weight:' + f.weight + '; font-size:22px; color:#0e2748;'
-      };
+    const build = (p) => ({
+      label: p.label, img: p.img,
+      imgStyle: 'position:absolute; inset:0; background:url(' + p.img + ') center / 100% 100% no-repeat;',
+      boxStyle: 'position:relative; width:100%; aspect-ratio:' + p.w + '/' + p.h + '; background:#ece6da; overflow:hidden; container-type:inline-size; animation:stIn .45s ease both;',
+      areas: p.areas.map((a) => {
+        const perChar = font.id === 'modern' ? 0.78 : font.id === 'script' ? 0.42 : 0.5;
+        const byWidth = (a.w * 0.88) / (Math.max(name.length, 3) * perChar);
+        const nameCq = Math.min(a.size * (font.id === 'script' ? 1.25 : 1), byWidth) * (hasLogo ? 0.72 : 1);
+        return {
+          style: 'position:absolute; left:' + a.l + '%; top:' + a.t + '%; width:' + a.w + '%; height:' + a.h + '%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:' + (a.size * 0.12).toFixed(2) + 'cqw; text-align:center; mix-blend-mode:multiply; color:' + ink.hex + '; overflow:hidden;',
+          logo: hasLogo ? s.logo : null,
+          logoStyle: 'width:78%; height:' + (showName ? '42%' : '70%') + '; flex:none; background:url(' + JSON.stringify(s.logo || '') + ') center / contain no-repeat;',
+          showName, name,
+          nameStyle: 'font-family:' + font.family + '; font-weight:' + font.weight + '; letter-spacing:' + font.ls + '; text-transform:' + font.tt + '; font-size:' + nameCq.toFixed(2) + 'cqw; line-height:1.1; white-space:nowrap;',
+          tagline: tagline || null,
+          tagStyle: "font-family:'Jost',sans-serif; font-size:" + Math.min(a.w * 0.085, (a.w * 0.9) / (Math.max(tagline.length, 1) * 0.75)).toFixed(2) + 'cqw; letter-spacing:0.14em; text-transform:uppercase; opacity:.85; white-space:nowrap;',
+          sub: a.sub || null,
+          subStyle: "white-space:nowrap; font-family:'Jost',sans-serif; font-weight:600; font-size:" + Math.min(a.w * 0.085, (a.w * 0.9) / (Math.max((a.sub || '').length, 1) * 0.8)).toFixed(2) + 'cqw; letter-spacing:0.16em; opacity:.8; margin-top:' + (a.size * 0.2).toFixed(2) + 'cqw; padding-top:' + (a.size * 0.12).toFixed(2) + 'cqw; border-top:1px solid currentColor;',
+        };
+      }),
     });
-    var inkOptions = this.INKS.map(function (k) {
-      var active = k.hex === s.ink;
-      return {
-        name: k.name,
-        select: function () { self.setState({ ink: k.hex }); },
-        style: 'width:36px; height:36px; border-radius:50%; background:' + k.hex + '; border:none; cursor:pointer; outline:' + (active ? '2px solid #bd9a63' : '1px solid #ded8c9') + '; outline-offset:3px;'
-      };
-    });
-    var productTabs = this.PRODUCTS.map(function (p) {
-      var active = p.id === s.product;
-      return {
-        label: p.label,
-        select: function () { self.setState({ product: p.id }); },
-        style: 'padding:10px 22px; font-size:11.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; white-space:nowrap; border-radius:2px; cursor:pointer; background:' + (active ? '#0e2748' : '#fff') + '; color:' + (active ? '#f3efe6' : '#5a7080') + '; border:1px solid ' + (active ? '#0e2748' : '#ded8c9') + ';'
-      };
-    });
-    var prod = this.PRODUCTS.find(function (p) { return p.id === s.product; });
-
-    // concierge chips
-    var chips = [];
-    if (s.step === 0 && !s.typing) {
-      chips = this.VENUES.map(function (v) {
-        return { label: v, pick: function () {
-          self.setState(function (st) { return { venue: v, messages: st.messages.concat([{ who: 'me', text: v }]) }; });
-          self.aiReply('A ' + v.toLowerCase() + ' — good. Roughly how many covers or orders a day?', 1);
-        } };
-      });
-    } else if (s.step === 1 && !s.typing) {
-      chips = this.COVERS.map(function (c, i) {
-        return { label: c, pick: function () {
-          self.setState(function (st) { return { covers: i, messages: st.messages.concat([{ who: 'me', text: c }]) }; });
-          self.aiReply('Done. I\u2019ve drafted your starter pantry below — sized to your volume, every item printed in your name. Send it across and a human replies with exact pricing, usually within the hour.', 2);
-        } };
-      });
-    }
-
-    var chatMessages = s.messages.map(function (m) {
-      var isAi = m.who === 'ai';
-      return {
-        text: m.text,
-        rowStyle: 'display:flex; justify-content:' + (isAi ? 'flex-start' : 'flex-end') + ';',
-        bubbleStyle: isAi
-          ? 'max-width:78%; background:rgba(243,239,230,0.08); color:rgba(243,239,230,0.9); font-size:14.5px; line-height:1.65; font-weight:300; padding:14px 18px; border-radius:14px 14px 14px 3px;'
-          : 'max-width:78%; background:#bd9a63; color:#091d38; font-size:14px; font-weight:500; padding:12px 18px; border-radius:14px 14px 3px 14px;'
-      };
-    });
-
-    var kit = s.step === 2 && s.venue ? this.kitFor(s.venue, s.covers) : null;
-
-    var waText = function (lines) {
-      return 'https://wa.me/918980009697?text=' + encodeURIComponent(lines.join('\n'));
-    };
+    const active = P.find((p) => p.id === s.product) || P[0];
+    const btn = (on) => 'padding:9px 16px; font-size:12.5px; font-weight:500; border:none; border-radius:2px; cursor:pointer; background:' + (on ? '#0e2748' : 'transparent') + '; color:' + (on ? '#f3efe6' : '#3d4b58') + ';';
 
     return {
-      brandName: s.name,
-      displayName: displayName,
-      estYear: new Date().getFullYear(),
-      onName: function (e) { self.setState({ name: e.target.value }); },
-      fontOptions: fontOptions,
-      inkOptions: inkOptions,
-      productTabs: productTabs,
-      statusLine: '\u2192 rendered in 0.3s \u00b7 ink: ' + ink.name.toLowerCase() + ' \u00b7 style: ' + font.label.toLowerCase(),
-      specLine1: prod.spec1,
-      specLine2: prod.spec2,
-      showSachet: s.product === 'sachet',
-      showCutlery: s.product === 'cutlery',
-      showWater: s.product === 'water',
-
-      sachetNameStyle: nameBase(42),
-      sachetRuleStyle: 'width:44px; height:1px; background:' + s.ink + '; opacity:0.6; mix-blend-mode:multiply;',
-      sachetSubStyle: 'font-family:\'Jost\',sans-serif; font-size:9px; letter-spacing:2.5px; color:' + s.ink + '; mix-blend-mode:multiply; opacity:0.85; white-space:nowrap;',
-      sachetProdStyle: 'font-family:\'Jost\',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:2px; color:' + s.ink + '; mix-blend-mode:multiply; opacity:0.9; white-space:nowrap; margin-top:14px; border-top:1px solid rgba(43,43,43,0.25); padding-top:12px;',
-      cutleryNameStyle: nameBase(24, true),
-      cutlerySubStyle: 'font-family:\'Jost\',sans-serif; font-size:7.5px; letter-spacing:2px; color:' + s.ink + '; mix-blend-mode:multiply; opacity:0.85; white-space:nowrap;',
-      waterNameStyle: nameBase(17, true),
-      waterNameStyle2: nameBase(19, true),
-      waterNameStyle3: nameBase(11, true),
-      waterRuleStyle: 'width:34px; height:1px; background:' + s.ink + '; opacity:0.55; mix-blend-mode:multiply;',
-      waterSubStyle: 'font-family:\'Jost\',sans-serif; font-size:5.5px; letter-spacing:0.6px; color:' + s.ink + '; mix-blend-mode:multiply; opacity:0.85; white-space:nowrap;',
-      waterSizeStyle: 'font-family:\'IBM Plex Mono\',monospace; font-size:7.5px; letter-spacing:1.5px; color:' + s.ink + '; mix-blend-mode:multiply; opacity:0.75; white-space:nowrap; margin-top:2px;',
-
-      waStudio: function () {
-        window.open(waText([
-          'Hi BMH! I just designed my pantry in the AI Studio.',
-          'Brand name: ' + displayName,
-          'Ink: ' + ink.name + ' \u00b7 Logo style: ' + font.label,
-          'Product previewed: ' + prod.label,
-          'Please send me the exact mockup and pricing.'
-        ]), '_blank');
+      name: s.name, tagline: s.tagline, hasLogo,
+      logoThumbStyle: 'width:48px; height:48px; flex:none; background:#f6f2ea url(' + JSON.stringify(s.logo || '') + ') center / contain no-repeat;', noLogo: !hasLogo, withName: s.withName,
+      onName: (e) => this.save({ name: e.target.value }),
+      onTagline: (e) => this.save({ tagline: e.target.value }),
+      onLogo: (e) => this.readLogo(e.target.files && e.target.files[0]),
+      removeLogo: () => this.save({ logo: '' }),
+      toggleName: () => this.save({ withName: !s.withName }),
+      views: [['single', 'One product'], ['set', 'Full set']].map(([id, label]) => ({ label, select: () => this.save({ view: id }), style: btn(s.view === id) })),
+      fonts: FONTS.map((f) => ({ label: f.label, select: () => this.save({ font: f.id }),
+        style: 'display:flex; flex-direction:column; align-items:center; gap:2px; padding:10px 6px; cursor:pointer; border-radius:3px; background:' + (f.id === s.font ? '#f6f1e6' : '#fbfaf6') + '; border:1px solid ' + (f.id === s.font ? '#bd9a63' : '#e2dccd') + ';',
+        aa: 'font-family:' + f.family + '; font-weight:' + f.weight + '; font-size:22px; color:#0e2748; line-height:1.2;' })),
+      inks: INKS.map((k) => ({ name: k.name, select: () => this.save({ ink: k.hex }),
+        style: 'width:32px; height:32px; border-radius:50%; cursor:pointer; border:none; background:' + k.hex + '; outline:' + (k.hex === s.ink ? '2px solid #bd9a63' : '1px solid #e2dccd') + '; outline-offset:3px;' })),
+      inkName: ink.name,
+      isSingle: s.view !== 'set', isSet: s.view === 'set',
+      single: [Object.assign({ key: active.id }, build(active))],
+      set: P.map(build),
+      activeLabel: active.label, activeSpec: active.spec,
+      thumbs: P.map((p) => ({ label: p.label, img: p.img, imgStyle: 'position:absolute; inset:0; background:url(' + p.img + ') center / cover no-repeat;', select: () => this.save({ product: p.id }),
+        style: 'display:block; padding:0; cursor:pointer; background:#fff; text-align:left; border:1px solid ' + (p.id === active.id ? '#0e2748' : '#e6e0d2') + '; box-shadow:' + (p.id === active.id ? 'inset 0 -2px 0 #bd9a63' : 'none') + ';' })),
+      sendWa: () => {
+        const lines = ['Hi BrandMyHoReCa, I designed this in the Studio:', 'Brand name: ' + name];
+        if (tagline) lines.push('Line under name: ' + tagline);
+        lines.push('Lettering: ' + font.label + ' · Colour: ' + ink.name);
+        lines.push('Products I looked at: ' + (s.view === 'set' ? 'full set' : active.label));
+        if (hasLogo) lines.push('I will attach my logo file here.');
+        lines.push('Please send a proof and pricing.');
+        try { if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { method: 'whatsapp', source: 'studio' }); } catch (e) {}
+        window.open('https://wa.me/918980009697?text=' + encodeURIComponent(lines.join('\n')), '_blank');
       },
-
-      // concierge
-      chatMessages: chatMessages,
-      isTyping: s.typing,
-      hasChips: chips.length > 0,
-      chips: chips,
-      showKit: !!kit,
-      kitTitle: kit ? kit.title : '',
-      kitTime: 'IN 0.2S',
-      kitLines: kit ? kit.lines : [],
-      waConcierge: function () {
-        if (!kit) return;
-        var lines = ['Hi BMH! The concierge drafted this order for me:',
-          'Venue: ' + s.venue + ' \u00b7 ' + self.COVERS[s.covers]];
-        kit.lines.forEach(function (l) { lines.push('\u2022 ' + l.name + ' \u2014 ' + l.qty); });
-        if (s.name && s.name.trim()) lines.push('Brand name: ' + s.name.trim());
-        lines.push('Please confirm exact pricing, GST and freight.');
-        window.open(waText(lines), '_blank');
-      },
-      restartChat: function () {
-        self.setState({ step: 0, typing: false, venue: null, covers: null,
-          messages: [{ who: 'ai', text: "Fresh start. What kind of venue do you run?" }] });
-      }
     };
   }
 }

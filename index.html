@@ -12,7 +12,7 @@
   gtag('config', 'G-2YSL322YC9');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261004"></script>
+<script src="./support.js?v=20261005"></script>
 </head>
 <body>
 <x-dc>
@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>BrandMyHoReCa — Branded Essentials, App to Arrival</title>
   <meta name="description" content="Custom-printed packaging essentials for Hotels, Restaurants, Cafes &amp; Cloud Kitchens across India — cutlery kits, sachets, branded water, butter paper, wet wipes &amp; compostable straws.">
-  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=20261004">
+  <link rel="icon" type="image/png" href="bmh-mark-navy.png?v=20261005">
   <meta property="og:type" content="website">
   <meta property="og:title" content="BrandMyHoReCa — Branded Essentials, App to Arrival">
   <meta property="og:description" content="Custom-printed HoReCa packaging — cutlery kits, sachets, branded water &amp; more. Every detail carries your name.">
@@ -34,6 +34,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     html { scroll-behavior: smooth; }
+    .hd { background: #091d38; transition: background .35s ease, box-shadow .35s ease, backdrop-filter .35s ease; }
+    .hd-in { height: 72px; transition: height .35s cubic-bezier(.2,.7,.2,1); }
+    .hd-logo img { height: 44px; transition: height .35s cubic-bezier(.2,.7,.2,1), transform .5s cubic-bezier(.3,1.6,.5,1); }
+    .hd-logo:hover img { transform: rotate(-6deg) scale(1.06); }
+    .hd.hd-s { background: rgba(9,29,56,0.82); -webkit-backdrop-filter: blur(14px) saturate(1.3); backdrop-filter: blur(14px) saturate(1.3); box-shadow: 0 8px 30px rgba(9,29,56,0.25); }
+    .hd.hd-s .hd-in { height: 60px; }
+    .hd.hd-s .hd-logo img { height: 36px; }
+    .nv::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px; background: #bd9a63; transform: scaleX(0); transform-origin: right; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+    .nv:hover::after, .nv.nv-on::after { transform: scaleX(1); transform-origin: left; }
+    .nv { transition: color .25s ease; }
+    .nv:hover, .nv.nv-on { color: #f3efe6 !important; }
+    .nv-studio:hover { color: #e3c58e !important; }
+    .nv-studio .spark { transition: transform .6s cubic-bezier(.3,1.6,.5,1); }
+    .nv-studio:hover .spark { transform: rotate(180deg) scale(1.3); }
+    .spark { animation: twinkle 2.6s ease-in-out infinite; }
+    @keyframes twinkle { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+    .wa-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #1f8a4c; animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite; }
+    @keyframes ping { 75%, 100% { transform: scale(2.4); opacity: 0; } }
+    .wa-btn { transition: background .25s ease, transform .25s ease, box-shadow .25s ease; }
+    .wa-btn:hover { background: #cdab78 !important; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(189,154,99,0.35); }
+    .wa-btn::before { content: ''; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent); transform: skewX(-20deg); animation: shine 4.5s ease-in-out infinite; }
+    @keyframes shine { 0%, 70% { left: -60%; } 100% { left: 130%; } }
     .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .rv.in { opacity: 1; transform: none; }
     .rv-stagger > * { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -75,7 +97,10 @@
       .bmh-burger { display: flex !important; }
       .bmh-nav { display: none !important; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: #091d38; border-top: 1px solid rgba(189,154,99,0.25); padding: 6px 0; }
       .bmh-nav.bmh-open { display: flex !important; }
-      .bmh-nav a { padding: 14px 22px; }
+      .bmh-nav a { padding: 14px 22px !important; }
+      .nv::after { display: none; }
+      .hd.hd-s .hd-in { height: 72px; }
+      .bmh-nav { top: 100% !important; }
       .bmh-hero-grad { background: linear-gradient(180deg, rgba(9,29,56,0.55) 0%, rgba(9,29,56,0.85) 100%) !important; }
       .bmh-hero-content { max-width: 100% !important; }
       .bmh-story-photo { min-height: 440px !important; }
@@ -108,31 +133,32 @@
 
 <div data-screen-label="BMH Website v2" style="font-family:'Jost',system-ui,sans-serif; color:#2c3744; background:#f3efe6; overflow-x:hidden;">
 
-  <header style="position:sticky; top:0; z-index:50; background:#091d38;">
-    <div class="bmh-pad" style="max-width:1600px; margin:0 auto; padding:0 28px; height:72px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
-      <a href="#top" style="display:flex; align-items:center; text-decoration:none;"><img src="bmh-mark-cream.png?v=20261004" alt="BrandMyHoReCa" style="height:44px; width:auto; display:block;"></a>
+  <header class="hd {{ headerClass }}" style="position:sticky; top:0; z-index:50;">
+    <div class="bmh-pad hd-in" style="max-width:1600px; margin:0 auto; padding:0 28px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
+      <a href="#top" class="hd-logo" style="display:flex; align-items:center; text-decoration:none;"><img src="bmh-mark-cream.png?v=20261005" alt="BrandMyHoReCa" style="width:auto; display:block;"></a>
       <nav class="bmh-nav {{ navOpenClass }}" onClick="{{ closeMenu }}" style="align-items:center; gap:30px;">
-        <a href="#story" style="font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">About</a>
-        <a href="#venues" style="font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">By venue</a>
-        <a href="catalog.html" style="font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Catalog</a>
-        <a href="#range" style="font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Range</a>
-        <a href="ai-studio.html" style="font-size:13px; letter-spacing:.6px; color:#bd9a63; text-decoration:none; white-space:nowrap;" style-hover="color:#cdab78;">Studio ✦</a>
-        <a href="#contact" style="font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none;" style-hover="color:#bd9a63;">Contact</a>
+        <a href="#story" class="nv {{ nav.story }}" style="position:relative; font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none; padding:6px 0;">About</a>
+        <a href="#venues" class="nv {{ nav.venues }}" style="position:relative; font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none; padding:6px 0;">By venue</a>
+        <a href="catalog.html" class="nv" style="position:relative; font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none; padding:6px 0;">Catalog</a>
+        <a href="#range" class="nv {{ nav.range }}" style="position:relative; font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none; padding:6px 0;">Range</a>
+        <a href="ai-studio.html" class="nv nv-studio" style="position:relative; font-size:13px; letter-spacing:.6px; color:#bd9a63; text-decoration:none; white-space:nowrap; padding:6px 0;">Studio <span class="spark" style="display:inline-block;">✦</span></a>
+        <a href="#contact" class="nv {{ nav.contact }}" style="position:relative; font-size:13px; letter-spacing:.6px; color:rgba(243,239,230,0.8); text-decoration:none; padding:6px 0;">Contact</a>
       </nav>
       <div style="display:flex; align-items:center; gap:12px;">
         <button class="bmh-burger" onClick="{{ toggleMenu }}" aria-label="Open menu" style="background:none; border:none; padding:6px; cursor:pointer; align-items:center;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f3efe6" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
         </button>
-        <a href="https://wa.me/918980009697" target="_blank" style="background:#bd9a63; color:#091d38; font-size:12px; font-weight:600; letter-spacing:.6px; padding:10px 16px; border-radius:2px; text-decoration:none; white-space:nowrap;" style-hover="background:#cdab78;">WhatsApp us</a>
+        <a href="https://wa.me/918980009697" target="_blank" class="wa-btn" style="position:relative; display:inline-flex; align-items:center; gap:9px; background:#bd9a63; color:#091d38; font-size:12px; font-weight:600; letter-spacing:.6px; padding:10px 16px; border-radius:2px; text-decoration:none; white-space:nowrap; overflow:hidden;"><span class="wa-dot" style="position:relative; width:8px; height:8px; border-radius:50%; background:#1f8a4c; flex:none;"></span><span class="wa-label">WhatsApp us</span></a>
       </div>
     </div>
+    <div style="position:absolute; left:0; right:0; bottom:0; height:2px; background:rgba(189,154,99,0.12);"><div class="hd-prog" style="height:100%; width:100%; background:linear-gradient(90deg,#bd9a63,#e3c58e); transform-origin:left; transform:scaleX(var(--prog,0));"></div></div>
   </header>
 
   <!-- HERO -->
   <section id="top" style="position:relative; background:#091d38; overflow:hidden; min-height:82vh; display:flex; flex-direction:column; justify-content:center;">
 
     <!-- Full-bleed flatlay — anchored right so products are never cropped -->
-    <img fetchpriority="high" src="banner-flatlay.webp?v=20261004" alt="BMH branded essentials — the full pantry range" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:100% 45%; ">
+    <img fetchpriority="high" src="banner-flatlay.webp?v=20261005" alt="BMH branded essentials — the full pantry range" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:100% 45%; ">
 
     <!-- Cinematic gradient — dark on left for text, clears on right for products -->
     <div class="bmh-hero-grad" style="position:absolute; inset:0; background:linear-gradient(105deg, rgba(9,29,56,0.96) 0%, rgba(9,29,56,0.74) 30%, rgba(9,29,56,0.26) 60%, rgba(9,29,56,0) 100%);"></div>
@@ -193,10 +219,10 @@
       </div>
       <div class="bmh-copy" style="padding:64px 56px; display:flex; flex-direction:column; justify-content:center; background:#f3efe6;">
         <div style="font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#bd9a63; margin-bottom:20px;">The Story</div>
-        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:44px; font-weight:600; color:#0e2748; margin:0 0 28px; line-height:1.06;">They'll remember the meal. Make sure they remember you.</h2>
-        <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 20px; font-weight:300;">Now picture your version. Your logo on the sugar they stir in. Your name on the cutlery they unwrap. Your bottle on the table when they snap a photo for their Story. Nothing loud, nothing forced — just your brand, quietly repeated at every touch, until it's the thing they remember before the food even arrives.</p>
-        <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 20px; font-weight:300;">Most owners want exactly this. Few ever chase it. Custom packaging had a reputation for six-figure minimums, confusing print specs, and suppliers who only picked up the phone for big chains. It was never unwanted — just out of reach.</p>
-        <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 32px; font-weight:300;">We built BrandMyHoReCa to close that gap. One supplier, six essential products, the lowest MOQ in the market — and a process short enough to go from your logo to your doorstep in a single conversation.</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:44px; font-weight:600; color:#0e2748; margin:0 0 28px; line-height:1.06;">Every order is a chance to be remembered.</h2>
+        <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 20px; font-weight:300;">A delivery order carries three to four packaging units. A table service puts water, sugar and cutlery in front of every guest. Each of those pieces is a branded impression you are already paying for. With generic stock, that spend builds the supplier's name, not yours.</p>
+        <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 20px; font-weight:300;">Printed packaging typically adds well under a rupee per piece over generic at volume. That is a fraction of what a single paid click or aggregator promotion costs, and it reaches a guest who has already bought. On delivery platforms it is often the only point where your name appears outside the app.</p>
+        <p style="font-size:15.5px; line-height:1.85; color:#42505c; margin:0 0 32px; font-weight:300;">The barrier has been minimums and coordination, not price. We consolidate six essentials under one supplier, start at 1,000 pieces, and handle artwork, proofing and delivery, so a single outlet can run the same branded standard as a chain.</p>
         <div class="bmh-story-stats" style="display:flex; gap:32px;">
           <div>
             <div style="font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:600; color:#0e2748; line-height:1;">48hr</div>
@@ -205,12 +231,12 @@
           <div style="width:1px; background:#ddd6c6;"></div>
           <div>
             <div style="font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:600; color:#0e2748; line-height:1;">6</div>
-            <div style="font-size:10px; letter-spacing:1.8px; text-transform:uppercase; color:#5f7686; margin-top:4px;">Branded products</div>
+            <div style="font-size:10px; letter-spacing:1.8px; text-transform:uppercase; color:#5f7686; margin-top:4px;">Essentials, one supplier</div>
           </div>
           <div style="width:1px; background:#ddd6c6;"></div>
           <div>
             <div style="font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:600; color:#0e2748; line-height:1;">1k</div>
-            <div style="font-size:10px; letter-spacing:1.8px; text-transform:uppercase; color:#5f7686; margin-top:4px;">Min. order</div>
+            <div style="font-size:10px; letter-spacing:1.8px; text-transform:uppercase; color:#5f7686; margin-top:4px;">Pieces to start</div>
           </div>
         </div>
         <div style="margin-top:30px;">
@@ -359,7 +385,7 @@
   <!-- CONTACT — video + details -->
   <section id="contact" class="bmh-contact rv" style="background:#f3efe6;">
     <div style="position:relative; min-height:520px; background:#000; overflow:hidden;">
-      <video src="finale.mp4?v=20261004" loop muted playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video>
+      <video src="finale.mp4?v=20261005" loop muted playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video>
     </div>
     <div class="bmh-pad" style="padding:64px 56px; display:flex; flex-direction:column; justify-content:center; gap:28px;">
       <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:44px; font-weight:500; color:#0e2748; margin:0; line-height:1.05;">Send us your logo.<br>We'll send back a mockup.</h2>
@@ -374,7 +400,7 @@
 
   <footer class="bmh-pad" style="background:#091d38; padding:36px 28px;">
     <div style="max-width:1600px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
-      <img loading="lazy" decoding="async" src="bmh-logo-cream.png?v=20261004" alt="BrandMyHoReCa" style="height:56px; width:auto; display:block;">
+      <img loading="lazy" decoding="async" src="bmh-logo-cream.png?v=20261005" alt="BrandMyHoReCa" style="height:56px; width:auto; display:block;">
       <div style="display:flex; gap:22px; flex-wrap:wrap; font-size:12px; color:rgba(243,239,230,0.6);">
         <a href="print-template.html" style="color:rgba(243,239,230,0.7); text-decoration:none;" style-hover="color:#bd9a63;">Print templates</a>
         <a href="ai-studio.html" style="color:rgba(243,239,230,0.7); text-decoration:none;" style-hover="color:#bd9a63;">Studio</a>
@@ -388,7 +414,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { menuOpen: false, explorerKey: 'cutlery', scene: 0, removed: {}, storyIdx: 0, bannerIdx: 0, venue: 'cloud' };
+  state = { scrolled: false, activeSec: '', menuOpen: false, explorerKey: 'cutlery', scene: 0, removed: {}, storyIdx: 0, bannerIdx: 0, venue: 'cloud' };
   heroRef = React.createRef();
 
   track(name, params) {
@@ -440,6 +466,23 @@ class Component extends DCLogic {
       const onScroll = () => { if (tick) return; tick = true; requestAnimationFrame(() => { const vh = window.innerHeight; plx.forEach((el) => { const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return; const p = (r.top + r.height / 2 - vh / 2) / vh; el.style.setProperty('--py', (p * -60).toFixed(1) + 'px'); }); tick = false; }); };
       document.addEventListener('scroll', onScroll, { passive: true, capture: true }); window.addEventListener('resize', onScroll, { passive: true }); onScroll();
     }
+    const hdEl = document.querySelector('.hd');
+    const secIds = ['story', 'venues', 'range', 'contact'];
+    let hdTick = false;
+    const onHd = () => { if (hdTick) return; hdTick = true; requestAnimationFrame(() => {
+      hdTick = false;
+      const root = document.querySelector('[data-screen-label]');
+      const y = root ? Math.max(0, -root.getBoundingClientRect().top) : 0;
+      const max = Math.max(1, (root ? root.offsetHeight : 1) - window.innerHeight);
+      if (hdEl) hdEl.style.setProperty('--prog', Math.min(1, y / max).toFixed(4));
+      const scrolled = y > 40;
+      let act = '';
+      secIds.forEach((id) => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < window.innerHeight * 0.4) act = id; });
+      if (scrolled !== this.state.scrolled || act !== this.state.activeSec) this.setState({ scrolled, activeSec: act });
+    }); };
+    document.addEventListener('scroll', onHd, { passive: true, capture: true });
+    window.addEventListener('resize', onHd, { passive: true });
+    onHd();
     const seen = {};
     const obs = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting && e.target.id && !seen[e.target.id]) { seen[e.target.id] = 1; self.track('section_view', { section: e.target.id }); obs.unobserve(e.target); } }), { threshold: 0.4 });
     document.querySelectorAll('section[id]').forEach((el) => obs.observe(el));
@@ -453,21 +496,21 @@ class Component extends DCLogic {
       window.open('https://wa.me/918980009697?text=' + encodeURIComponent('Product enquiry — BrandMyHoReCa\nProduct: ' + productName + '\nI would like to know more about pricing and samples.'), '_blank');
     };
     const EXPLORE = [
-      { key:'cutlery',   name:'Cutlery Kit',        img:'mk-cutlery.webp?v=20261004',            desc:'Fork, spoon, knife, tissue and mouth freshener in one printed sleeve. From 1,000 pcs.' },
-      { key:'sugar',     name:'White Sugar',        img:'sachet-sugar.webp?v=20261004',          desc:'5g sachet, 57.25 × 100 mm open width.' },
-      { key:'demerara',  name:'Demerara',           img:'prod-demerara-photo.webp?v=20261004',   desc:'Raw cane sugar, 5g.' },
-      { key:'jaggery',   name:'Jaggery Powder',     img:'sachet-jaggery.webp?v=20261004',        desc:'Jaggery powder, 5g.' },
-      { key:'monkfruit', name:'Monk Fruit',         img:'sachet-monkfruit.webp?v=20261004',      desc:'Zero-calorie sweetener, 5g.' },
-      { key:'salt',      name:'Iodized Salt',       img:'sachet-salt.webp?v=20261004',           desc:'3g stick.' },
-      { key:'pepper',    name:'Black Pepper',       img:'sachet-blackpepper.webp?v=20261004',    desc:'Ground black pepper, 3g stick.' },
-      { key:'chilli',    name:'Chilli Flakes',      img:'sachet-chilliflakes.webp?v=20261004',   desc:'5g sachet.' },
-      { key:'oregano',   name:'Oregano',            img:'sachet-oregano.webp?v=20261004',        desc:'5g sachet.' },
-      { key:'pizza',     name:'Pizza Seasoning',    img:'sachet-pizzaseasoning.webp?v=20261004', desc:'5g sachet.' },
-      { key:'wipes',     name:'Wet Wipes',          img:'mk-wetwipes.webp?v=20261004',           desc:'Single wipe in a printed sleeve. From 5,000 pcs.' },
-      { key:'straws',    name:'Compostable Straws', img:'prod-straws.webp?v=20261004',           desc:'Paper-sleeved compostable straws. From 10,000 pcs.' },
-      { key:'freshener', name:'Mouth Freshener',    img:'sachet-mouthfreshener.webp?v=20261004', desc:'After-meal mukhwas, pure veg.' },
-      { key:'water',     name:'Branded Water',      img:'prod-water.webp?v=20261004',            desc:'200 ml, 500 ml, 1 L. Custom sticker label.' },
-      { key:'butter',    name:'Butter Paper',       img:'prod-butter-paper.webp?v=20261004',     desc:'Food-grade printed wraps.' },
+      { key:'cutlery',   name:'Cutlery Kit',        img:'mk-cutlery.webp?v=20261005',            desc:'Fork, spoon, knife, tissue and mouth freshener in one printed sleeve. From 1,000 pcs.' },
+      { key:'sugar',     name:'White Sugar',        img:'sachet-sugar.webp?v=20261005',          desc:'5g sachet, 57.25 × 100 mm open width.' },
+      { key:'demerara',  name:'Demerara',           img:'prod-demerara-photo.webp?v=20261005',   desc:'Raw cane sugar, 5g.' },
+      { key:'jaggery',   name:'Jaggery Powder',     img:'sachet-jaggery.webp?v=20261005',        desc:'Jaggery powder, 5g.' },
+      { key:'monkfruit', name:'Monk Fruit',         img:'sachet-monkfruit.webp?v=20261005',      desc:'Zero-calorie sweetener, 5g.' },
+      { key:'salt',      name:'Iodized Salt',       img:'sachet-salt.webp?v=20261005',           desc:'3g stick.' },
+      { key:'pepper',    name:'Black Pepper',       img:'sachet-blackpepper.webp?v=20261005',    desc:'Ground black pepper, 3g stick.' },
+      { key:'chilli',    name:'Chilli Flakes',      img:'sachet-chilliflakes.webp?v=20261005',   desc:'5g sachet.' },
+      { key:'oregano',   name:'Oregano',            img:'sachet-oregano.webp?v=20261005',        desc:'5g sachet.' },
+      { key:'pizza',     name:'Pizza Seasoning',    img:'sachet-pizzaseasoning.webp?v=20261005', desc:'5g sachet.' },
+      { key:'wipes',     name:'Wet Wipes',          img:'mk-wetwipes.webp?v=20261005',           desc:'Single wipe in a printed sleeve. From 5,000 pcs.' },
+      { key:'straws',    name:'Compostable Straws', img:'prod-straws.webp?v=20261005',           desc:'Paper-sleeved compostable straws. From 10,000 pcs.' },
+      { key:'freshener', name:'Mouth Freshener',    img:'sachet-mouthfreshener.webp?v=20261005', desc:'After-meal mukhwas, pure veg.' },
+      { key:'water',     name:'Branded Water',      img:'prod-water.webp?v=20261005',            desc:'200 ml, 500 ml, 1 L. Custom sticker label.' },
+      { key:'butter',    name:'Butter Paper',       img:'prod-butter-paper.webp?v=20261005',     desc:'Food-grade printed wraps.' },
     ];
     const FACTS = {"cutlery":[["Contents","Fork, spoon, knife, tissue, mouth freshener"],["Sleeve","211 × 70 or 158.7 × 60 mm"],["Material","Chromo or kraft poly"],["Minimum","1,000 pcs"]],"sugar":[["Fill","5g refined white sugar"],["Size","57.25 × 100 mm open width"],["Print","Edge to edge, both faces"],["Minimum","2,000 pcs"]],"demerara":[["Fill","5g raw cane sugar"],["Size","57.25 × 100 mm open width"],["Stock","Kraft or chromo"],["Minimum","2,000 pcs"]],"jaggery":[["Fill","5g jaggery powder"],["Size","57.25 × 100 mm open width"],["Suits","Chai service, Indian menus"],["Minimum","2,000 pcs"]],"monkfruit":[["Fill","5g, zero calorie"],["Size","57.25 × 100 mm open width"],["Suits","Cafés with health-led menus"],["Minimum","2,000 pcs"]],"salt":[["Fill","3g iodized salt"],["Format","Stick sachet"],["Suits","Delivery bags, room trays"],["Minimum","2,000 pcs"]],"pepper":[["Fill","3g ground black pepper"],["Format","Stick sachet"],["Suits","Delivery bags, room trays"],["Minimum","2,000 pcs"]],"chilli":[["Fill","5g chilli flakes"],["Size","57.25 × 100 mm open width"],["Suits","Pizza and pasta delivery"],["Minimum","2,000 pcs"]],"oregano":[["Fill","5g dried oregano"],["Size","57.25 × 100 mm open width"],["Suits","Pizza and pasta delivery"],["Minimum","2,000 pcs"]],"pizza":[["Fill","5g seasoning blend"],["Size","57.25 × 100 mm open width"],["Suits","Pizza delivery"],["Minimum","2,000 pcs"]],"wipes":[["Format","Single wipe, sealed sleeve"],["Finish","Pearl or matte film"],["Suits","Delivery, hotels, caterers"],["Minimum","5,000 pcs"]],"straws":[["Material","Compostable"],["Wrap","Printed paper sleeve"],["Diameter","6 mm"],["Minimum","10,000 pcs"]],"freshener":[["Fill","Saunf mukhwas, pure veg"],["Format","Stick sachet"],["Suits","Bill folders, delivery bags"],["Minimum","2,000 pcs"]],"water":[["Sizes","200 ml, 500 ml, 1 L"],["Branding","Custom sticker label"],["Suits","Tables, rooms, banquets"],["Minimum","On quote"]],"butter":[["Material","Food-grade butter paper"],["Print","Your pattern or logo"],["Suits","Burgers, wraps, bakery"],["Size","Custom, on quote"]]};
     const exKey = this.state.explorerKey;
@@ -479,54 +522,54 @@ class Component extends DCLogic {
     const thumbs = EXPLORE.map((p) => ({ name: p.name, img: p.img, select: () => this.setState({ explorerKey: p.key }),
       style: 'position:relative; aspect-ratio:1; overflow:hidden; padding:0; cursor:pointer; background:#0e2748; border:2px solid ' + (p.key === exKey ? '#bd9a63' : 'transparent') + '; opacity:' + (p.key === exKey ? '1' : '.7') + ';' }));
     const VENUES = [
-      { key:'cloud', label:'Cloud kitchen', scenes:[ {img:'life-five-touchpoints.jpeg?v=20261004', pos:'center 40%', fit:'contain', cap:'Everything that goes in the bag'}, {img:'kit-spoon-fork.webp?v=20261004', pos:'center', fit:'contain', cap:'Spoon + fork kit, sleeved'}, {img:'photo-oregano-wood.webp?v=20261004', pos:'center', cap:'Seasoning sachets'}, {img:'mk-wetwipes.webp?v=20261004', pos:'center', cap:'Wet wipe sleeve'} ], img:'life-five-touchpoints.jpeg?v=20261004', pos:'center 40%', fit:'contain',
+      { key:'cloud', label:'Cloud kitchen', scenes:[ {img:'life-five-touchpoints.jpeg?v=20261005', pos:'center 40%', fit:'contain', cap:'Everything that goes in the bag'}, {img:'kit-spoon-fork.webp?v=20261005', pos:'center', fit:'contain', cap:'Spoon + fork kit, sleeved'}, {img:'photo-oregano-wood.webp?v=20261005', pos:'center', cap:'Seasoning sachets'}, {img:'mk-wetwipes.webp?v=20261005', pos:'center', cap:'Wet wipe sleeve'} ], img:'life-five-touchpoints.jpeg?v=20261005', pos:'center 40%', fit:'contain',
         note:'The bag is your only touchpoint. Everything inside it should carry your name.',
         items:[
-          { name:'Spoon + fork kit', why:'Rice, noodles, fast food. Sleeve printed with your logo.', moq:'1,000', img:'kit-spoon-fork.webp?v=20261004' },
-          { name:'Salt & pepper sticks', why:'3g each, dropped in every bag.', moq:'2,000', img:'photo-pepper-wood.webp?v=20261004' },
-          { name:'Chilli flakes & oregano', why:'For pizza and pasta orders.', moq:'2,000', img:'photo-oregano-wood.webp?v=20261004' },
-          { name:'Wet wipe', why:'Single sleeve, opened before the meal.', moq:'5,000', img:'mk-wetwipes.webp?v=20261004' },
-          { name:'Compostable straws', why:'Paper-sleeved, for beverage add-ons.', moq:'10,000', img:'prod-straws.webp?v=20261004' } ] },
-      { key:'restaurant', label:'Restaurant', scenes:[ {img:'life-table-kit.webp?v=20261004', pos:'center 60%', cap:'Table set before the food'}, {img:'story-water.webp?v=20261004', pos:'center 30%', cap:'Branded water on the table'}, {img:'photo-brownsugar-wood.webp?v=20261004', pos:'center 45%', cap:'Coffee service sachets'}, {img:'kit-knife-fork.webp?v=20261004', pos:'center', fit:'contain', cap:'Knife + fork kit'} ], img:'life-table-kit.webp?v=20261004', pos:'center 60%',
+          { name:'Spoon + fork kit', why:'Rice, noodles, fast food. Sleeve printed with your logo.', moq:'1,000', img:'kit-spoon-fork.webp?v=20261005' },
+          { name:'Salt & pepper sticks', why:'3g each, dropped in every bag.', moq:'2,000', img:'photo-pepper-wood.webp?v=20261005' },
+          { name:'Chilli flakes & oregano', why:'For pizza and pasta orders.', moq:'2,000', img:'photo-oregano-wood.webp?v=20261005' },
+          { name:'Wet wipe', why:'Single sleeve, opened before the meal.', moq:'5,000', img:'mk-wetwipes.webp?v=20261005' },
+          { name:'Compostable straws', why:'Paper-sleeved, for beverage add-ons.', moq:'10,000', img:'prod-straws.webp?v=20261005' } ] },
+      { key:'restaurant', label:'Restaurant', scenes:[ {img:'life-table-kit.webp?v=20261005', pos:'center 60%', cap:'Table set before the food'}, {img:'story-water.webp?v=20261005', pos:'center 30%', cap:'Branded water on the table'}, {img:'photo-brownsugar-wood.webp?v=20261005', pos:'center 45%', cap:'Coffee service sachets'}, {img:'kit-knife-fork.webp?v=20261005', pos:'center', fit:'contain', cap:'Knife + fork kit'} ], img:'life-table-kit.webp?v=20261005', pos:'center 60%',
         note:'Water, sugar and a wrapped cutlery set: the three things on every table before the food.',
         items:[
-          { name:'Branded water 500 ml', why:'Table standard. custom sticker label.', moq:'On quote', img:'prod-water.webp?v=20261004' },
-          { name:'Knife + fork kit', why:'With tissue. 200 × 70 mm sleeve.', moq:'1,000', img:'kit-knife-fork.webp?v=20261004' },
-          { name:'White sugar & demerara', why:'5g sachets for the coffee service.', moq:'2,000', img:'photo-brownsugar-wood.webp?v=20261004' },
-          { name:'Wet wipes', why:'Offered with the bill.', moq:'5,000', img:'life-wetwipes-hand.webp?v=20261004' },
-          { name:'Butter paper', why:'Food-grade, printed, for baskets and wraps.', moq:'On quote', img:'prod-butter-paper.webp?v=20261004' } ] },
-      { key:'cafe', label:'Café', scenes:[ {img:'life-sugar-coffee.webp?v=20261004', pos:'center', cap:'Every cup leaves with a sachet'}, {img:'hero-cafe.webp?v=20261004', pos:'center', cap:'Counter view'}, {img:'photo-demerara-kraft.webp?v=20261004', pos:'center', cap:'Demerara on kraft'}, {img:'kit-fork.webp?v=20261004', pos:'center', fit:'contain', cap:'Fork + tissue for pastries'} ], img:'life-sugar-coffee.webp?v=20261004', pos:'center',
+          { name:'Branded water 500 ml', why:'Table standard. custom sticker label.', moq:'On quote', img:'prod-water.webp?v=20261005' },
+          { name:'Knife + fork kit', why:'With tissue. 200 × 70 mm sleeve.', moq:'1,000', img:'kit-knife-fork.webp?v=20261005' },
+          { name:'White sugar & demerara', why:'5g sachets for the coffee service.', moq:'2,000', img:'photo-brownsugar-wood.webp?v=20261005' },
+          { name:'Wet wipes', why:'Offered with the bill.', moq:'5,000', img:'life-wetwipes-hand.webp?v=20261005' },
+          { name:'Butter paper', why:'Food-grade, printed, for baskets and wraps.', moq:'On quote', img:'prod-butter-paper.webp?v=20261005' } ] },
+      { key:'cafe', label:'Café', scenes:[ {img:'life-sugar-coffee.webp?v=20261005', pos:'center', cap:'Every cup leaves with a sachet'}, {img:'hero-cafe.webp?v=20261005', pos:'center', cap:'Counter view'}, {img:'photo-demerara-kraft.webp?v=20261005', pos:'center', cap:'Demerara on kraft'}, {img:'kit-fork.webp?v=20261005', pos:'center', fit:'contain', cap:'Fork + tissue for pastries'} ], img:'life-sugar-coffee.webp?v=20261005', pos:'center',
         note:'Every cup goes out with a sachet. Right now it is probably blank.',
         items:[
-          { name:'White sugar', why:'5g, printed edge to edge.', moq:'2,000', img:'sachet-sugar.webp?v=20261004' },
-          { name:'Demerara', why:'Kraft or chromo poly.', moq:'2,000', img:'photo-demerara-kraft.webp?v=20261004' },
-          { name:'Jaggery & monk fruit', why:'For the health-forward menu.', moq:'2,000 each', img:'sachet-monkfruit.webp?v=20261004' },
-          { name:'Compostable straws', why:'Cold brews and shakes.', moq:'10,000', img:'prod-straws.webp?v=20261004' },
-          { name:'Fork + tissue kit', why:'Cakes and pastries to go.', moq:'1,000', img:'kit-fork.webp?v=20261004' } ] },
-      { key:'hotel', label:'Hotel', scenes:[ {img:'story-water.webp?v=20261004', pos:'center 30%', cap:'Room and banquet water'}, {img:'life-sugar-plate.webp?v=20261004', pos:'center', cap:'In-room tea tray'}, {img:'kit-full.webp?v=20261004', pos:'center', fit:'contain', cap:'Full kit for room service'}, {img:'mk-wetwipes.webp?v=20261004', pos:'center', cap:'Arrival wipes'} ], img:'story-water.webp?v=20261004', pos:'center 30%',
+          { name:'White sugar', why:'5g, printed edge to edge.', moq:'2,000', img:'sachet-sugar.webp?v=20261005' },
+          { name:'Demerara', why:'Kraft or chromo poly.', moq:'2,000', img:'photo-demerara-kraft.webp?v=20261005' },
+          { name:'Jaggery & monk fruit', why:'For the health-forward menu.', moq:'2,000 each', img:'sachet-monkfruit.webp?v=20261005' },
+          { name:'Compostable straws', why:'Cold brews and shakes.', moq:'10,000', img:'prod-straws.webp?v=20261005' },
+          { name:'Fork + tissue kit', why:'Cakes and pastries to go.', moq:'1,000', img:'kit-fork.webp?v=20261005' } ] },
+      { key:'hotel', label:'Hotel', scenes:[ {img:'story-water.webp?v=20261005', pos:'center 30%', cap:'Room and banquet water'}, {img:'life-sugar-plate.webp?v=20261005', pos:'center', cap:'In-room tea tray'}, {img:'kit-full.webp?v=20261005', pos:'center', fit:'contain', cap:'Full kit for room service'}, {img:'mk-wetwipes.webp?v=20261005', pos:'center', cap:'Arrival wipes'} ], img:'story-water.webp?v=20261005', pos:'center 30%',
         note:'From the room tray to the banquet table, one consistent identity.',
         items:[
-          { name:'Branded water 200 ml & 1 L', why:'Rooms, meetings, minibar.', moq:'On quote', img:'prod-water.webp?v=20261004' },
-          { name:'Full cutlery kit', why:'Room service and IRD. Knife, fork, spoon, tissue, salt, pepper.', moq:'1,000', img:'kit-full.webp?v=20261004' },
-          { name:'Sugar sachets', why:'In-room tea and coffee trays.', moq:'2,000', img:'life-sugar-plate.webp?v=20261004' },
-          { name:'Wet wipes', why:'Arrival, spa, poolside.', moq:'5,000', img:'mk-wetwipes.webp?v=20261004' },
-          { name:'Butter paper', why:'Bakery and breakfast service.', moq:'On quote', img:'prod-butter-paper.webp?v=20261004' } ] },
-      { key:'caterer', label:'Caterer', scenes:[ {img:'life-everyday.webp?v=20261004', pos:'center 55%', cap:'Hundreds of covers, one look'}, {img:'kit-full.webp?v=20261004', pos:'center', fit:'contain', cap:'Sealed full kit'}, {img:'prod-water.webp?v=20261004', pos:'center', cap:'200 ml per cover'}, {img:'sachet-mouthfreshener.webp?v=20261004', pos:'center', cap:'Mouth freshener at the exit'} ], img:'life-everyday.webp?v=20261004', pos:'center 55%',
+          { name:'Branded water 200 ml & 1 L', why:'Rooms, meetings, minibar.', moq:'On quote', img:'prod-water.webp?v=20261005' },
+          { name:'Full cutlery kit', why:'Room service and IRD. Knife, fork, spoon, tissue, salt, pepper.', moq:'1,000', img:'kit-full.webp?v=20261005' },
+          { name:'Sugar sachets', why:'In-room tea and coffee trays.', moq:'2,000', img:'life-sugar-plate.webp?v=20261005' },
+          { name:'Wet wipes', why:'Arrival, spa, poolside.', moq:'5,000', img:'mk-wetwipes.webp?v=20261005' },
+          { name:'Butter paper', why:'Bakery and breakfast service.', moq:'On quote', img:'prod-butter-paper.webp?v=20261005' } ] },
+      { key:'caterer', label:'Caterer', scenes:[ {img:'life-everyday.webp?v=20261005', pos:'center 55%', cap:'Hundreds of covers, one look'}, {img:'kit-full.webp?v=20261005', pos:'center', fit:'contain', cap:'Sealed full kit'}, {img:'prod-water.webp?v=20261005', pos:'center', cap:'200 ml per cover'}, {img:'sachet-mouthfreshener.webp?v=20261005', pos:'center', cap:'Mouth freshener at the exit'} ], img:'life-everyday.webp?v=20261005', pos:'center 55%',
         note:'Hundreds of covers, one look. Sealed kits move faster on the line and read as hygienic.',
         items:[
-          { name:'Full cutlery kit', why:'Salt and pepper included. 230 × 80 or 240 × 90 mm.', moq:'1,000', img:'kit-full.webp?v=20261004' },
-          { name:'Spoon + tissue kit', why:'Compact, for boxed and plated meals.', moq:'1,000', img:'kit-spoon-tissue.webp?v=20261004' },
-          { name:'Branded water 200 ml', why:'One per cover.', moq:'On quote', img:'prod-water.webp?v=20261004' },
-          { name:'Mouth freshener', why:'Handed out at the exit.', moq:'2,000', img:'sachet-mouthfreshener.webp?v=20261004' },
-          { name:'Wet wipes', why:'Before and after the meal.', moq:'5,000', img:'life-wetwipes-hand.webp?v=20261004' } ] },
-      { key:'travel', label:'Airline & corporate', scenes:[ {img:'kit-spoon-tissue.webp?v=20261004', pos:'center', fit:'contain', cap:'Compact spoon + tissue kit'}, {img:'kit-full.webp?v=20261004', pos:'center', fit:'contain', cap:'Hot meal kit'}, {img:'prod-water.webp?v=20261004', pos:'center', cap:'Tray-sized water'}, {img:'life-wetwipes-hand.webp?v=20261004', pos:'center 70%', cap:'Pre-meal refresh'} ], img:'kit-spoon-tissue.webp?v=20261004', pos:'center', fit:'contain',
+          { name:'Full cutlery kit', why:'Salt and pepper included. 230 × 80 or 240 × 90 mm.', moq:'1,000', img:'kit-full.webp?v=20261005' },
+          { name:'Spoon + tissue kit', why:'Compact, for boxed and plated meals.', moq:'1,000', img:'kit-spoon-tissue.webp?v=20261005' },
+          { name:'Branded water 200 ml', why:'One per cover.', moq:'On quote', img:'prod-water.webp?v=20261005' },
+          { name:'Mouth freshener', why:'Handed out at the exit.', moq:'2,000', img:'sachet-mouthfreshener.webp?v=20261005' },
+          { name:'Wet wipes', why:'Before and after the meal.', moq:'5,000', img:'life-wetwipes-hand.webp?v=20261005' } ] },
+      { key:'travel', label:'Airline & corporate', scenes:[ {img:'kit-spoon-tissue.webp?v=20261005', pos:'center', fit:'contain', cap:'Compact spoon + tissue kit'}, {img:'kit-full.webp?v=20261005', pos:'center', fit:'contain', cap:'Hot meal kit'}, {img:'prod-water.webp?v=20261005', pos:'center', cap:'Tray-sized water'}, {img:'life-wetwipes-hand.webp?v=20261005', pos:'center 70%', cap:'Pre-meal refresh'} ], img:'kit-spoon-tissue.webp?v=20261005', pos:'center', fit:'contain',
         note:'Light, compact and individually sealed for tray service and meal boxes.',
         items:[
-          { name:'Spoon + tissue kit', why:'180 × 60 mm. Salt and pepper optional.', moq:'1,000', img:'kit-spoon-tissue.webp?v=20261004' },
-          { name:'Full cutlery kit', why:'For hot meal service.', moq:'1,000', img:'kit-full.webp?v=20261004' },
-          { name:'Branded water 200 ml', why:'Tray-sized.', moq:'On quote', img:'prod-water.webp?v=20261004' },
-          { name:'Wet wipes', why:'Pre-meal refresh.', moq:'5,000', img:'mk-wetwipes.webp?v=20261004' },
-          { name:'Mouth freshener', why:'End of service.', moq:'2,000', img:'sachet-mouthfreshener.webp?v=20261004' } ] },
+          { name:'Spoon + tissue kit', why:'180 × 60 mm. Salt and pepper optional.', moq:'1,000', img:'kit-spoon-tissue.webp?v=20261005' },
+          { name:'Full cutlery kit', why:'For hot meal service.', moq:'1,000', img:'kit-full.webp?v=20261005' },
+          { name:'Branded water 200 ml', why:'Tray-sized.', moq:'On quote', img:'prod-water.webp?v=20261005' },
+          { name:'Wet wipes', why:'Pre-meal refresh.', moq:'5,000', img:'mk-wetwipes.webp?v=20261005' },
+          { name:'Mouth freshener', why:'End of service.', moq:'2,000', img:'sachet-mouthfreshener.webp?v=20261005' } ] },
     ];
     const vKey = this.state.venue;
     const vAct = VENUES.find((v) => v.key === vKey) || VENUES[0];
@@ -551,12 +594,12 @@ class Component extends DCLogic {
       waLink: 'https://wa.me/918980009697?text=' + encodeURIComponent('Hi BrandMyHoReCa — I run a ' + vAct.label.toLowerCase() + '. Kit quote please: ' + (kept.length ? kept : vAct.items).map((i) => i.name).join(', ') + '.'),
     };
     const STORY = [
-      { src:'story-water.webp?v=20261004', pos:'center top', label:'Branded water' },
-      { src:'photo-cutlery-kraft.webp?v=20261004', pos:'center', label:'Cutlery kit' },
-      { src:'photo-brownsugar-wood.webp?v=20261004', pos:'center 45%', label:'Sugar sachet', fit:'contain', bg:'#3b2a1e' },
-      { src:'life-sugar-coffee.webp?v=20261004', pos:'center', label:'Café service' },
-      { src:'life-table-kit.webp?v=20261004', pos:'center 60%', label:'Table kit' },
-      { src:'life-wetwipes-hand.webp?v=20261004', pos:'center 70%', label:'Wet wipes', fit:'contain', bg:'#e9e4da' },
+      { src:'story-water.webp?v=20261005', pos:'center top', label:'Branded water' },
+      { src:'photo-cutlery-kraft.webp?v=20261005', pos:'center', label:'Cutlery kit' },
+      { src:'photo-brownsugar-wood.webp?v=20261005', pos:'center 45%', label:'Sugar sachet', fit:'contain', bg:'#3b2a1e' },
+      { src:'life-sugar-coffee.webp?v=20261005', pos:'center', label:'Café service' },
+      { src:'life-table-kit.webp?v=20261005', pos:'center 60%', label:'Table kit' },
+      { src:'life-wetwipes-hand.webp?v=20261005', pos:'center 70%', label:'Wet wipes', fit:'contain', bg:'#e9e4da' },
     ];
     const sI = this.state.storyIdx % STORY.length;
     const story = {
@@ -567,7 +610,10 @@ class Component extends DCLogic {
     const BW = ['sachet', 'bottle', 'napkin', 'straw', 'wrapper', 'detail'];
     const bannerWordEl = React.createElement('span', { key: 'w' + this.state.bannerIdx, style: { color: '#bd9a63', display: 'inline-block', animation: 'bmhWordIn .55s cubic-bezier(.22,1,.36,1) both' } }, BW[this.state.bannerIdx % BW.length]);
     const email = ['info', 'brandmyhoreca.com'].join('@');
+    const as = this.state.activeSec;
     return {
+      headerClass: this.state.scrolled ? 'hd-s' : '',
+      nav: { story: as === 'story' ? 'nv-on' : '', venues: as === 'venues' ? 'nv-on' : '', range: as === 'range' ? 'nv-on' : '', contact: as === 'contact' ? 'nv-on' : '' },
       bannerWordEl, story, venue,
       explorer: { stage, thumbs, activeName: active.name, activeDesc: active.desc, facts: (FACTS[active.key] || []).map((f) => ({ k: f[0], v: f[1] })), ctaLabel: 'Quote ' + active.name + ' on WhatsApp', wa: 'https://wa.me/918980009697?text=' + encodeURIComponent('Product enquiry — BrandMyHoReCa\nProduct: ' + active.name + '\nPlease share pricing and a mockup.'), counter: String(exIdx + 1).padStart(2, '0') + ' / ' + EXPLORE.length },
       email, emailHref: 'mailto:' + email,
